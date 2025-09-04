@@ -1,0 +1,86 @@
+@startuml DriveHub
+
+'notas'
+'gestionar reserva como un metodo dentro de garage ?¿'
+'sobreescritura de calcularTarifa'
+class Garage{
+    - arrayVehiculos:Vehiculo[]
+}
+
+'Relaciones'
+Garage *-d- Vehiculo
+GestionarReserva ..> Cliente
+Vehiculo .l.> Mantenimiento
+GestionarTarifa .r.> Garage
+GestionarKilometraje .d.> Garage
+GestionarReserva .l.> Garage
+
+abstract class Vehiculo{
+    - matricula: string
+    - estado: string
+    - tarifa: number
+    - disponibilidad: boolean
+    - kilometrosRecorridos: number
+    - cargo: number
+
+    + calcularTarifa(vehiculo:Vehiculo) 
+    + settersYgetters()
+}
+
+'kmIniciales y kmFinales para calcular km para tarifa
+'super() para extender'
+'cargo lo heredan los 3'
+class Compacto extends Vehiculo{
+    + settersYgetters()
+}
+
+class Sedan extends Vehiculo{
+
+    + settersYgetters()
+}
+
+class Suv extends Vehiculo{
+
+    - cargoFijoAdicional: number
+    + settersYgetters()
+}
+
+class Cliente {
+    - vehiculo: Vehiculo
+
+    + settersYgetters()
+}
+
+class GestionarReserva{
+
+    - fechaInicio: Date
+    - fechaFin: Date
+
+    + validarDisponibilidad():
+    + calcularDiasDeUso()
+    + alquilarVehiculo(arrayVehiculos:Vehiculo[]): Vehiculo
+    + settersYgetters()
+}
+
+'+ calcularDiasDeUso() --> FECHA FIN - FECHA INICIO = CANT DE DIAS DE USO'
+'pedirle al usuario cant de dias de uso y hacer el calculo con ese ingreso
+
+class GestionarTarifa{
+
+    + calcularTarifa(vehiculo:Vehiculo)
+    + settersYgetters()
+}
+
+class GestionarKilometraje{
+
+    + settersYgetters()
+}
+
+class Mantenimiento{
+    - costoMantenimiento: number
+    - fechaMantenimiento: Date
+
+    + settersYgetters()
+}
+
+@enduml
