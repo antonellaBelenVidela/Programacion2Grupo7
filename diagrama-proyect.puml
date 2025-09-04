@@ -1,19 +1,25 @@
 @startuml DriveHub
+ 
+'Preguntas:
+'Garage Entidad encargada de todo? 
+'Podemos hacer una interfaz para las Gestiones?'
 
-'notas'
-'gestionar reserva como un metodo dentro de garage ?¿'
-'sobreescritura de calcularTarifa'
+'Garage Pulpo derivador de Tareas'
+'Interfaz Gestor de tarifas'
+
 class Garage{
     - arrayVehiculos:Vehiculo[]
 }
 
 'Relaciones'
 Garage *-d- Vehiculo
-GestionarReserva ..> Cliente
+GestionReserva ..> Cliente
 Vehiculo .l.> Mantenimiento
-GestionarTarifa .r.> Garage
-GestionarKilometraje .d.> Garage
-GestionarReserva .l.> Garage
+
+' Voltear '
+GestionTarifa <.r. Garage
+GestionKilometraje <.d. Garage
+GestionReserva <.l. Garage
 
 abstract class Vehiculo{
     - matricula: string
@@ -22,8 +28,7 @@ abstract class Vehiculo{
     - disponibilidad: boolean
     - kilometrosRecorridos: number
     - cargo: number
-
-    + calcularTarifa(vehiculo:Vehiculo) 
+ 
     + settersYgetters()
 }
 
@@ -51,7 +56,7 @@ class Cliente {
     + settersYgetters()
 }
 
-class GestionarReserva{
+class GestionReserva{
 
     - fechaInicio: Date
     - fechaFin: Date
@@ -63,15 +68,16 @@ class GestionarReserva{
 }
 
 '+ calcularDiasDeUso() --> FECHA FIN - FECHA INICIO = CANT DE DIAS DE USO'
+'Biblioteca Moment'
 'pedirle al usuario cant de dias de uso y hacer el calculo con ese ingreso
 
-class GestionarTarifa{
+class GestionTarifa{
 
     + calcularTarifa(vehiculo:Vehiculo)
     + settersYgetters()
 }
 
-class GestionarKilometraje{
+class GestionKilometraje{
 
     + settersYgetters()
 }
