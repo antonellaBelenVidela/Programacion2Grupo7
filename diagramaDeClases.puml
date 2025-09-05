@@ -16,7 +16,7 @@ Garage *-d- Vehiculo
 GestionReserva ..> Cliente
 Vehiculo .d.> Mantenimiento
 
-Garage <-r- GestorReserva
+Garage <-r- Gestor
 Garage <- Mantenimiento
 
 class Garage{
@@ -25,7 +25,7 @@ class Garage{
 
 abstract class Vehiculo{
     - matricula: string
-    - estado: string implements GestorReserva
+    - estado: string implements Gestor
     - tarifa: number
     - disponibilidad: boolean
     - kilometrosRecorridos: number
@@ -34,7 +34,7 @@ abstract class Vehiculo{
     + settersYgetters()
 }
 
-interface GestorReserva{
+interface Gestor{
     + Gestionar()
 }
 
@@ -60,7 +60,7 @@ class Cliente {
     + realizarReserva(gestionReserva())
 }
 
-class GestionReserva implements GestorReserva{
+class GestionReserva implements Gestor{
 
     - fechaInicio: Date
     - fechaFin: Date
@@ -72,13 +72,13 @@ class GestionReserva implements GestorReserva{
     + settersYgetters()
 }
 
-class GestionTarifa implements GestorReserva{
+class GestionTarifa implements Gestor{
 
     + gestionar(vehiculo:Vehiculo)
     + settersYgetters()
 }
 
-class GestionKilometraje implements GestorReserva{
+class GestionKilometraje implements Gestor{
 
     + gestionar()
     + settersYgetters()
