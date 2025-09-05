@@ -6,24 +6,26 @@
 
 'Garage Pulpo derivador de Tareas'
 'Interfaz Gestor de tarifas'
+'Biblioteca Moment JS para calculos de fecha'
+
+
+
+
+'Relaciones'
+Garage *-d- Vehiculo
+GestionReserva ..> Cliente
+Vehiculo .d.> Mantenimiento
+
+Garage <-r- GestorReserva
+Garage <- Mantenimiento
 
 class Garage{
     - arrayVehiculos:Vehiculo[]
 }
 
-'Relaciones'
-Garage *-d- Vehiculo
-GestionReserva ..> Cliente
-Vehiculo .l.> Mantenimiento
-
-' Voltear '
-GestionTarifa <.r. Garage
-GestionKilometraje <.d. Garage
-GestionReserva <.l. Garage
-
 abstract class Vehiculo{
     - matricula: string
-    - estado: string
+    - estado: string implements GestorReserva
     - tarifa: number
     - disponibilidad: boolean
     - kilometrosRecorridos: number
@@ -32,9 +34,10 @@ abstract class Vehiculo{
     + settersYgetters()
 }
 
-'kmIniciales y kmFinales para calcular km para tarifa
-'super() para extender'
-'cargo lo heredan los 3'
+interface GestorReserva{
+    + Gestionar()
+}
+
 class Compacto extends Vehiculo{
     + settersYgetters()
 }
@@ -54,31 +57,30 @@ class Cliente {
     - vehiculo: Vehiculo
 
     + settersYgetters()
+    + realizarReserva(gestionReserva())
 }
 
-class GestionReserva{
+class GestionReserva implements GestorReserva{
 
     - fechaInicio: Date
     - fechaFin: Date
 
-    + validarDisponibilidad():
+    + gestionar()    
+    + validarDisponibilidad()
     + calcularDiasDeUso()
     + alquilarVehiculo(arrayVehiculos:Vehiculo[]): Vehiculo
     + settersYgetters()
 }
 
-'+ calcularDiasDeUso() --> FECHA FIN - FECHA INICIO = CANT DE DIAS DE USO'
-'Biblioteca Moment'
-'pedirle al usuario cant de dias de uso y hacer el calculo con ese ingreso
+class GestionTarifa implements GestorReserva{
 
-class GestionTarifa{
-
-    + calcularTarifa(vehiculo:Vehiculo)
+    + gestionar(vehiculo:Vehiculo)
     + settersYgetters()
 }
 
-class GestionKilometraje{
+class GestionKilometraje implements GestorReserva{
 
+    + gestionar()
     + settersYgetters()
 }
 
