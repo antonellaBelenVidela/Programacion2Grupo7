@@ -1,9 +1,9 @@
 import Gestor from "./gestor";
-import { Vehiculo } from "./vehiculo";
+import { Vehiculo } from "../Vehiculos/vehiculo";
 
 export default class GestionarReserva implements Gestor{
-   private fechaInicio:Date
-   private fechaFin:Date
+   private _fechaInicio:Date
+   private _fechaFin:Date
 
    constructor() {
      
@@ -20,21 +20,21 @@ export default class GestionarReserva implements Gestor{
   public AlquilarVehiculo(vehiculo:Vehiculo[]):void{}
 
   public SetFechaInicio(fecha:Date){
-    this.fechaInicio=fecha
+    this._fechaInicio=fecha
   }
 
  public GetFechaInicio():Date{
-    return this.fechaInicio
+    return this._fechaInicio
  }
 
 
 
  public SetFechaFin(fecha:Date){
-    this.fechaFin=fecha
+    this._fechaFin=fecha
   }
 
  public GetFechaFin():Date{
-    return this.fechaFin
+    return this._fechaFin
  }
 
 

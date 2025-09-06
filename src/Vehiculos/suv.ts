@@ -7,7 +7,7 @@ export default class Suv extends Vehiculo{
     this._cargoFijoAdicional = cargoFijoAdicional;
   }
 
-  public geCargoFijoAdicional(): number{
+  public getCargoFijoAdicional(): number{
     return this._cargoFijoAdicional;
   }
 }

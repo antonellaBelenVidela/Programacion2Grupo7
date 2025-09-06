@@ -1,11 +1,11 @@
-import { Vehiculo } from "./vehiculo";
+import { Vehiculo } from "./Vehiculos/vehiculo";
 
 export default class Garaje {
- private ArrayVehiculos:Vehiculo[]
+ private _arrayVehiculos:Vehiculo[]
  
 
   constructor(){
-   this.ArrayVehiculos=[]
+   this._arrayVehiculos=[]
 
   }
 

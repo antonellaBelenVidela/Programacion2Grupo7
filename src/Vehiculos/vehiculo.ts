@@ -18,7 +18,7 @@ export abstract class Vehiculo {
     this._estado = estado;
   }
 
-  public geEstado(): string{
+  public getEstado(): string{
     return this._estado;
   }
 
