@@ -1,31 +1,31 @@
-import { Vehiculo } from "./vehiculo"
+import { Vehiculo } from "./Vehiculos/vehiculo"
 
 export default class Cliente {
 
-    private nombre:string
-    private Mail:string
-    private vehiculo:Vehiculo
+    private _nombre:string
+    private _mail:string
+    private _vehiculo:Vehiculo
 
     constructor() {
-        this.nombre=""
-        this.Mail=""
-        this.vehiculo= undefined as unknown as Vehiculo
+        this._nombre=""
+        this._mail=""
+        this._vehiculo= undefined as unknown as Vehiculo
     }
 
  public setNombre(nombre:string){
-    this.nombre=nombre
+    this._nombre=nombre
  }
 
  public GetNombre():string{
-    return this.nombre
+    return this._nombre
  }
 
- public SetMail(Mail:string){
-    this.Mail=Mail
+ public SetMail(mail:string){
+    this._mail= mail
  }
 
  public GetMail():string{
-    return this.Mail
+    return this._mail
  }
 
  

@@ -1,3 +1,6 @@
+# Programacion2Grupo7
+Trabajo Practico 2025- Sistema de Gestión para una Plataforma de Alquiler de Autos
+
 # Configuración del entorno de desarrollo para Laboratorio 3
 
 Vamos a comentar 2 alternativas, una utilizando Docker y otra instalando todos los componentes necesarios sobre la máquina host.

@@ -1,20 +1,17 @@
 @startuml DriveHub
- 
-'Preguntas:
-'Garage Entidad encargada de todo? 
-'Podemos hacer una interfaz para las Gestiones?'
-
 'Garage Pulpo derivador de Tareas'
 'Interfaz Gestor de tarifas'
 'Biblioteca Moment JS para calculos de fecha'
 
 
-
-
 'Relaciones'
 Garage *-d- Vehiculo
+Vehiculo .r.> Mantenimiento
+Garage <- Cliente
 GestionReserva ..> Cliente
-Vehiculo .d.> Mantenimiento
+GestionReserva <.r. GestionTarifa
+GestionReserva <.l. GestionKilometraje
+Gestor --> GestionReserva
 
 Garage <-r- Gestor
 Garage <- Mantenimiento
@@ -34,8 +31,8 @@ abstract class Vehiculo{
     + settersYgetters()
 }
 
-interface Gestor{
-    + Gestionar()
+abstract class Gestor{
+    - arrayGestiones: Gestion?
 }
 
 class Compacto extends Vehiculo{
@@ -60,7 +57,7 @@ class Cliente {
     + realizarReserva(gestionReserva())
 }
 
-class GestionReserva implements Gestor{
+class GestionReserva{
 
     - fechaInicio: Date
     - fechaFin: Date
@@ -72,13 +69,13 @@ class GestionReserva implements Gestor{
     + settersYgetters()
 }
 
-class GestionTarifa implements Gestor{
+class GestionTarifa{
 
     + gestionar(vehiculo:Vehiculo)
     + settersYgetters()
 }
 
-class GestionKilometraje implements Gestor{
+class GestionKilometraje{
 
     + gestionar()
     + settersYgetters()
