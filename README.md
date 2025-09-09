@@ -5,4 +5,4 @@ Trabajo Practico 2025 - Sistema de Gestión para una Plataforma de Alquiler de A
    · Gonzalo Sabadin
    · Johan Nuñez
    · Santiago Vassallo
-   · Tobias Pereyra lol
+   · Tobias Pereyra
