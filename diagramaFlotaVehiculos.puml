@@ -1,0 +1,70 @@
+@startuml DriveHub
+ 
+'Preguntas:
+
+'Flota Pulpo derivador de Tareas' NO
+'Interfaz Gestor de tarifas' Quizas
+'Biblioteca Moment JS para calculos de fecha' Con Date se puede
+
+
+'Relaciones Flota'
+Flota *-- Sedan
+Flota *-- Suv
+Flota *-- Compacto
+
+'Relaciones Herencia'
+Sedan <|-- Vehiculo
+Suv <|-- Vehiculo
+Compacto <|-- Vehiculo
+
+'Dependencias'
+Vehiculo .r.> Mantenimiento
+
+
+
+
+
+'Clases'
+
+class Flota{
+    'La key es la categoría(Suv, Sedan, Compacto)
+    'El valor es su disponibilidad(Está disponible o no para el Cliente)'
+    - flota: Map<string, string>;
+    + agregarVehiculoYdisponibilidad()
+    + obtenerVehiculoYdisponibilidad()
+    + cambiarDisponibilidad()
+    + mostrarFlota()
+}
+
+abstract class Vehiculo{
+    - matricula: string
+    - estado: string implements Gestor
+    - tarifa: number
+    - disponibilidad: string
+    - kilometrosRecorridos: number
+    - cargo: number
+ 
+    + settersYgetters()
+}
+
+class Compacto{
+    + settersYgetters()
+}
+
+class Sedan{
+    + settersYgetters()
+}
+
+class Suv{
+    - cargoFijoAdicional: number
+    + settersYgetters()
+}
+
+class Mantenimiento{
+    - costoMantenimiento: number
+    - fechaMantenimiento: Date
+
+    + settersYgetters()
+}
+
+@enduml
