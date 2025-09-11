@@ -2,9 +2,18 @@ export default abstract class Vehiculo{
   private _matricula: string;
   private _estado: string;
   private _tarifa: number;
-  private _disponibilidad: boolean;
+  private _disponibilidad: string;
   private _kilometrosRecorridos: number;
   private _cargo: number;
+
+  constructor(){
+    this._matricula = "";
+    this._estado = "";
+    this._tarifa = 0;
+    this._disponibilidad = "";
+    this._kilometrosRecorridos = 0;
+    this._cargo = 0;
+  }
 
   public setMatriculta(matricula: string): void{
     this._matricula = matricula;
@@ -30,11 +39,11 @@ export default abstract class Vehiculo{
     return this._tarifa;
   }
 
-  public setDisponibilidad(disponibilidad: boolean): void{
+  public setDisponibilidad(disponibilidad: string): void{
     this._disponibilidad = disponibilidad;
   }
 
-  public getDisponibilidad(): boolean{
+  public getDisponibilidad(): string{
     return this._disponibilidad;
   }
 

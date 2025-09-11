@@ -1,0 +1,108 @@
+@startuml DriveHub
+ 
+'Preguntas:
+
+'Flota Pulpo derivador de Tareas' NO
+'Interfaz Gestor de tarifas' Quizas
+'Biblioteca Moment JS para calculos de fecha' Con Date se puede
+
+
+'Relaciones Flota'
+Flota *-- Sedan
+Flota *-- Suv
+Flota *-- Compacto
+
+'Relaciones Herencia'
+Sedan --|> Vehiculo
+Suv --|> Vehiculo
+Compacto --|> Vehiculo
+
+'Relaciones Generales'
+GestionReserva .u.|> GestorGeneral
+GestionKilometraje .u.|> GestorGeneral
+GestionTarifa .u.|> GestorGeneral
+GestionReserva <--> Gestor
+GestionKilometraje <--> Gestor
+GestionTarifa <--> Gestor
+
+'Dependencias'
+Vehiculo .r.> Mantenimiento
+
+'Asociaciones'
+Flota <-u-> Gestor
+Cliente -r-> Gestor
+
+
+
+
+'Clases'
+
+class Cliente{
+    + realizarReserva(Gestor.gestionarReserva(Gestionar()))
+}
+
+class Gestor{
+    + gestionarReserva(Gestionar())
+    + gestionarKilometraje(Gestionar())
+    + gestionarTarifa(Gestionar())
+}
+
+class Flota{
+    'La key es la categoría(Suv, Sedan, Compacto)
+    'El valor es su disponibilidad(Está disponible o no para el Cliente)'
+    - Flota: Map<string, string>;
+    + agregarVehiculoYdisponibilidad()
+    + obtenerVehiculoYdisponibilidad()
+    + cambiarDisponibilidad()
+    + mostrarGarage()
+}
+
+abstract class Vehiculo{
+    - matricula: string
+    - estado: string implements Gestor
+    - tarifa: number
+    - disponibilidad: string
+    - kilometrosRecorridos: number
+    - cargo: number
+ 
+    + settersYgetters()
+}
+
+class Compacto{
+    + settersYgetters()
+}
+
+class Sedan{
+    + settersYgetters()
+}
+
+class Suv{
+    - cargoFijoAdicional: number
+    + settersYgetters()
+}
+
+class Mantenimiento{
+    - costoMantenimiento: number
+    - fechaMantenimiento: Date
+
+    + settersYgetters()
+}
+
+class GestionReserva{
+    + gestionar()
+}
+
+class GestionKilometraje{
+    + gestionar()
+}
+
+class GestionTarifa{
+    + gestionar()
+}
+
+'Interfaces'
+interface GestorGeneral{
+    + gestionar()
+} 
+
+@enduml
