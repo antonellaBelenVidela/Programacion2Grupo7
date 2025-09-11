@@ -44,7 +44,7 @@ class Cliente{
 class Gestor{
     + gestionarReserva(Gestionar())
     + gestionarKilometraje(Gestionar())
-    + gestionTarifa(Gestionar())
+    + gestionarTarifa(Gestionar())
 }
 
 class Flota{
