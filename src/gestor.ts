@@ -1,4 +1,4 @@
 export default interface Gestor {
-  gestionar()
+  gestionar():void
 
 }

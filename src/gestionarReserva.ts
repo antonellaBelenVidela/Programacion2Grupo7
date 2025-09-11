@@ -6,7 +6,8 @@ export default class GestionarReserva implements Gestor{
    private fechaFin:Date
 
    constructor() {
-     
+     this.fechaInicio=undefined as unknown as Date
+     this.fechaFin=undefined as unknown as Date
    }
 
   public gestionar() {

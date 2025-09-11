@@ -1,7 +1,8 @@
+import GestionarReserva from "./gestionarReserva"
 import { Vehiculo } from "./vehiculo"
 
 export default class Cliente {
-
+//usar mail para crear un mapa como clave valor 
     private nombre:string
     private Mail:string
     private vehiculo:Vehiculo
@@ -28,6 +29,9 @@ export default class Cliente {
     return this.Mail
  }
 
+ public RealizarReserva(GestionarReserva:GestionarReserva){
+   GestionarReserva.AlquilarVehiculo()
+ }
  
 
 
