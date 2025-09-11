@@ -38,13 +38,13 @@ Cliente -r-> Gestor
 'Clases'
 
 class Cliente{
-    + RealizarReserva(Gestor.GestionReserva(Gestionar()))
+    + realizarReserva(Gestor.gestionarReserva(Gestionar()))
 }
 
 class Gestor{
-    + GestionReserva(Gestionar())
-    + GestionKilometraje(Gestionar())
-    + GestionTarifa(Gestionar())
+    + gestionarReserva(Gestionar())
+    + gestionarKilometraje(Gestionar())
+    + gestionTarifa(Gestionar())
 }
 
 class Flota{
@@ -89,20 +89,20 @@ class Mantenimiento{
 }
 
 class GestionReserva{
-    + Gestionar()
+    + gestionar()
 }
 
 class GestionKilometraje{
-    + Gestionar()
+    + gestionar()
 }
 
 class GestionTarifa{
-    + Gestionar()
+    + gestionar()
 }
 
 'Interfaces'
 interface GestorGeneral{
-    + Gestionar()
+    + gestionar()
 } 
 
 @enduml
