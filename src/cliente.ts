@@ -30,7 +30,7 @@ export default class Cliente {
  }
 
  public RealizarReserva(GestionarReserva:GestionarReserva){
-   GestionarReserva.AlquilarVehiculo()
+ 
  }
  
 
