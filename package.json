@@ -1,7 +1,7 @@
 {
-  "name": "prog2",
+  "name": "cuvl_lab3",
   "version": "1.0.0",
-  "description": "ejercicio1",
+  "description": "cuvl_lab3",
   "main": "dist/app.js",
   "scripts": {
     "build": "tsc",

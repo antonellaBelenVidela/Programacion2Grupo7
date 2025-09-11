@@ -5,7 +5,7 @@ export default class Flota{
         this.flota = new Map<string,string>();
     }
 
-    'patente como key'
+    //'patente como key'
 
     public agregarVehiculo(categoria: string, disponibilidad: string): void{
         this.flota.set(categoria, disponibilidad);
