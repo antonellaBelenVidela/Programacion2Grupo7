@@ -1,0 +1,162 @@
+@startuml DriveHub
+
+title "Trabajo Prácito - DriveHub - Grupo 7"
+
+'Clases'
+
+class Cliente{
+    - nombre: string
+    - apellido: string
+    - autoAlquilado: Flota
+    - inicioAlquiler: Date
+    - finAlquiler: Date
+    - tarifaFinal: number
+    + settersYgetters()
+    + realizarReserva(Gestor.gestionarReserva(gestionar()))
+    + calcularTarifaFinal(Gestor.gestionarTarifa(gestionar()))
+}
+
+class Gestor{
+    + Flota
+    + gestionarReserva(GestionReserva(gestionar()))
+    + gestionarKilometraje(GestionKilometraje(gestionar()))
+    + gestionarTarifa(GestionTarifa(gestionar()))
+}
+
+class Flota{
+    'La key es la categoría(Suv, Sedan, Compacto)
+    'El valor es su disponibilidad(Está disponible o no para el Cliente)'
+    - Flota: Map<string, string>;
+    + agregarVehiculoYdisponibilidad()
+    + obtenerVehiculoYdisponibilidad()
+    + cambiarDisponibilidad()
+    + mostrarFlota()
+    + gestionarKilometraje(GestionKilometraje(gestionar()))
+    + realizarMantenimiento(cambiarDisponibilidad())
+}
+
+abstract class Vehiculo{
+    - matricula: string
+    - estado: string implements Gestor
+    - tarifa: number
+    - disponibilidad: string
+    - kilometrosRecorridos: number
+    - cargo: number
+ 
+    + settersYgetters()
+}
+
+class Compacto{
+    + settersYgetters()
+}
+
+class Sedan{
+    + settersYgetters()
+}
+
+class Suv{
+    - cargoFijoAdicional: number
+    + settersYgetters()
+}
+
+class Mantenimiento{
+    - tipoMantenimiento: string
+    - costoMantenimiento: number
+    - fechaInicioMantenimiento: Date
+    - fechaFinMantenimiento: Date
+
+    + settersYgetters()
+}
+
+abstract class GestionReserva{
+    + gestionar()
+}
+
+abstract class GestionKilometraje{
+    + gestionar()
+}
+
+abstract class GestionTarifa{
+    + gestionar()
+}
+
+'Interfaces'
+interface GestionGeneral{
+    + gestionar()
+} 
+
+
+'Preguntas:
+
+'Flota Pulpo derivador de Tareas' NO
+'Interfaz Gestor de tarifas' Quizas
+'Biblioteca Moment JS para calculos de fecha' Con Date se puede
+
+
+'Relaciones Flota'
+Flota *-- Sedan
+Flota *-- Suv
+Flota *-- Compacto
+
+'Relaciones Herencia'
+Sedan --|> Vehiculo
+Suv --|> Vehiculo
+Compacto --|> Vehiculo
+
+'Relacion de Implementacion
+GestionReserva .u.|> GestionGeneral
+GestionKilometraje .u.|> GestionGeneral
+GestionTarifa .u.|> GestionGeneral
+
+'Relaciones con Gestor'
+Gestor --l-> Cliente
+Cliente --r-> Gestor
+
+GestionReserva ---> Gestor
+Gestor -u--> GestionReserva
+
+GestionKilometraje ---> Gestor
+Gestor -u--> GestionKilometraje
+
+GestionTarifa ---> Gestor
+Gestor -u--> GestionTarifa
+
+Flota -u-> Gestor
+
+'Relaciones de Dependencia'
+Vehiculo .r.> Mantenimiento
+
+'Notas'
+note right of Gestor 
+    Gestor importa Flota y las Gestiones. 
+    Se va a encargar de llevar y traer 
+    información, como una especie de pulpo.
+end note
+
+note top of Gestor
+    Cuando Gestor deba utilizar las gestiones
+    estas devuelven su metodo gestionar() para 
+    que luego Gestor le devuelva a quien deba
+    utilizar dichas gestiones.
+end note
+
+note right of Flota
+    En Flota se guardarán todos los Vehiculos
+    que la componen, en este caso está compuesto
+    por 'Sedan', 'Suv' y 'Compacto' pero pueden
+    ser más.
+end note
+
+note left of Vehiculo
+    Características que van a heredar todos 
+    los vehiculos que compongan la Flota.
+end note
+
+note left of Flota
+    El método gestionarKilometraje() se realiza
+    en Flota por el hecho de que ahí estan almacenados
+    los vehículos, a partir de eso se puede calcular si
+    mandar a Mantenimiento o no.
+end note
+
+@enduml
