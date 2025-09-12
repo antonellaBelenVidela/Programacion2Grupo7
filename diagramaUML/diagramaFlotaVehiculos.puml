@@ -1,50 +1,26 @@
 @startuml DriveHub
- 
-'Preguntas:
 
-'Flota Pulpo derivador de Tareas' NO
-'Interfaz Gestor de tarifas' Quizas
-'Biblioteca Moment JS para calculos de fecha' Con Date se puede
-
-
-'Relaciones Flota'
-Flota *-- Sedan
-Flota *-- Suv
-Flota *-- Compacto
-
-'Relaciones Herencia'
-Sedan --|> Vehiculo
-Suv --|> Vehiculo
-Compacto --|> Vehiculo
-
-'Relaciones Generales'
-GestionReserva .u.|> GestorGeneral
-GestionKilometraje .u.|> GestorGeneral
-GestionTarifa .u.|> GestorGeneral
-GestionReserva <--> Gestor
-GestionKilometraje <--> Gestor
-GestionTarifa <--> Gestor
-
-'Dependencias'
-Vehiculo .r.> Mantenimiento
-
-'Asociaciones'
-Flota <-u-> Gestor
-Cliente -r-> Gestor
-
-
-
+title "Trabajo Prácito - DriveHub - Grupo 7"
 
 'Clases'
 
 class Cliente{
-    + realizarReserva(Gestor.gestionarReserva(Gestionar()))
+    - nombre: string
+    - apellido: string
+    - autoAlquilado: Flota
+    - inicioAlquiler: Date
+    - finAlquiler: Date
+    - tarifaFinal: number
+    + settersYgetters()
+    + realizarReserva(Gestor.gestionarReserva(gestionar()))
+    + calcularTarifaFinal(Gestor.gestionarTarifa(gestionar()))
 }
 
 class Gestor{
-    + gestionarReserva(Gestionar())
-    + gestionarKilometraje(Gestionar())
-    + gestionarTarifa(Gestionar())
+    + Flota
+    + gestionarReserva(GestionReserva(gestionar()))
+    + gestionarKilometraje(GestionKilometraje(gestionar()))
+    + gestionarTarifa(GestionTarifa(gestionar()))
 }
 
 class Flota{
@@ -54,7 +30,9 @@ class Flota{
     + agregarVehiculoYdisponibilidad()
     + obtenerVehiculoYdisponibilidad()
     + cambiarDisponibilidad()
-    + mostrarGarage()
+    + mostrarFlota()
+    + gestionarKilometraje(GestionKilometraje(gestionar()))
+    + realizarMantenimiento(cambiarDisponibilidad())
 }
 
 abstract class Vehiculo{
@@ -82,27 +60,103 @@ class Suv{
 }
 
 class Mantenimiento{
+    - tipoMantenimiento: string
     - costoMantenimiento: number
-    - fechaMantenimiento: Date
+    - fechaInicioMantenimiento: Date
+    - fechaFinMantenimiento: Date
 
     + settersYgetters()
 }
 
-class GestionReserva{
+abstract class GestionReserva{
     + gestionar()
 }
 
-class GestionKilometraje{
+abstract class GestionKilometraje{
     + gestionar()
 }
 
-class GestionTarifa{
+abstract class GestionTarifa{
     + gestionar()
 }
 
 'Interfaces'
-interface GestorGeneral{
+interface GestionGeneral{
     + gestionar()
 } 
+
+
+'Preguntas:
+
+'Flota Pulpo derivador de Tareas' NO
+'Interfaz Gestor de tarifas' Quizas
+'Biblioteca Moment JS para calculos de fecha' Con Date se puede
+
+
+'Relaciones Flota'
+Flota *-- Sedan
+Flota *-- Suv
+Flota *-- Compacto
+
+'Relaciones Herencia'
+Sedan --|> Vehiculo
+Suv --|> Vehiculo
+Compacto --|> Vehiculo
+
+'Relacion de Implementacion
+GestionReserva .u.|> GestionGeneral
+GestionKilometraje .u.|> GestionGeneral
+GestionTarifa .u.|> GestionGeneral
+
+'Relaciones con Gestor'
+Gestor --l-> Cliente
+Cliente --r-> Gestor
+
+GestionReserva ---> Gestor
+Gestor -u--> GestionReserva
+
+GestionKilometraje ---> Gestor
+Gestor -u--> GestionKilometraje
+
+GestionTarifa ---> Gestor
+Gestor -u--> GestionTarifa
+
+Flota -u-> Gestor
+
+'Relaciones de Dependencia'
+Vehiculo .r.> Mantenimiento
+
+'Notas'
+note right of Gestor 
+    Gestor importa Flota y las Gestiones. 
+    Se va a encargar de llevar y traer 
+    información, como una especie de pulpo.
+end note
+
+note top of Gestor
+    Cuando Gestor deba utilizar las gestiones
+    estas devuelven su metodo gestionar() para 
+    que luego Gestor le devuelva a quien deba
+    utilizar dichas gestiones.
+end note
+
+note right of Flota
+    En Flota se guardarán todos los Vehiculos
+    que la componen, en este caso está compuesto
+    por 'Sedan', 'Suv' y 'Compacto' pero pueden
+    ser más.
+end note
+
+note left of Vehiculo
+    Características que van a heredar todos 
+    los vehiculos que compongan la Flota.
+end note
+
+note left of Flota
+    El método gestionarKilometraje() se realiza
+    en Flota por el hecho de que ahí estan almacenados
+    los vehículos, a partir de eso se puede calcular si
+    mandar a Mantenimiento o no.
+end note
 
 @enduml
