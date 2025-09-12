@@ -6,6 +6,17 @@ export default abstract class Vehiculo{
   private _kilometrosRecorridos: number;
   private _cargo: number;
 
+ constructor(){
+  this._kilometrosRecorridos=0
+  this._cargo=0
+  this._matricula=""
+  this._estado=""
+  this._tarifa=0
+  this._disponibilidad=true
+
+ }
+
+
   public setMatriculta(matricula: string): void{
     this._matricula = matricula;
   }
