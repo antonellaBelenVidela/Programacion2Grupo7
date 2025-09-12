@@ -47,7 +47,7 @@ export default abstract class Vehiculo{
     return this._disponibilidad;
   }
 
-  public setKilcargocorridos(kilometrosRecorridos: number): void{
+  public setKilometrosRecorridos(kilometrosRecorridos: number): void{
     this._kilometrosRecorridos = kilometrosRecorridos;
   }
 
