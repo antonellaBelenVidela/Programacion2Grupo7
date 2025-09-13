@@ -37,6 +37,8 @@ Cliente -r-> Gestor
 
 'Clases'
 
+
+
 class Cliente{
     + realizarReserva(Gestor.gestionarReserva(Gestionar()))
 }
