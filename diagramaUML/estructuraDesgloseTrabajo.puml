@@ -13,7 +13,7 @@ title "Estructura Desglose de Trabajo";
 *** Interfaz "GestionGeneral"
 
 ** Realizar Clases
-*** Clase "Cliente"
+*** Clase "Cliente(johan)"
 *** Clase "Gestor"
 *** Clase "Flota"
 *** Clase Abstracta "Vehiculo"
