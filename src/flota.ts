@@ -5,7 +5,11 @@ export default class Flota{
         this.flota = new Map<string,string>();
     }
 
+<<<<<<< HEAD
     
+=======
+    //'patente como key'
+>>>>>>> 52b90d9ecb5ab2ca641034e0168b21db8769bafa
 
     public agregarVehiculo(categoria: string, disponibilidad: string): void{
         this.flota.set(categoria, disponibilidad);
