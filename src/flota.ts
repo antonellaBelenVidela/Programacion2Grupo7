@@ -1,27 +1,24 @@
+import Vehiculo from "./vehiculos/Vehiculo";
+
 export default class Flota{
-    private flota: Map<string,string>;
+    private flota: Map<string,Vehiculo>;
 
     constructor(){
-        this.flota = new Map<string,string>();
+        this.flota = new Map<string,Vehiculo>();
     }
 
-    //'patente como key'
-
-    public agregarVehiculo(categoria: string, disponibilidad: string): void{
-        this.flota.set(categoria, disponibilidad);
+    public agregarVehiculo(patente: string, datos: Vehiculo): void{
+        this.flota.set(patente, datos);
     }
 
-    public obtenerVehiculo(categoria: string): string | undefined{
-        return this.flota.get(categoria);
-    }
-
-    public cambiarDisponibilidad(categoria: string, disponibilidad: string){
-        this.flota.set(categoria, disponibilidad); 'disponibilidad = Vehiculo.getDisponibilidad()'
+    public obtenerVehiculo(patente: string): Vehiculo | undefined{
+        return this.flota.get(patente);
     }
 
     public mostrarFlota(): void{
-        this.flota.forEach((disponibilidad, categoria) => {
-            console.log(`Categoria: ${categoria}, Disponibilidad: ${disponibilidad}`);
-        });
+        for(const patente of this.flota.keys()){
+            const auto = this.flota.get(patente)
+            auto?.mostrarAtributos();   // El '?' significa que primero verifica si es null o undefinded, en caso que lo sea devuelve eso, sino continua con el metodo
+        }
     }
 }
