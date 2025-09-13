@@ -15,6 +15,10 @@ export default class Flota{
         return this.flota.get(patente);
     }
 
+    public obtenerDisponibilidad(patente: string, coche: Vehiculo){
+        return console.log(`Disponibilidad: ${coche.getDisponibilidad()}`);
+    }
+
     public mostrarFlota(): void{
         for(const patente of this.flota.keys()){
             const auto = this.flota.get(patente)
