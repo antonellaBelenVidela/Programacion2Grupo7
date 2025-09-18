@@ -1,0 +1,25 @@
+import Cliente from "./cliente";
+
+export default class Reserva{
+    private _fechaInicio:Date;
+    private _fechaFin : Date;
+    private _cliente :Cliente;
+
+    constructor(fechaInicio: Date, fechaFin: Date, cliente: Cliente) {
+        this._fechaInicio = fechaInicio;
+        this._fechaFin = fechaFin;
+        this._cliente = cliente;
+    }
+
+    public getFechaInicio(): Date {
+        return this._fechaInicio;
+    }
+
+    public getFechaFin(): Date {
+        return this._fechaFin;
+    }
+
+    public getCLiente(): Cliente{
+        return this._cliente;
+    }
+}
