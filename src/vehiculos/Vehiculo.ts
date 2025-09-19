@@ -77,16 +77,17 @@ export default abstract class Vehiculo{
   }
 
   public estaDisponible(fechaInicio:Date,fechaFin : Date):boolean{
-  if(this._estado !== "disponible"){
-    return false;
+    if(this._estado !== "disponible"){
+      return false;
+    }
+    for(const _reservas of this._resevas){
+      if ((fechaInicio >= _reservas.getFechaInicio() && fechaInicio < _reservas.getFechaFin()) ||
+        (fechaFin > _reservas.getFechaInicio() && fechaFin <= _reservas.getFechaFin()) ||
+        (fechaInicio <= _reservas.getFechaInicio() && fechaFin >= _reservas.getFechaFin())) {
+        return false;
+      }
+    }
+    return true;
   }
-  for(const _reservas of this._resevas){
-     if ((fechaInicio >= _reservas.getFechaInicio() && fechaInicio < _reservas.getFechaFin()) ||
-                (fechaFin > _reservas.getFechaInicio() && fechaFin <= _reservas.getFechaFin()) ||
-                (fechaInicio <= _reservas.getFechaInicio() && fechaFin >= _reservas.getFechaFin())) {
-                return false;
-            }
-  }
-  return true;
- }
+
 }

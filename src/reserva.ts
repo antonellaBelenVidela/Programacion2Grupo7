@@ -19,7 +19,7 @@ export default class Reserva{
         return this._fechaFin;
     }
 
-    public getCLiente(): Cliente{
+    public getCliente(): Cliente{
         return this._cliente;
     }
 }

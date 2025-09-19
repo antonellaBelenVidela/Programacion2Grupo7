@@ -16,7 +16,7 @@ export default class Cliente {
         this._id = id;
     }
 
-    public setNOmbre(nombre: string): void{
+    public setNombre(nombre: string): void{
         this._nombre = nombre;
     }
 
