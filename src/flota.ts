@@ -11,8 +11,9 @@ export default class Flota{
         this._flota.set(patente, datos);
     }
 
-    public buscarVehiculo(patente: string): boolean | undefined{
-        return this._flota.has(patente);
+    public buscarVehiculo(patente: string): boolean{
+        const patenteNormalizada = patente.trim().toUpperCase();
+        return this._flota.has(patenteNormalizada);
     }
 
     public obtenerVehiculo(patente: string): Vehiculo | undefined{

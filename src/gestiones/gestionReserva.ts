@@ -5,7 +5,7 @@ import Reserva from "../reserva";
 
 export default  class GestionReserva implements GestionGeneral{
     private _flota: Flota = new Flota();
-    private _clientela: Clientela = new Clientela()
+    private _clientela: Clientela = new Clientela();
 
     constructor(flota: Flota, clientes: Clientela) {
         this._flota = flota;
@@ -13,8 +13,8 @@ export default  class GestionReserva implements GestionGeneral{
     }
 
     public Gestionar(patente: string, idCliente: string, fechaInicio: Date, fechaFin: Date): boolean {
-        const vehiculoEncontrado = this._flota.buscarVehiculo(patente);
-        const clienteEncontrado = this._clientela.buscarCliente(idCliente);
+        const vehiculoEncontrado: boolean = this._flota.buscarVehiculo(patente); // Acá está fallando
+        const clienteEncontrado: boolean = this._clientela.buscarCliente(idCliente); // Acá seguro que también
 
         // 2. Validar que ambos existan
         if (!vehiculoEncontrado) {

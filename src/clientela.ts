@@ -11,7 +11,7 @@ export default class Clientela{
             this._clientes.set(id, datos);
     }
 
-    public buscarCliente(id: string): boolean | undefined{
+    public buscarCliente(id: string): boolean{
         return this._clientes.has(id);
     }
 

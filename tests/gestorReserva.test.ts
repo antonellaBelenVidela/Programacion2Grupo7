@@ -14,13 +14,21 @@ describe('GestorDeReservas', () => {
         const vehiculo = new Vehiculo("12345", "disponible", 200, "disponible", 100, 1000);
         const cliente = new Cliente("1", "Juan", "Perez", "juan@ejemplo.com");
         const flota = new Flota();
-        const clientes = new Clientela();
-        const gestorReservas = new GestionReserva(flota, clientes);
+        flota.agregarVehiculo(vehiculo.getPatente(), vehiculo);
+        const clientela = new Clientela();
+        clientela.agregarCliente(cliente.getId(), cliente);
+        const gestorReservas = new GestionReserva(flota, clientela);
         // ---------------------------------
         
         const fechaInicio = new Date('2025-10-20');
         const fechaFin = new Date('2025-10-25');
-        const resultado = gestorReservas.Gestionar(vehiculo.getPatente(), cliente.getId(), fechaInicio, fechaFin);
+        const params = {
+            patente: vehiculo.getPatente(),
+            idCliente: cliente.getId(),
+            fechaInicio,
+            fechaFin
+        };
+        const resultado = gestorReservas.Gestionar(params.patente, params.idCliente, params.fechaInicio, params.fechaFin);
         expect(resultado).toBe(true);
     });
 

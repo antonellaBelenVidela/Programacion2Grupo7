@@ -1,6 +1,6 @@
 import Reserva from "../reserva";
 
-export default abstract class Vehiculo{
+export default class Vehiculo{
   private _patente: string;
   private _estado: string;
   private _resevas: Reserva[];
