@@ -18,18 +18,18 @@ export default  class GestionReserva implements GestionGeneral{
 
         // 2. Validar que ambos existan
         if (!vehiculoEncontrado) {
-            console.log('Error: Vehículo no encontrado.');
+            console.log('\nError: Vehículo no encontrado.');
             return false;
         }
 
         if (!clienteEncontrado) {
-            console.log('Error: Cliente no encontrado.');
+            console.log('\nError: Cliente no encontrado.');
             return false;
         }
 
         // 3. Validar la disponibilidad del vehículo en fecha determinada
-        if (!vehiculoEncontrado.estaDisponible(fechaInicio,fechaFin)) {
-            console.log('Error: El vehículo no está disponible en las fechas solicitadas.');
+        if (!this._flota.obtenerVehiculo(patente)!.estaDisponible(fechaInicio,fechaFin)) {
+            console.log('\nError: El vehículo no está disponible en las fechas solicitadas.');
             return false;
         }
 
@@ -39,12 +39,12 @@ export default  class GestionReserva implements GestionGeneral{
             const nuevaReserva = new Reserva(fechaInicio, fechaFin, clienteQueReserva);
 
             // 5. Agregar la reserva al vehículo
-            vehiculoEncontrado.agregarReserva(nuevaReserva);
+            this._flota.obtenerVehiculo(patente)!.agregarReserva(nuevaReserva);
+            console.log('\nReserva creada con éxito.');
+            return true;
         } 
 
-
-        console.log('Reserva creada con éxito.');
-        return true;
+        return false;
     }
 
 }

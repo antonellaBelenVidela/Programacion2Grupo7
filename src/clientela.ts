@@ -9,7 +9,7 @@ export default class Clientela{
 
     public agregarCliente(id: string, datos: Cliente): void{
             this._clientes.set(id, datos);
-        }
+    }
 
     public buscarCliente(id: string): boolean | undefined{
         return this._clientes.has(id);

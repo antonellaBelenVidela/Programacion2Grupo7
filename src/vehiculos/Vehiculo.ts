@@ -31,7 +31,7 @@ export default abstract class Vehiculo{
     this._estado = estado;
   }
 
-  public geEstado(): string{
+  public getEstado(): string{
     return this._estado;
   }
 
@@ -89,5 +89,9 @@ export default abstract class Vehiculo{
     }
     return true;
   }
+
+  public agregarReserva(reserva: Reserva): void {
+        this._resevas.push(reserva);
+    }
 
 }
