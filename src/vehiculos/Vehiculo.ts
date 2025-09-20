@@ -1,15 +1,16 @@
 import Reserva from "../reserva";
+import {estadoVehiculo} from "../estados"
 
 export default class Vehiculo{
   private _patente: string;
-  private _estado: string;
+  private _estado: estadoVehiculo;
   private _resevas: Reserva[];
   private _tarifa: number;
   private _disponibilidad: string;
   private _kilometrosRecorridos: number;
   private _cargo: number;
 
-  constructor(patente: string, estado: string, tarifa: number, disponibilidad: string, kilometrosRecorridos: number, cargo: number){
+  constructor(patente: string, estado: estadoVehiculo, tarifa: number, disponibilidad: string, kilometrosRecorridos: number, cargo: number){
     this._patente = patente;
     this._estado = estado;
     this._resevas = [];
@@ -27,11 +28,11 @@ export default class Vehiculo{
     return this._patente;
   }
 
-  public setEstado(estado: string): void{
+  public setEstado(estado: estadoVehiculo): void{
     this._estado = estado;
   }
 
-  public getEstado(): string{
+  public getEstado(): estadoVehiculo{
     return this._estado;
   }
 
@@ -77,7 +78,7 @@ export default class Vehiculo{
   }
 
   public estaDisponible(fechaInicio:Date,fechaFin : Date):boolean{
-    if(this._estado !== "disponible"){
+    if(this._estado !== estadoVehiculo.Disponible){
       return false;
     }
     for(const _reservas of this._resevas){

@@ -1,4 +1,5 @@
 import Vehiculo from "./vehiculos/Vehiculo";
+import { estadoVehiculo } from "./estados";
 
 export default class Flota{
     private _flota: Map<string,Vehiculo>;
@@ -22,6 +23,10 @@ export default class Flota{
 
     public obtenerDisponibilidad(patente: string, coche: Vehiculo){
         return console.log(`Disponibilidad: ${coche.getDisponibilidad()}`);
+    }
+
+    public obtenerEstado(patente: string, coche: Vehiculo): estadoVehiculo{
+        return coche.getEstado();
     }
 
     public mostrarFlota(): void{

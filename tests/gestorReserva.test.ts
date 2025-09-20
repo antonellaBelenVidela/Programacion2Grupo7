@@ -5,13 +5,14 @@ import Vehiculo from '../src/vehiculos/Vehiculo';
 import Cliente from '../src/cliente';
 import Reserva  from '../src/reserva';
 import GestionReserva from '../src/gestiones/gestionReserva';
+import { estadoVehiculo } from '../src/estados';
 
 describe('GestorDeReservas', () => {
 
     // Test 1: Reserva exitosa
     test('debería crear una reserva si el vehiculo esta disponible', () => {
         // --- Inicialización del entorno ---
-        const vehiculo = new Vehiculo("12345", "disponible", 200, "disponible", 100, 1000);
+        const vehiculo = new Vehiculo("12345", estadoVehiculo.Disponible, 200, "disponible", 100, 1000);
         const cliente = new Cliente("1", "Juan", "Perez", "juan@ejemplo.com");
         const flota = new Flota();
         flota.agregarVehiculo(vehiculo.getPatente(), vehiculo);
@@ -35,7 +36,7 @@ describe('GestorDeReservas', () => {
     // Test 2: Reserva fallida por falta de disponibilidad
     test('no debería crear una reserva si ya hay una para las mismas fechas', () => {
         // --- Inicialización del entorno ---
-        const vehiculo = new Vehiculo("54321", "disponible", 300, "disponible", 500, 1650);
+        const vehiculo = new Vehiculo("54321", estadoVehiculo.Disponible, 300, "disponible", 500, 1650);
         const cliente = new Cliente("6", "Toto", "Peroti", "Peroti@ejemplo.com");
         const flota = new Flota();
         const clientes = new Clientela();
