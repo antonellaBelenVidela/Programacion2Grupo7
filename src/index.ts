@@ -1,5 +1,5 @@
 import Flota from "./flota";
-import Sedan from "./vehiculos/Sedan";
+import Sedan from "./vehiculos/sedan";
 
 function main(){
     const flotaVehiculos: Flota = new Flota();

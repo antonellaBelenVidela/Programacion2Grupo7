@@ -1,5 +1,5 @@
-import Vehiculo from "./vehiculos/Vehiculo";
-import { estadoVehiculo } from "./estados";
+import Vehiculo from "./vehiculos/vehiculo";
+import Estado from "../estado";
 
 export default class Flota{
     private _flota: Map<string,Vehiculo>;

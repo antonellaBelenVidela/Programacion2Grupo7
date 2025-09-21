@@ -1,5 +1,5 @@
 import Reserva from "../reserva";
-import {estadoVehiculo} from "../estados"
+import {estadoVehiculo} from "../estado"
 
 export default class Vehiculo{
   private _patente: string;

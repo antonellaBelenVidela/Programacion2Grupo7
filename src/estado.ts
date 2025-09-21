@@ -1,4 +1,4 @@
-enum Estado {
+export enum Estado {
     ENMANTENIMIENTO,
     DISPONIBLE,
     ENALQUILER,
