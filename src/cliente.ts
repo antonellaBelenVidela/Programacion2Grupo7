@@ -1,83 +1,47 @@
-import Gestor from "./gestor"
-import Vehiculo from "./vehiculos/Vehiculo"
-
 export default class Cliente {
- private nombre:string
- private apellido:string
- private AutoAlquilado:Vehiculo
- private inicioAlquiler:Date
- private finAlquiler:Date
- private tarifaFinal:number
+    private _id: string; // El identificador único del cliente
+    private _nombre: string;
+    private _apellido: string;
+    private _email: string; // Un ejemplo de datos relevantes adicionales
 
- constructor(){
-  this.nombre=""
-  this.apellido=""
-  this.AutoAlquilado=undefined as unknown as Vehiculo
-  this.inicioAlquiler=undefined as unknown as Date
-  this.finAlquiler=undefined as unknown as Date
-  this.tarifaFinal=0
- }
+    constructor(id: string, nombre: string, apellido: string, email: string) {
+        this._id = id;
+        this._nombre = nombre;
+        this._apellido = apellido;
+        this._email = email;
+    }
 
+    // Setters
+    public setId(id: string): void{
+        this._id = id;
+    }
 
- public setNombre(nombre:string){
-  this.nombre=nombre
- }
+    public setNombre(nombre: string): void{
+        this._nombre = nombre;
+    }
 
- public GetNombre():string{
-  return this.nombre
- }
+    public setApellido(apellido: string): void{
+        this._apellido = apellido;
+    }
 
+    public setEmail(email: string): void{
+        this._email = email;
+    }
 
- 
- public setApellido(apellido:string){
-  this.apellido=apellido
- }
+    // Getters
+    public getId(): string {
+        return this._id;
+    }
 
- public GetApellido():string{
-  return this.apellido
- }
+    public getNombre(): string {
+        return this._nombre;
+    }
 
- 
- public setAuto(Auto:Vehiculo){
-  this.AutoAlquilado=Auto
- }
+    public getApellido(): string {
+        return this._apellido;
+    }
 
- public GetAuto():Vehiculo{
-  return this.AutoAlquilado
- }
- 
- public setInicioAlquiler(fecha:Date){
-  this.inicioAlquiler=fecha
- }
-
- public GetInicioAlquiler():Date{
-  return this.inicioAlquiler
- }
- 
- public setFinAlquiler(Fecha:Date){
-  this.finAlquiler=Fecha
- }
-
- public GetFinAlquiler():Date{
-  return this.finAlquiler
- }
-
- 
-  public setTarifaFinal(tarifa:number){
-  this.tarifaFinal=tarifa
- }
-
- public GetTarifaFinal():number{
-  return this.tarifaFinal
- }
-
-
- public RealizarReserva(gestor:Gestor){
-    gestor.GestionarReserva
- }
-
- public CalcularTarifaFinal(gestor:Gestor){
-    gestor.GestionarTarifa
- }
-
+    public getEmail(): string {
+        return this._email;
+    }
 }
