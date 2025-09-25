@@ -1,4 +1,4 @@
-import Vehiculo from "./vehiculo";
+import Vehiculo from "./Vehiculo";
 import { Estado } from '../estado';
 export default class Sedan extends Vehiculo {
 

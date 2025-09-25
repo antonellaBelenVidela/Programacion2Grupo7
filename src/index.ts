@@ -1,7 +1,7 @@
 import { Estado } from "./estado";
 import Flota from "./flota";
 import Sedan from "./vehiculos/sedan";
-import moment from "moment"; // IMPORLO LIBERIA DE MOMENT.JS
+import moment from "moment"; // IMPORTO LIBERIA DE MOMENT.JS
 
 function main(){
 

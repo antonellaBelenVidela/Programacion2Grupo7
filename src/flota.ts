@@ -1,5 +1,5 @@
 import { Estado } from "./estado";
-import Vehiculo from "./vehiculos/vehiculo";
+import Vehiculo from "./vehiculos/Vehiculo";
 // import {Estado} from "../estado";
 
 export default class Flota {

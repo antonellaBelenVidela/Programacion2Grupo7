@@ -1,6 +1,6 @@
 import Clientela from "../clientela";
 import Flota from "../flota";
-import GestionGeneral from "./GestorGeneral"
+import GestionGeneral from "./gestorGeneral"
 import Reserva from "../reserva";
 
 export default  class GestionReserva implements GestionGeneral{
