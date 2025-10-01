@@ -18,9 +18,12 @@ class Cliente{
 
 class Gestor{
     + Flota
-    + gestionarReserva(GestionReserva(gestionar()))
-    + gestionarKilometraje(GestionKilometraje(gestionar()))
-    + gestionarTarifa(GestionTarifa(gestionar()))
+    -gestorReserva:GestionReserva
+    -gestorKilometraje:gestionarKilometraje
+    -gestorTarifa:gestionarTarifa
+    + gestionarReserva()
+    + gestionarKilometraje()
+    + gestionarTarifa()
 }
 
 class Flota{
@@ -68,22 +71,20 @@ class Mantenimiento{
     + settersYgetters()
 }
 
-abstract class GestionReserva{
+class GestionReserva{
     + gestionar()
 }
 
-abstract class GestionKilometraje{
+ class GestionKilometraje{
     + gestionar()
 }
 
-abstract class GestionTarifa{
+ class GestionTarifa{
     + gestionar()
 }
 
 'Interfaces'
-interface GestionGeneral{
-    + gestionar()
-} 
+
 
 
 'Preguntas:
@@ -104,27 +105,22 @@ Suv --|> Vehiculo
 Compacto --|> Vehiculo
 
 'Relacion de Implementacion
-GestionReserva .u.|> GestionGeneral
-GestionKilometraje .u.|> GestionGeneral
-GestionTarifa .u.|> GestionGeneral
 
 'Relaciones con Gestor'
 Gestor --l-> Cliente
 Cliente --r-> Gestor
 
-GestionReserva ---> Gestor
-Gestor -u--> GestionReserva
+Gestor *-- GestionReserva
 
-GestionKilometraje ---> Gestor
-Gestor -u--> GestionKilometraje
+Gestor *-- GestionKilometraje
 
-GestionTarifa ---> Gestor
-Gestor -u--> GestionTarifa
+Gestor *--GestionTarifa
 
 Flota -u-> Gestor
 
 'Relaciones de Dependencia'
 Vehiculo .r.> Mantenimiento
+Vehiculo .r.> gestionarKilometraje
 
 'Notas'
 note right of Gestor 
