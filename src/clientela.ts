@@ -7,8 +7,15 @@ export default class Clientela{
         this._clientes = new Map();
     }
 
+    /**
+     * Agrega un nuevo cliente al Map
+     * @param id {string} Recibe el id del cliente
+     * @param datos {Cliente} Cliente a agregar
+     * @throws Excepcion personalizada o simple
+     * @returns void
+     */
     public agregarCliente(id: string, datos: Cliente): void{
-            this._clientes.set(id, datos);
+        this._clientes.set(id, datos); //
     }
 
     public buscarCliente(id: string): boolean{
