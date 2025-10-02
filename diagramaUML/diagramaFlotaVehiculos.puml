@@ -29,7 +29,7 @@ class Gestor{
 class Flota{
     'La key es la categoría(Suv, Sedan, Compacto)
     'El valor es su disponibilidad(Está disponible o no para el Cliente)'
-    - Flota: Map<string, string>;
+    - Flota: Map<string, Estado>;
     + agregarVehiculoYdisponibilidad()
     + obtenerVehiculoYdisponibilidad()
     + cambiarDisponibilidad()
@@ -40,7 +40,7 @@ class Flota{
 
 abstract class Vehiculo{
     - matricula: string
-    - estado: string implements Gestor
+    - estado: Estado
     - tarifa: number
     - disponibilidad: string
     - kilometrosRecorridos: number
@@ -95,14 +95,12 @@ class GestionReserva{
 
 
 'Relaciones Flota'
-Flota *-- Sedan
-Flota *-- Suv
-Flota *-- Compacto
+Flota *-d- Vehiculo
 
 'Relaciones Herencia'
-Sedan --|> Vehiculo
-Suv --|> Vehiculo
-Compacto --|> Vehiculo
+Sedan -u-|> Vehiculo
+Suv -u-|> Vehiculo
+Compacto -u-|> Vehiculo
 
 'Relacion de Implementacion
 
@@ -110,17 +108,16 @@ Compacto --|> Vehiculo
 Gestor --l-> Cliente
 Cliente --r-> Gestor
 
-Gestor *-- GestionReserva
+Gestor *-u- GestionReserva
 
-Gestor *-- GestionKilometraje
+Gestor *-u- GestionKilometraje
 
-Gestor *--GestionTarifa
+Gestor *-u-GestionTarifa
 
 Flota -u-> Gestor
 
 'Relaciones de Dependencia'
-Vehiculo .r.> Mantenimiento
-Vehiculo .r.> gestionarKilometraje
+Vehiculo -r-> Mantenimiento
 
 'Notas'
 note right of Gestor 

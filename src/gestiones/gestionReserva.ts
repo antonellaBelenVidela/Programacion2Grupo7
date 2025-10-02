@@ -1,9 +1,9 @@
 import Clientela from "../clientela";
 import Flota from "../flota";
-import GestionGeneral from "./gestorGeneral"
+import GestorGeneral from "./gestorGeneral";
 import Reserva from "../reserva";
 
-export default  class GestionReserva implements GestionGeneral{
+export default  class GestionReserva implements GestorGeneral{
     private _flota: Flota = new Flota();
     private _clientela: Clientela = new Clientela();
 
