@@ -4,32 +4,44 @@ title "Trabajo Prácito - DriveHub - Grupo 7"
 
 'Clases'
 
+abstract class Gestiones{
+  +gestionar()
+
+}
+
 class Cliente{
     - nombre: string
     - apellido: string
     - autoAlquilado: Flota
-    - inicioAlquiler: Date
-    - finAlquiler: Date
+    - Reserva:Reserva
     - tarifaFinal: number
     + settersYgetters()
     + realizarReserva(Gestor.gestionarReserva(gestionar()))
     + calcularTarifaFinal(Gestor.gestionarTarifa(gestionar()))
 }
 
+class Reserva{
+    -cliente:Cliente
+    -Vehiculo:Vehiculo
+    - inicioAlquiler: Date
+    - finAlquiler: Date
+}
+
+
 class Gestor{
     + Flota
     -gestorReserva:GestionReserva
     -gestorKilometraje:gestionarKilometraje
     -gestorTarifa:gestionarTarifa
-    + gestionarReserva()
-    + gestionarKilometraje()
-    + gestionarTarifa()
+    + gestionarReserva():Reserva
+    + gestionarKilometraje(vehiculo:vehiculo)
+    + gestionarTarifa():number
 }
 
 class Flota{
     'La key es la categoría(Suv, Sedan, Compacto)
     'El valor es su disponibilidad(Está disponible o no para el Cliente)'
-    - Flota: Map<string, Estado>;
+    - Flota: Map<string, Vechiculo>;
     + agregarVehiculoYdisponibilidad()
     + obtenerVehiculoYdisponibilidad()
     + cambiarDisponibilidad()
@@ -71,15 +83,15 @@ class Mantenimiento{
     + settersYgetters()
 }
 
-class GestionReserva{
+class GestionReserva extends Gestiones{
     + gestionar()
 }
 
- class GestionKilometraje{
+ class GestionKilometraje extends Gestiones{
     + gestionar()
 }
 
- class GestionTarifa{
+ class GestionTarifa extends Gestiones{
     + gestionar()
 }
 
@@ -113,6 +125,8 @@ Gestor *-u- GestionReserva
 Gestor *-u- GestionKilometraje
 
 Gestor *-u-GestionTarifa
+
+Reserva *-u-Cliente
 
 Flota -u-> Gestor
 
