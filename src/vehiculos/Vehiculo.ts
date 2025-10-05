@@ -5,14 +5,18 @@ export default abstract class Vehiculo {
   private _patente: string;
   private _estado: Estado;
   private _kilometrosRecorridos: number;
+  private kilometrosRecorridosPorDias:number[]
   private _resevas: Reserva[];
+  protected LimiteKilometros:number
 
 
-  constructor(patente: string, estado: Estado, kilometrosRecorridos: number = 0) {
-    this._patente = patente;
-    this._estado = estado;
+  constructor(patente?: string, estado?: Estado, kilometrosRecorridos: number = 0) {
+    this._patente = patente ?? "";
+    this._estado = estado ?? Estado.DISPONIBLE;
     this._kilometrosRecorridos = kilometrosRecorridos;
     this._resevas = [];
+    this.kilometrosRecorridosPorDias=[]
+    this.LimiteKilometros=0
   }
 
   // hace falta? si la patente no va a cambiar!
@@ -70,5 +74,19 @@ export default abstract class Vehiculo {
     return `El auto con Patente: ${this._patente}, Estado: ${Estado[this._estado]}, Kilometraje: ${this._kilometrosRecorridos} km`;
   }
 
+  public SetKilometrosRecorridosPorDia(kilometros:number[]){
+     let A= kilometros.length
 
+     for(let i=0;i<A;i++){
+       this.kilometrosRecorridosPorDias.push(kilometros[i])
+     }
+  }
+  
+  public getKilometrosRecorridosPordias():number[]{
+    return this.kilometrosRecorridosPorDias
+  }
+
+  public GetLimitekilometros():number{
+    return this.LimiteKilometros
+  }
 }
