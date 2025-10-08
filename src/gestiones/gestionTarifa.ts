@@ -1,3 +1,5 @@
+import Vehiculo from "../vehiculos/Vehiculo";
+import Kilometraje from "./gestionKilometraje";
 import GestorGeneral from "./gestorGeneral";
 
 export default class tarifa implements GestorGeneral{
@@ -5,7 +7,7 @@ export default class tarifa implements GestorGeneral{
         throw new Error("Method not implemented.");
     }
 
-    public gestionar(): void {
-        
+    public gestionar(vehiculo:Vehiculo,kilometraje:Kilometraje): number {
+        return vehiculo.calcularPago(kilometraje)
     }
 }

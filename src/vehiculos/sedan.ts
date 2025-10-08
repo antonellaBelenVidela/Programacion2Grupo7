@@ -1,3 +1,4 @@
+import Kilometraje from "../gestiones/gestionKilometraje";
 import Vehiculo from "./Vehiculo";
 export default class Sedan extends Vehiculo {
 
@@ -5,16 +6,20 @@ export default class Sedan extends Vehiculo {
         super()
        
     }
-
-  public calcularPago(): number {
-      let kilometros=this.getKilometrosRecorridosPordias()
+  /**
+   * 
+   * @param kilometraje recibe la clase kilometraje 
+   * @returns devuelve la cantidad que debe en cuestion 
+   */
+  public calcularPago(kilometraje:Kilometraje): number {
+      let kilometros=kilometraje.getKilometrosRecorridosPordias()
      
-      let A= kilometros.length
+      let diasRentados= kilometros.length
       let Pagototal=0
-      for(let i=0;i<=A;i++){
+      for(let i=0;i<=diasRentados;i++){
             Pagototal += (kilometros[i]*0.25)
       }
-      return Pagototal + 50
+      return Pagototal + (50*diasRentados)
   }
 
 }
