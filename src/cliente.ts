@@ -1,14 +1,18 @@
+import Reserva from "./reserva";
+
 export default class Cliente {
     private _id: string; // El identificador único del cliente
     private _nombre: string;
     private _apellido: string;
     private _email: string; // Un ejemplo de datos relevantes adicionales
+    private Reserva:Reserva
 
-    constructor(id: string, nombre: string, apellido: string, email: string) {
+    constructor(id: string, nombre: string, apellido: string, email: string,fechaInicio:Date,fechaFin:Date) {
         this._id = id;
         this._nombre = nombre;
         this._apellido = apellido;
         this._email = email;
+        this.Reserva=new Reserva(fechaInicio,fechaFin,this)
     }
 
     // Setters
@@ -44,4 +48,13 @@ export default class Cliente {
     public getEmail(): string {
         return this._email;
     }
+
+   public getFechaInico():Date{
+    return this.Reserva.getFechaInicio()
+   }
+
+   public getFechaFinal():Date{
+    return this.Reserva.getFechaFin()
+   }
+
 }
