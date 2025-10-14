@@ -3,7 +3,7 @@ import GestionKilometraje from '../src/gestiones/gestionKilometraje';
 
 
 // Hago el mock de la clase GestionKilometraje
-jest.mock('..src/gestiones/gestionKilometraje', () => {
+jest.mock('../src/gestiones/gestionKilometraje', () => {
     return jest.fn().mockImplementation(() => {
         return {
             getKilometrosRecorridosPordias: jest.fn()
