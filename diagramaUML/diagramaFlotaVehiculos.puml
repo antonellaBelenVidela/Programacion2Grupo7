@@ -5,7 +5,7 @@ title "Trabajo Prácito - DriveHub - Grupo 7"
 'Clases'
 
 abstract class Gestiones{
-  +gestionar()
+    +gestionar()
 
 }
 
@@ -57,7 +57,7 @@ abstract class Vehiculo{
     - disponibilidad: string
     - kilometrosRecorridos: number
     - cargo: number
- 
+
     + settersYgetters()
 }
 
@@ -87,11 +87,11 @@ class GestionReserva extends Gestiones{
     + gestionar()
 }
 
- class GestionKilometraje extends Gestiones{
+class GestionKilometraje extends Gestiones{
     + gestionar()
 }
 
- class GestionTarifa extends Gestiones{
+class GestionTarifa extends Gestiones{
     + gestionar()
 }
 
@@ -134,15 +134,15 @@ Flota -u-> Gestor
 Vehiculo -r-> Mantenimiento
 
 'Notas'
-note right of Gestor 
-    Gestor importa Flota y las Gestiones. 
-    Se va a encargar de llevar y traer 
+note right of Gestor
+    Gestor importa Flota y las Gestiones.
+    Se va a encargar de llevar y traer
     información, como una especie de pulpo.
 end note
 
 note top of Gestor
     Cuando Gestor deba utilizar las gestiones
-    estas devuelven su metodo gestionar() para 
+    estas devuelven su metodo gestionar() para
     que luego Gestor le devuelva a quien deba
     utilizar dichas gestiones.
 end note
@@ -155,7 +155,7 @@ note right of Flota
 end note
 
 note left of Vehiculo
-    Características que van a heredar todos 
+    Características que van a heredar todos
     los vehiculos que compongan la Flota.
 end note
 

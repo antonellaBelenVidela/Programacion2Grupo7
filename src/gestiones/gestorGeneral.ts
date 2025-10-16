@@ -1,7 +1,7 @@
 import Cliente from "../cliente";
-import Vehiculo from "../vehiculos/Vehiculo";
+import Vehiculo from "../vehiculos/vehiculo";
 
-export default interface GestorGeneral{
+export default interface IGestorGeneral{
     Gestionar(matricula: string,
     idCliente: string,
     fechaInicio: Date,

@@ -1,7 +1,7 @@
 {
-  "name": "cuvl_lab3",
-  "version": "1.0.0",
-  "description": "cuvl_lab3",
+  "name": "Trabajo Practico Programacion 2 Grupo 7",
+  "version": "1.0",
+  "description": "Trabajo Practico - grupo 7 - clase de Programacion 2 - Sistema de Gestión para una Plataforma de Alquiler de Autos",
   "main": "dist/app.js",
   "scripts": {
     "build": "tsc",

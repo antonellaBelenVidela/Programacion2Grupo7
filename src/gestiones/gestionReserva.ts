@@ -3,7 +3,7 @@ import Flota from "../flota";
 import GestorGeneral from "./gestorGeneral";
 import Reserva from "../reserva";
 
-export default  class GestionReserva implements GestorGeneral{
+export default class GestionReserva implements GestorGeneral {
     private _flota: Flota = new Flota();
     private _clientela: Clientela = new Clientela();
 
@@ -28,13 +28,13 @@ export default  class GestionReserva implements GestorGeneral{
         }
 
         // 3. Validar la disponibilidad del vehículo en fecha determinada
-        if (!this._flota.obtenerVehiculo(patente)!.estaDisponible(fechaInicio,fechaFin)) {
+        if (!this._flota.obtenerVehiculo(patente)!.estaDisponible(fechaInicio, fechaFin)) {
             console.log('\nError: El vehículo no está disponible en las fechas solicitadas.');
             return false;
         }
 
         // 4. Crear la reserva
-        if(clienteEncontrado){
+        if (clienteEncontrado) {
             const clienteQueReserva = this._clientela.obtenerCliente(idCliente)!; // La exclamación se usa solo si se sabe al 100% que existe el ID
             const nuevaReserva = new Reserva(fechaInicio, fechaFin, clienteQueReserva);
 
@@ -42,7 +42,7 @@ export default  class GestionReserva implements GestorGeneral{
             this._flota.obtenerVehiculo(patente)!.agregarReserva(nuevaReserva);
             console.log('\nReserva creada con éxito.');
             return true;
-        } 
+        }
 
         return false;
     }
