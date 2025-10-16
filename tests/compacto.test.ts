@@ -2,7 +2,7 @@ import Compacto from '../src/vehiculos/compacto';
 import GestionKilometraje from '../src/gestiones/gestionKilometraje';
 
 
-// Hago el mock de la clase GestionKilometraje
+// Hago el mock de la clase GestionKilometraje para no tener que forzar al test a realizar mas de una cosa
 jest.mock('../src/gestiones/gestionKilometraje', () => {
     return jest.fn().mockImplementation(() => {
         return {

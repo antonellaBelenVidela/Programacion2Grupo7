@@ -8,15 +8,12 @@ export default abstract class Vehiculo {
   private _kilometrosRecorridos: number;
   private _resevas: Reserva[];
 
-
-
   constructor(patente?: string, estado?: Estado, kilometrosRecorridos: number = 0) {
     this._patente = patente ?? "";
     this._estado = estado ?? Estado.DISPONIBLE;
     this._kilometrosRecorridos = kilometrosRecorridos;
     this._resevas = [];
-    
-   
+
   }
 
   // hace falta? si la patente no va a cambiar!
@@ -74,10 +71,6 @@ export default abstract class Vehiculo {
     return `El auto con Patente: ${this._patente}, Estado: ${Estado[this._estado]}, Kilometraje: ${this._kilometrosRecorridos} km`;
   }
 
-  
-
- 
-
-  public abstract calcularPago(kilometraje:Kilometraje):number
+  public abstract calcularPago(kilometraje: Kilometraje): number
 
 }

@@ -1,5 +1,5 @@
 import Kilometraje from "../gestiones/gestionKilometraje";
-import Vehiculo from "./Vehiculo";
+import Vehiculo from "./vehiculo";
 export default class Sedan extends Vehiculo {
 
     constructor(){

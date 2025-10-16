@@ -1,11 +1,11 @@
-import Vehiculo from "../vehiculos/Vehiculo";
+import Vehiculo from "../vehiculos/vehiculo";
 import GestorGeneral from "./gestorGeneral";
 
 export default class GestionKilometraje implements GestorGeneral {
-  private kilometrosRecorridosPorDias: number[]
+  private kilometrosRecorridosPorDias: number[];
 
   constructor() {
-    this.kilometrosRecorridosPorDias = []
+    this.kilometrosRecorridosPorDias = [];
   }
 
   Gestionar(matricula: string, idCliente: string, fechaInicio: Date, fechaFin: Date): boolean {
@@ -17,19 +17,19 @@ export default class GestionKilometraje implements GestorGeneral {
    */
 
   public SetKilometrosRecorridosPorDia(kilometros: number[]) {
-    let A = kilometros.length
+    let cantDias = kilometros.length
 
-    for (let i = 0; i <= A; i++) {
-      this.kilometrosRecorridosPorDias.push(kilometros[i])
+    for (let i = 0; i <= cantDias; i++) {
+      this.kilometrosRecorridosPorDias.push(kilometros[i]);
     }
   }
 
   public getKilometrosRecorridosPordias(): number[] {
-    return this.kilometrosRecorridosPorDias
+    return this.kilometrosRecorridosPorDias;
   }
 
 
   public gestionar(vehiculo: Vehiculo): number {
-    return vehiculo.calcularPago(this)
+    return vehiculo.calcularPago(this);
   }
 }
