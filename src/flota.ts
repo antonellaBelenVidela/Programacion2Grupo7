@@ -10,7 +10,12 @@ export default class Flota {
         this._flota = new Map<string, Vehiculo>();
     }
 
-    //'patente como key' y no hace falta pasar los datos por parametro para agregarlos tambien
+    /**
+     * 
+     * @param patente 
+     * @param vehiculo
+     * se encarga de agregar un vehiculo a la flota 
+     */
     public agregarVehiculo(patente: string, vehiculo: Vehiculo): void {
         const patenteNormalizada = patente.trim().toUpperCase();
         this._flota.set(patenteNormalizada, vehiculo);
@@ -24,7 +29,13 @@ export default class Flota {
     public obtenerVehiculo(patente: string): Vehiculo | undefined {
         return this._flota.get(patente);
     }
-
+  /**
+   * 
+   * @param patente 
+   * @param fechaInicio 
+   * @param fechaFin 
+   * @returns devuelve si el vehiculo esta disponible para una reserva o no
+   */
     public obtenerDisponibilidad(patente: string, fechaInicio?: Date, fechaFin?: Date): boolean {
         const vehiculo = this.obtenerVehiculo(patente);
         if (!vehiculo) {

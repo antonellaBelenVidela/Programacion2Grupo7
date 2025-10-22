@@ -28,7 +28,11 @@ export default class GestionKilometraje implements GestorGeneral {
     return this.kilometrosRecorridosPorDias;
   }
 
-
+ /**
+  * 
+  * @param vehiculo 
+  * @returns devuelve el extra que tiene que pagar cada vehiculo por los kilometros que recorrio durante el alquiler
+  */
   public gestionar(vehiculo: Vehiculo): number {
     return vehiculo.calcularPago(this);
   }
