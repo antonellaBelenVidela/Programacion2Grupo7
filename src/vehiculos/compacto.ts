@@ -1,5 +1,6 @@
 import Kilometraje from "../gestiones/gestionKilometraje";
-import Vehiculo from "./vehiculo";
+import Reserva from "../reserva";
+import Vehiculo from "./Vehiculo";
 
 /**
  * Clase que representa un vehículo del tipo Compacto.
@@ -58,7 +59,7 @@ export default class Compacto extends Vehiculo {
    * console.log(total); // Devuelve el pago total con cargos extra incluidos
    */
 
-  public calcularPago(kilometraje: Kilometraje): number {
+  public calcularPago(kilometraje: Kilometraje,reserva:Reserva): number {
 
     let kilometrosPorDiaArray = kilometraje.getKilometrosRecorridosPordias();
 
@@ -75,7 +76,8 @@ export default class Compacto extends Vehiculo {
         montoExtra = (kmsDiarios - this.limiteKmPorDia) * this.cargoExtraPorKm;
       }
       // ADENTRO DEL FOR VOY ACUMULADO EL TOTAL
-      pagoTotal += this.tarifaBase + montoExtra;
+      pagoTotal+= this.getTarifaDiaria() + reserva.PorcentajePorTemporada(this) + montoExtra
+    
     }
     return pagoTotal;
   }

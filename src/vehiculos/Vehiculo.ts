@@ -1,19 +1,34 @@
 import Reserva from "../reserva";
-import { Estado } from "../estado";
+
 import Kilometraje from "../gestiones/gestionKilometraje";
+import Estado from "../estados/estado";
+
 
 export default abstract class Vehiculo {
   private _patente: string;
   private _estado: Estado;
   private _kilometrosRecorridos: number;
-  private _resevas: Reserva[];
+  protected _resevas: Reserva;
+  protected TarifaDiaria:number
+  private vecesAlquilado:number
+  private KmSinMantenimiento:number
+  private MesesSinMantenimiento:number
+  private costoMantenimiento:number
 
-  constructor(patente?: string, estado?: Estado, kilometrosRecorridos: number = 0) {
+  constructor(patente?: string, estado?: Estado,) {
     this._patente = patente ?? "";
-    this._estado = estado ?? Estado.DISPONIBLE;
-    this._kilometrosRecorridos = kilometrosRecorridos;
-    this._resevas = [];
+    this._estado = undefined as unknown as Estado;
+    this._kilometrosRecorridos = 0;
+    this._resevas = undefined as unknown as Reserva;
+    this.TarifaDiaria=0
+    this.vecesAlquilado=0
+    this.KmSinMantenimiento=0
+    this.MesesSinMantenimiento=0
+    this.costoMantenimiento=0
+  }
 
+  public getTarifaDiaria():number{
+    return this.TarifaDiaria
   }
 
   // hace falta? si la patente no va a cambiar!
@@ -41,36 +56,53 @@ export default abstract class Vehiculo {
     return this._kilometrosRecorridos;
   }
 
-  public mostrarAtributos() {
-    console.log(`\nPatente: ${this._patente}`);
-    console.log(`Estado: ${this._estado}`);
-    //console.log(`Tarifa: ${this._tarifa}`);
-    console.log(`Kilometros Recorridos: ${this._kilometrosRecorridos}`);
-    //console.log(`Cargo: ${this._cargo}`);
-  }
 
-  public estaDisponible(fechaInicio: Date, fechaFin: Date): boolean {
-    if (this._estado !== Estado.DISPONIBLE) {
-      return false;
-    }
-    for (const _reservas of this._resevas) {
-      if ((fechaInicio >= _reservas.getFechaInicio() && fechaInicio < _reservas.getFechaFin()) ||
-        (fechaFin >= _reservas.getFechaInicio() && fechaFin <= _reservas.getFechaFin()) ||
-        (fechaInicio <= _reservas.getFechaInicio() && fechaFin >= _reservas.getFechaFin())) {
-        return false;
-      }
-    }
-    return true;
+  public cambiarEstado(estado:Estado){
+    this._estado=estado
   }
 
   public agregarReserva(reserva: Reserva): void {
-    this._resevas.push(reserva);
+    this._resevas=reserva
   }
 
   public mostrarInfo(): string {
-    return `El auto con Patente: ${this._patente}, Estado: ${Estado[this._estado]}, Kilometraje: ${this._kilometrosRecorridos} km`;
+    return `El auto con Patente: ${this._patente}, Estado: ${[this._estado]}, Kilometraje: ${this._kilometrosRecorridos} km`;
   }
 
-  public abstract calcularPago(kilometraje: Kilometraje): number
+  public abstract calcularPago(kilometraje: Kilometraje,reserva:Reserva): number
 
+  public VerificarEstado():boolean{
+     return this._estado.alquilar()
+  }
+
+ public setVecesAlquilado(A:number){
+   this.vecesAlquilado+=A
+ }
+
+ public SetKmSinMantenimiento(Km:number){
+   this.KmSinMantenimiento+=Km
+ }
+
+ public SetMesesSinMantenimiento(dias:number){
+   this.MesesSinMantenimiento+=dias
+ }
+
+  public GeTMesesSinMantenimiento():number{
+    return  this.MesesSinMantenimiento
+ }
+
+ public SetCostoMantenimiento(costo:number){
+   this.costoMantenimiento=costo
+ }
+
+ public getCostoMantenimiento():number{
+   return this.costoMantenimiento
+ }
+ public getKmSinMantenimiento():number{
+   return this.MesesSinMantenimiento
+ }
+
+ public GetVecesAlquilado(){
+  return this.vecesAlquilado
+ }
 }

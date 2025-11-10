@@ -1,5 +1,5 @@
 import Kilometraje from "../gestiones/gestionKilometraje";
-import Vehiculo from "./vehiculo";
+import Vehiculo from "./Vehiculo";
 
 export default class Suv extends Vehiculo{
     private cargoFijo:number

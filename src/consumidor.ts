@@ -25,4 +25,8 @@ export default class Clientela{
     public obtenerCliente(id: string): Cliente | void{
         return this._clientes.get(id);
     }
+
+    public ObtenerClientes():Map<string,Cliente>{
+        return this._clientes
+    }
 }

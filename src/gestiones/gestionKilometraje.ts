@@ -1,7 +1,8 @@
-import Vehiculo from "../vehiculos/vehiculo";
-import GestorGeneral from "./gestorGeneral";
+import Reserva from "../reserva";
+import Vehiculo from "../vehiculos/Vehiculo";
 
-export default class GestionKilometraje implements GestorGeneral {
+
+export default class GestionKilometraje  {
   private kilometrosRecorridosPorDias: number[];
 
   constructor() {
@@ -14,13 +15,15 @@ export default class GestionKilometraje implements GestorGeneral {
   /**
    * 
    * @param kilometros recibe un array con los kilometros reccoridos en cada dia
+   * 
    */
 
-  public SetKilometrosRecorridosPorDia(kilometros: number[]) {
+  public SetKilometrosRecorridosPorDia(kilometros: number[],vehiculo:Vehiculo) {
     let cantDias = kilometros.length
 
     for (let i = 0; i <= cantDias; i++) {
       this.kilometrosRecorridosPorDias.push(kilometros[i]);
+      vehiculo.SetKmSinMantenimiento(kilometros[i])
     }
   }
 
@@ -33,7 +36,7 @@ export default class GestionKilometraje implements GestorGeneral {
   * @param vehiculo 
   * @returns devuelve el extra que tiene que pagar cada vehiculo por los kilometros que recorrio durante el alquiler
   */
-  public gestionar(vehiculo: Vehiculo): number {
-    return vehiculo.calcularPago(this);
+  public gestionar(vehiculo: Vehiculo,reserva:Reserva): number {
+    return vehiculo.calcularPago(this,reserva);
   }
 }

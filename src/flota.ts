@@ -1,13 +1,16 @@
+import estadistica from "./estadistica";
 import { Estado } from "./estado";
-import Vehiculo from "./vehiculos/vehiculo";
+import Vehiculo from "./vehiculos/Vehiculo";
 // import {Estado} from "../estado";
 
 export default class Flota {
 
     private _flota: Map<string, Vehiculo>;
+    private estadistica:estadistica
 
     constructor() {
         this._flota = new Map<string, Vehiculo>();
+        this.estadistica= new estadistica()
     }
 
     /**
@@ -61,4 +64,9 @@ export default class Flota {
             auto?.mostrarAtributos();   // El '?' significa que primero verifica si es null o undefinded, en caso que lo sea devuelve eso, sino continua con el metodo
         }
     }
+
+ public getFlota():Map<string,Vehiculo>{
+    return this._flota
+ }
+
 }
