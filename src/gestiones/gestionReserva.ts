@@ -5,7 +5,7 @@ import EnAlquiler from "../estados/enAlquiler";
 import Flota from "../flota";
 import Reserva from "../reserva";
 import Temporadas from "../temporadas/temporadas";
-import Vehiculo from "../vehiculos/Vehiculo";
+import Vehiculo from "../vehiculos/vehiculo";
 
 export default class GestionReserva {
     private flota: Flota;
@@ -17,25 +17,27 @@ export default class GestionReserva {
     }
 
 
-    public realizarReserva(idCliente: Cliente, vehiculo: Vehiculo, temporada: Temporadas): void {
+    public realizarReserva(cliente: Cliente, vehiculo: Vehiculo, temporada: Temporadas): void {
         //aca iria una excepcion
-        let cliente = this.consumidor.obtenerMapClientes()
+        let clienteObtenido = this.consumidor.obtenerMapClientes()
         let flota = this.flota.getFlota()
-        cliente.has(idCliente.getNombre(),)
+        clienteObtenido.has(cliente.getNombre(),)
         flota.has(vehiculo.getPatente())
-        let fechaInicio = idCliente.getFechaInico()
-        let fechaFin = idCliente.getFechaFinal()
+        let fechaInicio = cliente.getFechaInico()
+        let fechaFin = cliente.getFechaFinal()
 
         if (vehiculo.verificarEstado() === true) {
-            const nuevaReserva = new Reserva(fechaInicio, fechaFin, idCliente)
+            const nuevaReserva = new Reserva(fechaInicio, fechaFin, cliente)
             nuevaReserva.setTemporada(temporada)
-            idCliente.setReserva(nuevaReserva)
+            cliente.setReserva(nuevaReserva)
             let estado = new EnAlquiler()
             vehiculo.cambiarEstado(estado)
             vehiculo.agregarReserva(nuevaReserva)
             vehiculo.setVecesAlquilado(1)
-            idCliente.setReserva(nuevaReserva)
+            cliente.setReserva(nuevaReserva)
+            nuevaReserva.setVehiculo(vehiculo)
         }
+        // catch que no haya flota o que no haya clientes
 
     }
 

@@ -1,4 +1,4 @@
-import Vehiculo from "../vehiculos/Vehiculo";
+import Vehiculo from "../vehiculos/vehiculo";
 import Temporadas from "./temporadas";
 
 export default class TemporadaMedia implements Temporadas {

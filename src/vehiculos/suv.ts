@@ -1,6 +1,6 @@
 import { version } from "moment";
 import Kilometraje from "../gestiones/gestionKilometraje";
-import Vehiculo from "./Vehiculo";
+import Vehiculo from "./vehiculo";
 import Reserva from "../reserva";
 
 export default class Suv extends Vehiculo {

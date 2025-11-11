@@ -1,6 +1,6 @@
 import Cliente from "./cliente";
 import Temporadas from "./temporadas/temporadas";
-import Vehiculo from "./vehiculos/Vehiculo";
+import Vehiculo from "./vehiculos/vehiculo";
 
 export default class Reserva {
     private fechaInicio: Date;

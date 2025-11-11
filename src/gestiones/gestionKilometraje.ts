@@ -1,5 +1,5 @@
 import Reserva from "../reserva";
-import Vehiculo from "../vehiculos/Vehiculo";
+import Vehiculo from "../vehiculos/vehiculo";
 
 
 export default class GestionKilometraje  {
