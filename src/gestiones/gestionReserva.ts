@@ -16,7 +16,13 @@ export default class GestionReserva {
         this._clientela = clientes;
     }
   
- 
+   /**
+    * 
+    * @param idCliente 
+    * @param vehiculo 
+    * @param Temporada 
+    * Recibe el cliente, el vehiculo y la temporada de la reserva para poder crear una reserva
+    */
     public RealizarReserva(idCliente:Cliente,vehiculo:Vehiculo,Temporada:temporadas):void{
        //aca iria una excepcion
         let cliente=this._clientela.ObtenerClientes()
@@ -35,11 +41,17 @@ export default class GestionReserva {
              vehiculo.agregarReserva(NuevaReserva)
              vehiculo.setVecesAlquilado(1)
              idCliente.setReserva(NuevaReserva)
+             NuevaReserva.setVehiculo(vehiculo)
         }
       
     }
 
-
+  /**
+   * 
+   * @param fecha 
+   * @param Reserva
+   * Recibe la fecha actual y la Reserva para verificar si ya llego la fecha fin de la reserva 
+   */
     public TerminarReserva(fecha:Date,Reserva:Reserva):void{
         if(fecha >= Reserva.getFechaFin()){
             let Vehiculo_A= Reserva.GetVehiculo()

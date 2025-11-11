@@ -13,11 +13,6 @@ import Vehiculo from "./Vehiculo";
 
 export default class Compacto extends Vehiculo {
 
-  /**
-   * Tarifa base diaria del vehículo Compacto.
-   * @type {number}
-   */
-  private tarifaBase: number = 30;
 
   /** 
    * Cargo Extra por cada km excedido del límite diario.
@@ -36,6 +31,7 @@ export default class Compacto extends Vehiculo {
    */
   constructor() {
     super();
+    this.TarifaDiaria=30
   }
 
   /**
@@ -76,7 +72,7 @@ export default class Compacto extends Vehiculo {
         montoExtra = (kmsDiarios - this.limiteKmPorDia) * this.cargoExtraPorKm;
       }
       // ADENTRO DEL FOR VOY ACUMULADO EL TOTAL
-      pagoTotal+= this.getTarifaDiaria() + reserva.PorcentajePorTemporada(this) + montoExtra
+      pagoTotal+= this.TarifaDiaria + reserva.PorcentajePorTemporada(this) + montoExtra
     
     }
     return pagoTotal;

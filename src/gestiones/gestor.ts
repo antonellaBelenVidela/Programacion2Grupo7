@@ -42,10 +42,15 @@ export default class Gestor {
  * @param vehiculo 
  * recibe el vehiculo alquilado y calcula su tarifa total
  */
- public Tarifa(vehiculo:Vehiculo,reserva:Reserva){
+ public Tarifa(vehiculo:Vehiculo,reserva:Reserva,kilometros:number[]){
+   this.GestionarKilometraje.SetKilometrosRecorridosPorDia(kilometros,vehiculo)
    this.GestionarTarifa.gestionarTarifa(vehiculo,this.GestionarKilometraje,reserva)
  }
 
+ public TerminarReserva(fecha:Date,Reserva:Reserva):void{
+   this.GestionarReserva.TerminarReserva(fecha,Reserva)
+ }
+ 
  public GetKilometraje():kilometraje{
   return this.GestionarKilometraje
  }

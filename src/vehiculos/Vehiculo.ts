@@ -2,6 +2,7 @@ import Reserva from "../reserva";
 
 import Kilometraje from "../gestiones/gestionKilometraje";
 import Estado from "../estados/estado";
+import Disponible from "../estados/disponible";
 
 
 export default abstract class Vehiculo {
@@ -16,9 +17,9 @@ export default abstract class Vehiculo {
   private costoMantenimiento:number
   private GananciasTotales:number
 
-  constructor(patente?: string, estado?: Estado,) {
+  constructor(patente?: string) {
     this.patente = patente ?? "";
-    this.estado = undefined as unknown as Estado;
+    this.estado = new Disponible;
     this.kilometrosRecorridos = 0;
     this.resevas = undefined as unknown as Reserva;
     this.TarifaDiaria=0
@@ -59,7 +60,7 @@ export default abstract class Vehiculo {
   }
 
 
-  public cambiarEstado(estado:Estado){
+  public cambiarEstado(estado:Estado):void{
     this.estado=estado
   }
 
@@ -117,5 +118,9 @@ export default abstract class Vehiculo {
 
  public GetGanaciasTotales():number{
   return this.GananciasTotales
+ }
+
+ public GetReserva():Reserva{
+  return this.resevas
  }
 }

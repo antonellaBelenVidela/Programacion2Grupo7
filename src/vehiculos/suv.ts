@@ -25,11 +25,11 @@ export default class Suv extends Vehiculo{
 
       for(let i=0;i<diasRentados;i++){
          TotalRecorrido+=kilometros[i]
-        Pagototal+= this.getTarifaDiaria() + reserva.PorcentajePorTemporada(this)
+        Pagototal+= this.getTarifaDiaria() + reserva.PorcentajePorTemporada(this) + this.cargoFijo
       }
       if(TotalRecorrido > 500){
-        Pagototal=TotalRecorrido *0.25
+        Pagototal+=(TotalRecorrido *0.25)
       }
-      return Pagototal + this.cargoFijo 
+      return Pagototal
     }
 }

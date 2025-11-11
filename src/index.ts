@@ -58,17 +58,12 @@ function main(){
 
  const KilometrosRecorridos=[40,60]
 
- const Kilomtraje=GestorGeneral.GetKilometraje()
+ GestorGeneral.Tarifa(Compacto1,Compacto1.GetReserva(),KilometrosRecorridos)
 
- Kilomtraje.SetKilometrosRecorridosPorDia(KilometrosRecorridos,Compacto1)
+ GestorGeneral.TerminarReserva(new Date(2025,8,22),Compacto1.GetReserva())
 
- GestorGeneral.Tarifa(Compacto1,Compacto1.GetReserva())
-
- const Reserva =GestorGeneral.GetReserva()
-
- Reserva.TerminarReserva(new Date(2025,8,22),Compacto1.GetReserva())
-
- Autos.RealizarEstadisticas()
+ console.log(Compacto1.GetGanaciasTotales())
+ console.log(Compacto1.getEstado())
 }
 
 main();

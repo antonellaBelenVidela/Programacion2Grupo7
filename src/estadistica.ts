@@ -107,7 +107,7 @@ export default class estadistica {
      let estado= new ENALQUILER()
      let AutosMap:Map<string,Vehiculo>=this.flota.getFlota()
      AutosMap.forEach((vehiculo: Vehiculo, clave: string) => {
-        if(vehiculo.getEstado()=== estado ){
+        if(vehiculo.getEstado() === estado ){
             AutosEnAlquiler++
         }
        cantidaDeAutos++

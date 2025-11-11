@@ -10,10 +10,10 @@ export default class GestionTarifa  {
     * @param kilometraje 
     * @returns devuelve la tarifa final del todo alquiler
     */
-    public gestionarTarifa(vehiculo: Vehiculo, kilometraje: Kilometraje,reserva:Reserva): number {
+    public gestionarTarifa(vehiculo: Vehiculo, kilometraje: Kilometraje,reserva:Reserva): void {
         let ganacias=vehiculo.calcularPago(kilometraje,reserva)
         vehiculo.SetGanaciasTotales(ganacias)
-        return ganacias
+       
         //return vehiculo.calcularPago(kilometraje,reserva) //ok
     }
 }

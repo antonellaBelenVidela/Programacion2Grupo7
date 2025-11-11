@@ -18,10 +18,10 @@ export default class Sedan extends Vehiculo {
      
       let diasRentados= kilometros.length
       let Pagototal=0
-      for(let i=0;i<=diasRentados;i++){
+      for(let i=0;i<diasRentados;i++){
             Pagototal += (kilometros[i]*0.25)
             Pagototal+= this.getTarifaDiaria() + reserva.PorcentajePorTemporada(this)
-      }
+       }
       return Pagototal 
   }
 
