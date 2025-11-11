@@ -1,8 +1,8 @@
 import Estado from "./estado";
 
-export default class ENALQUILER implements Estado{
+export default class EnAlquiler implements Estado{
     public alquilar(): boolean {
-        console.log("no se puede alquilar el auto ya esta reservado")
+        console.log("¡No se puede alquilar el auto! Ya está reservado.")
         return false
     }
 }

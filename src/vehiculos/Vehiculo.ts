@@ -3,34 +3,33 @@ import Reserva from "../reserva";
 import Kilometraje from "../gestiones/gestionKilometraje";
 import Estado from "../estados/estado";
 
-
 export default abstract class Vehiculo {
   private patente: string;
   private estado: Estado;
   private kilometrosRecorridos: number;
   protected resevas: Reserva;
-  protected TarifaDiaria:number
+  protected tarifaDiaria:number
   private vecesAlquilado:number
-  private KmSinMantenimiento:number
-  private MesesSinMantenimiento:number
+  private kmSinMantenimiento:number
+  private mesesSinMantenimiento:number
   private costoMantenimiento:number
-  private GananciasTotales:number
+  private gananciasTotales:number
 
   constructor(patente?: string, estado?: Estado,) {
     this.patente = patente ?? "";
     this.estado = undefined as unknown as Estado;
     this.kilometrosRecorridos = 0;
     this.resevas = undefined as unknown as Reserva;
-    this.TarifaDiaria=0
+    this.tarifaDiaria=0
     this.vecesAlquilado=0
-    this.KmSinMantenimiento=0
-    this.MesesSinMantenimiento=0
+    this.kmSinMantenimiento=0
+    this.mesesSinMantenimiento=0
     this.costoMantenimiento=0
-    this.GananciasTotales=0
+    this.gananciasTotales=0
   }
 
   public getTarifaDiaria():number{
-    return this.TarifaDiaria
+    return this.tarifaDiaria
   }
 
   // hace falta? si la patente no va a cambiar!
@@ -73,7 +72,7 @@ export default abstract class Vehiculo {
 
   public abstract calcularPago(kilometraje: Kilometraje,reserva:Reserva): number
 
-  public VerificarEstado():boolean{
+  public verificarEstado():boolean{
      return this.estado.alquilar()
   }
 
@@ -81,22 +80,22 @@ export default abstract class Vehiculo {
    this.vecesAlquilado+=A
  }
 
- public SetKmSinMantenimiento(Km:number){
-   this.KmSinMantenimiento+=Km
-    if(this.KmSinMantenimiento >= 12000 && Km=== 0){
-      this.KmSinMantenimiento=Km
+ public setKmSinMantenimiento(Km:number){
+   this.kmSinMantenimiento+=Km
+    if(this.kmSinMantenimiento >= 12000 && Km=== 0){
+      this.kmSinMantenimiento=Km
     }
  }
 
- public SetMesesSinMantenimiento(meses:number){
-   this.MesesSinMantenimiento=meses
+ public setMesesSinMantenimiento(meses:number){
+   this.mesesSinMantenimiento=meses
  }
 
-  public GeTMesesSinMantenimiento():number{
-    return  this.MesesSinMantenimiento
+  public geTMesesSinMantenimiento():number{
+    return  this.mesesSinMantenimiento
  }
 
- public SetCostoMantenimiento(costo:number){
+ public setCostoMantenimiento(costo:number){
    this.costoMantenimiento=costo
  }
 
@@ -104,7 +103,7 @@ export default abstract class Vehiculo {
    return this.costoMantenimiento
  }
  public getKmSinMantenimiento():number{
-   return this.MesesSinMantenimiento
+   return this.mesesSinMantenimiento
  }
 
  public GetVecesAlquilado(){
@@ -112,10 +111,10 @@ export default abstract class Vehiculo {
  }
 
  public SetGanaciasTotales(ganacias:number){
-   this.GananciasTotales+=ganacias
+   this.gananciasTotales+=ganacias
  }
 
  public GetGanaciasTotales():number{
-  return this.GananciasTotales
+  return this.gananciasTotales
  }
 }

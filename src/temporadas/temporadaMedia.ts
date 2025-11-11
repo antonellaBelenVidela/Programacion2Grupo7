@@ -1,9 +1,9 @@
 import Vehiculo from "../vehiculos/Vehiculo";
-import temporadas from "./temporadas";
+import Temporadas from "./temporadas";
 
-export default class TemporadaMedia implements temporadas{
-   public PorcentajePorTemporada(vehiculo:Vehiculo): number {
+export default class TemporadaMedia implements Temporadas {
+   public porcentajePorTemporada(vehiculo: Vehiculo): number {
       return 0
 
-    }
+   }
 }

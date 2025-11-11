@@ -16,16 +16,16 @@ export default class GestionKilometraje  {
    * 
    */
 
-  public SetKilometrosRecorridosPorDia(kilometros: number[],vehiculo:Vehiculo) {
+  public setKilometrosRecorridosPorDia(kilometros: number[],vehiculo:Vehiculo) {
     let cantDias = kilometros.length
 
-    for (let i = 0; i <= cantDias; i++) {
+    for (let i = 0; i < cantDias; i++) {
       this.kilometrosRecorridosPorDias.push(kilometros[i]);
-      vehiculo.SetKmSinMantenimiento(kilometros[i])
+      vehiculo.setKmSinMantenimiento(kilometros[i])
     }
   }
 
-  public getKilometrosRecorridosPordias(): number[] {
+  public getKilometrosRecorridosPordia(): number[] {
     return this.kilometrosRecorridosPorDias;
   }
 

@@ -29,7 +29,7 @@ export default class Compacto extends Vehiculo {
    * Limite de kms permitidos por día (sin un cargo adicional).
    * @type {number}
    */
-    private limiteKmPorDia: number = 100;
+  private limiteKmPorDia: number = 100;
 
   /**
    * Crea una instancia de la clase Compacto.
@@ -59,9 +59,9 @@ export default class Compacto extends Vehiculo {
    * console.log(total); // Devuelve el pago total con cargos extra incluidos
    */
 
-  public calcularPago(kilometraje: Kilometraje,reserva:Reserva): number {
+  public calcularPago(kilometraje: Kilometraje, reserva: Reserva): number {
 
-    let kilometrosPorDiaArray = kilometraje.getKilometrosRecorridosPordias();
+    let kilometrosPorDiaArray = kilometraje.getKilometrosRecorridosPordia();
 
     let diasRentados = kilometrosPorDiaArray.length;
 
@@ -76,8 +76,8 @@ export default class Compacto extends Vehiculo {
         montoExtra = (kmsDiarios - this.limiteKmPorDia) * this.cargoExtraPorKm;
       }
       // ADENTRO DEL FOR VOY ACUMULADO EL TOTAL
-      pagoTotal+= this.getTarifaDiaria() + reserva.PorcentajePorTemporada(this) + montoExtra
-    
+      pagoTotal += this.getTarifaDiaria() + reserva.porcentajePorTemporada(this) + montoExtra
+
     }
     return pagoTotal;
   }

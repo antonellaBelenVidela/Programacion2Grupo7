@@ -1,20 +1,20 @@
 import Cliente from "./cliente";
-import temporadas from "./temporadas/temporadas";
+import Temporadas from "./temporadas/temporadas";
 import Vehiculo from "./vehiculos/Vehiculo";
 
-export default class Reserva{
-    private fechaInicio:Date;
-    private fechaFin : Date;
-    private cliente :Cliente;
-    private Vehiculo:Vehiculo
-    private Temporada:temporadas;
+export default class Reserva {
+    private fechaInicio: Date;
+    private fechaFin: Date;
+    private cliente: Cliente;
+    private vehiculo: Vehiculo
+    private temporada: Temporadas;
 
     constructor(fechaInicio: Date, fechaFin: Date, cliente: Cliente) {
         this.fechaInicio = fechaInicio;
         this.fechaFin = fechaFin;
         this.cliente = cliente;
-        this.Vehiculo= undefined as unknown as Vehiculo
-        this.Temporada= undefined as unknown as temporadas
+        this.vehiculo = undefined as unknown as Vehiculo
+        this.temporada = undefined as unknown as Temporadas
     }
 
     public getFechaInicio(): Date {
@@ -25,23 +25,23 @@ export default class Reserva{
         return this.fechaFin;
     }
 
-    public getCliente(): Cliente{
+    public getCliente(): Cliente {
         return this.cliente;
     }
 
-    public setVehiculo(vehiculo:Vehiculo){
-        this.Vehiculo=vehiculo
+    public setVehiculo(vehiculo: Vehiculo) {
+        this.vehiculo = vehiculo
     }
 
-    public GetVehiculo():Vehiculo{
-        return this.Vehiculo
+    public getVehiculo(): Vehiculo {
+        return this.vehiculo
     }
 
-   public setTemporada(Temporada:temporadas){
-    this.Temporada=Temporada
-   }
+    public setTemporada(temporada: Temporadas) {
+        this.temporada = temporada
+    }
 
-    public PorcentajePorTemporada(vehiculo:Vehiculo):number{
-      return  this.Temporada.PorcentajePorTemporada(vehiculo)
+    public porcentajePorTemporada(vehiculo: Vehiculo): number {
+        return this.temporada.porcentajePorTemporada(vehiculo)
     }
 }
