@@ -1,6 +1,6 @@
 import Kilometraje from "../gestiones/gestionKilometraje";
 import Reserva from "../reserva";
-import Vehiculo from "./Vehiculo";
+import Vehiculo from "../vehiculos/Vehiculo";
 
 /**
  * Clase que representa un vehículo del tipo Compacto.
@@ -12,12 +12,6 @@ import Vehiculo from "./Vehiculo";
  */
 
 export default class Compacto extends Vehiculo {
-
-  /**
-   * Tarifa base diaria del vehículo Compacto.
-   * @type {number}
-   */
-  private tarifaBase: number = 30;
 
   /** 
    * Cargo Extra por cada km excedido del límite diario.
@@ -36,6 +30,7 @@ export default class Compacto extends Vehiculo {
    */
   constructor() {
     super();
+    this.tarifaDiaria = 30;
   }
 
   /**
@@ -62,8 +57,6 @@ export default class Compacto extends Vehiculo {
   public calcularPago(kilometraje: Kilometraje, reserva: Reserva): number {
 
     let kilometrosPorDiaArray = kilometraje.getKilometrosRecorridosPordia();
-
-    let diasRentados = kilometrosPorDiaArray.length;
 
     let pagoTotal = 0;
 
