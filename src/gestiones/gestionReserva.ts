@@ -1,22 +1,23 @@
 import Cliente from "../cliente";
-import Clientela from "../consumidor";
+import Consumidor from "../consumidor";
 import Disponible from "../estados/disponible";
 import ENALQUILER from "../estados/enAlquiler";
 import Flota from "../flota";
 import Reserva from "../reserva";
+import temporadas from "../temporadas/temporadas";
 import Vehiculo from "../vehiculos/Vehiculo";
 
 export default class GestionReserva {
-    private _flota: Flota = new Flota();
-    private _clientela: Clientela = new Clientela();
+    private _flota: Flota ;
+    private _clientela:Consumidor ;
 
-    constructor(flota: Flota, clientes: Clientela) {
+    constructor(flota: Flota, clientes: Consumidor) {
         this._flota = flota;
         this._clientela = clientes;
     }
   
  
-    public RealizarReserva(idCliente:Cliente,vehiculo:Vehiculo):void{
+    public RealizarReserva(idCliente:Cliente,vehiculo:Vehiculo,Temporada:temporadas):void{
        //aca iria una excepcion
         let cliente=this._clientela.ObtenerClientes()
         let flota= this._flota.getFlota()
@@ -27,6 +28,7 @@ export default class GestionReserva {
          
         if( vehiculo.VerificarEstado() === true){
              const NuevaReserva= new Reserva(fechaInicio,fechaFin,idCliente)
+             NuevaReserva.setTemporada(Temporada)
               idCliente.setReserva(NuevaReserva)
              let Estado= new ENALQUILER()
              vehiculo.cambiarEstado(Estado)

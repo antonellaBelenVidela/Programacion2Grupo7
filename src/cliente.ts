@@ -1,60 +1,79 @@
 import Reserva from "./reserva";
 
 export default class Cliente {
-    private _id: string; // El identificador único del cliente
-    private _nombre: string;
-    private _apellido: string;
-    private _email: string; // Un ejemplo de datos relevantes adicionales
+    private id: string; // El identificador único del cliente
+    private nombre: string;
+    private apellido: string;
+    private email: string; // Un ejemplo de datos relevantes adicionales
     private Reserva:Reserva
+    private fechaInicio:Date
+    private fechaFin:Date
 
-    constructor(id: string, nombre: string, apellido: string, email: string,fechaInicio:Date,fechaFin:Date) {
-        this._id = id;
-        this._nombre = nombre;
-        this._apellido = apellido;
-        this._email = email;
-        this.Reserva=new Reserva(fechaInicio,fechaFin,this)
+    constructor(id?: string, nombre?: string, apellido?: string, email?: string,fechaInicio?:Date,fechaFin?:Date) {
+        this.id = id ?? "";
+        this.nombre = nombre ?? "";
+        this.apellido = apellido ?? "";
+        this.email = email ?? "";
+        this.Reserva=undefined as unknown as Reserva
+        this.fechaFin= undefined as unknown as Date
+        this.fechaInicio= undefined as unknown as Date
     }
 
     // Setters
     public setId(id: string): void{
-        this._id = id;
+        this.id = id;
     }
 
     public setNombre(nombre: string): void{
-        this._nombre = nombre;
+        this.nombre = nombre;
     }
 
     public setApellido(apellido: string): void{
-        this._apellido = apellido;
+        this.apellido = apellido;
     }
 
     public setEmail(email: string): void{
-        this._email = email;
+        this.email = email;
     }
 
     // Getters
     public getId(): string {
-        return this._id;
+        return this.id;
     }
 
     public getNombre(): string {
-        return this._nombre;
+        return this.nombre;
     }
 
     public getApellido(): string {
-        return this._apellido;
+        return this.apellido;
     }
 
     public getEmail(): string {
-        return this._email;
+        return this.email;
     }
 
+   public SetFechaInicio(fecha:Date){
+    this.fechaInicio=fecha
+   }
+
    public getFechaInico():Date{
-    return this.Reserva.getFechaInicio()
+    return this.fechaFin
+   }
+
+   public SetFechaFin(fecha:Date){
+    this.fechaFin=fecha
    }
 
    public getFechaFinal():Date{
-    return this.Reserva.getFechaFin()
+    return this.fechaFin
    }
 
+   public setReserva(Reserva:Reserva){
+    this.Reserva=Reserva
+   }
+
+   public GetReserva():Reserva{
+     return this.Reserva
+   }
 }

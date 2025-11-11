@@ -5,26 +5,28 @@ import Estado from "../estados/estado";
 
 
 export default abstract class Vehiculo {
-  private _patente: string;
-  private _estado: Estado;
-  private _kilometrosRecorridos: number;
-  protected _resevas: Reserva;
+  private patente: string;
+  private estado: Estado;
+  private kilometrosRecorridos: number;
+  protected resevas: Reserva;
   protected TarifaDiaria:number
   private vecesAlquilado:number
   private KmSinMantenimiento:number
   private MesesSinMantenimiento:number
   private costoMantenimiento:number
+  private GananciasTotales:number
 
   constructor(patente?: string, estado?: Estado,) {
-    this._patente = patente ?? "";
-    this._estado = undefined as unknown as Estado;
-    this._kilometrosRecorridos = 0;
-    this._resevas = undefined as unknown as Reserva;
+    this.patente = patente ?? "";
+    this.estado = undefined as unknown as Estado;
+    this.kilometrosRecorridos = 0;
+    this.resevas = undefined as unknown as Reserva;
     this.TarifaDiaria=0
     this.vecesAlquilado=0
     this.KmSinMantenimiento=0
     this.MesesSinMantenimiento=0
     this.costoMantenimiento=0
+    this.GananciasTotales=0
   }
 
   public getTarifaDiaria():number{
@@ -33,46 +35,46 @@ export default abstract class Vehiculo {
 
   // hace falta? si la patente no va a cambiar!
   public setPatente(matricula: string): void {
-    this._patente = matricula;
+    this.patente = matricula;
   }
 
   public getPatente(): string {
-    return this._patente;
+    return this.patente;
   }
 
   public setEstado(estado: Estado): void {
-    this._estado = estado;
+    this.estado = estado;
   }
 
   public getEstado(): Estado {
-    return this._estado;
+    return this.estado;
   }
 
   public setKilometrosRecorridos(kilometrosRecorridos: number): void {
-    this._kilometrosRecorridos = kilometrosRecorridos;
+    this.kilometrosRecorridos = kilometrosRecorridos;
   }
 
   public getKilometrosRecorridos(): number {
-    return this._kilometrosRecorridos;
+    return this.kilometrosRecorridos;
   }
 
 
   public cambiarEstado(estado:Estado){
-    this._estado=estado
+    this.estado=estado
   }
 
   public agregarReserva(reserva: Reserva): void {
-    this._resevas=reserva
+    this.resevas=reserva
   }
 
   public mostrarInfo(): string {
-    return `El auto con Patente: ${this._patente}, Estado: ${[this._estado]}, Kilometraje: ${this._kilometrosRecorridos} km`;
+    return `El auto con Patente: ${this.patente}, Estado: ${[this.estado]}, Kilometraje: ${this.kilometrosRecorridos} km`;
   }
 
   public abstract calcularPago(kilometraje: Kilometraje,reserva:Reserva): number
 
   public VerificarEstado():boolean{
-     return this._estado.alquilar()
+     return this.estado.alquilar()
   }
 
  public setVecesAlquilado(A:number){
@@ -81,10 +83,13 @@ export default abstract class Vehiculo {
 
  public SetKmSinMantenimiento(Km:number){
    this.KmSinMantenimiento+=Km
+    if(this.KmSinMantenimiento >= 12000 && Km=== 0){
+      this.KmSinMantenimiento=Km
+    }
  }
 
- public SetMesesSinMantenimiento(dias:number){
-   this.MesesSinMantenimiento+=dias
+ public SetMesesSinMantenimiento(meses:number){
+   this.MesesSinMantenimiento=meses
  }
 
   public GeTMesesSinMantenimiento():number{
@@ -104,5 +109,13 @@ export default abstract class Vehiculo {
 
  public GetVecesAlquilado(){
   return this.vecesAlquilado
+ }
+
+ public SetGanaciasTotales(ganacias:number){
+   this.GananciasTotales+=ganacias
+ }
+
+ public GetGanaciasTotales():number{
+  return this.GananciasTotales
  }
 }

@@ -9,9 +9,7 @@ export default class GestionKilometraje  {
     this.kilometrosRecorridosPorDias = [];
   }
 
-  Gestionar(matricula: string, idCliente: string, fechaInicio: Date, fechaFin: Date): boolean {
-    throw new Error("Method not implemented.");
-  }
+
   /**
    * 
    * @param kilometros recibe un array con los kilometros reccoridos en cada dia
@@ -36,7 +34,7 @@ export default class GestionKilometraje  {
   * @param vehiculo 
   * @returns devuelve el extra que tiene que pagar cada vehiculo por los kilometros que recorrio durante el alquiler
   */
-  public gestionar(vehiculo: Vehiculo,reserva:Reserva): number {
+  public gestionarKilometrajeExtra(vehiculo: Vehiculo,reserva:Reserva): number {
     return vehiculo.calcularPago(this,reserva);
   }
 }

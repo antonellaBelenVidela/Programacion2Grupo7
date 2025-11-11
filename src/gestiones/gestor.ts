@@ -5,7 +5,8 @@ import Vehiculo from "../vehiculos/Vehiculo";
 import Cliente from "../cliente";
 import Reserva from "../reserva";
 import Flota from "../flota";
-import Clientela from "../consumidor";
+import temporadas from "../temporadas/temporadas";
+import Consumidor from "../consumidor";
 
 export default class Gestor {
   private GestionarReserva:GestionReserva
@@ -13,7 +14,7 @@ export default class Gestor {
   private GestionarTarifa:tarifa
 
 
-  constructor(flota:Flota,clientes:Clientela){
+  constructor(flota:Flota,clientes:Consumidor){
   
     this.GestionarKilometraje= new kilometraje()
     this.GestionarReserva= new GestionReserva(flota,clientes)
@@ -25,8 +26,8 @@ export default class Gestor {
   * @param vehiculo
   * recibe el cliente y el vehiculo que quiere alquilar para crear una reserva 
   */
- public Reserva(cliente:Cliente,vehiculo:Vehiculo){
-    this.GestionarReserva.RealizarReserva(cliente,vehiculo)
+ public Reserva(cliente:Cliente,vehiculo:Vehiculo,temporada:temporadas){
+    this.GestionarReserva.RealizarReserva(cliente,vehiculo,temporada)
  }
 /**
  * 
@@ -42,6 +43,18 @@ export default class Gestor {
  * recibe el vehiculo alquilado y calcula su tarifa total
  */
  public Tarifa(vehiculo:Vehiculo,reserva:Reserva){
-   this.GestionarTarifa.gestionar(vehiculo,this.GestionarKilometraje,reserva)
+   this.GestionarTarifa.gestionarTarifa(vehiculo,this.GestionarKilometraje,reserva)
+ }
+
+ public GetKilometraje():kilometraje{
+  return this.GestionarKilometraje
+ }
+ 
+ public GetTarifa():tarifa{
+   return this.GestionarTarifa
+ }
+
+ public GetReserva():GestionReserva{
+  return this.GestionarReserva
  }
 }

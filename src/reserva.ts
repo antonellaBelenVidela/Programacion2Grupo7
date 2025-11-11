@@ -3,30 +3,30 @@ import temporadas from "./temporadas/temporadas";
 import Vehiculo from "./vehiculos/Vehiculo";
 
 export default class Reserva{
-    private _fechaInicio:Date;
-    private _fechaFin : Date;
-    private _cliente :Cliente;
+    private fechaInicio:Date;
+    private fechaFin : Date;
+    private cliente :Cliente;
     private Vehiculo:Vehiculo
     private Temporada:temporadas;
 
     constructor(fechaInicio: Date, fechaFin: Date, cliente: Cliente) {
-        this._fechaInicio = fechaInicio;
-        this._fechaFin = fechaFin;
-        this._cliente = cliente;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.cliente = cliente;
         this.Vehiculo= undefined as unknown as Vehiculo
         this.Temporada= undefined as unknown as temporadas
     }
 
     public getFechaInicio(): Date {
-        return this._fechaInicio;
+        return this.fechaInicio;
     }
 
     public getFechaFin(): Date {
-        return this._fechaFin;
+        return this.fechaFin;
     }
 
     public getCliente(): Cliente{
-        return this._cliente;
+        return this.cliente;
     }
 
     public setVehiculo(vehiculo:Vehiculo){
