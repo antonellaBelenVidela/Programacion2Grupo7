@@ -1,10 +1,10 @@
 import Cliente from "./cliente";
 
-export default class Clientela{
-    private _clientes: Map<string,Cliente>
+export default class Consumidor{
+    private consumidores: Map<string,Cliente>
 
     constructor(){
-        this._clientes = new Map();
+        this.consumidores = new Map();
     }
 
     /**
@@ -15,14 +15,18 @@ export default class Clientela{
      * @returns void
      */
     public agregarCliente(id: string, datos: Cliente): void{
-        this._clientes.set(id, datos); //
+        this.consumidores.set(id, datos); //
     }
 
     public buscarCliente(id: string): boolean{
-        return this._clientes.has(id);
+        return this.consumidores.has(id);
     }
 
     public obtenerCliente(id: string): Cliente | void{
-        return this._clientes.get(id);
+        return this.consumidores.get(id);
+    }
+
+    public obtenerMapClientes():Map<string,Cliente>{
+        return this.consumidores
     }
 }

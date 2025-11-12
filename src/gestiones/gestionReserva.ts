@@ -1,17 +1,57 @@
-import Clientela from "../clientela";
+import Cliente from "../cliente";
+import Consumidor from "../consumidor";
+import Disponible from "../estados/disponible";
+import EnAlquiler from "../estados/enAlquiler";
 import Flota from "../flota";
-import GestorGeneral from "./gestorGeneral";
 import Reserva from "../reserva";
+import Temporadas from "../temporadas/temporadas";
+import Vehiculo from "../vehiculos/vehiculo";
 
-export default class GestionReserva implements GestorGeneral {
-    private _flota: Flota = new Flota();
-    private _clientela: Clientela = new Clientela();
+export default class GestionReserva {
+    private flota: Flota;
+    private consumidor: Consumidor;
 
-    constructor(flota: Flota, clientes: Clientela) {
-        this._flota = flota;
-        this._clientela = clientes;
+    constructor(flota: Flota, consumidor: Consumidor) {
+        this.flota = flota;
+        this.consumidor = consumidor;
     }
 
+
+    public realizarReserva(cliente: Cliente, vehiculo: Vehiculo, temporada: Temporadas): void {
+        //aca iria una excepcion
+        let clienteObtenido = this.consumidor.obtenerMapClientes()
+        let flota = this.flota.getFlota()
+        clienteObtenido.has(cliente.getNombre(),)
+        flota.has(vehiculo.getPatente())
+        let fechaInicio = cliente.getFechaInico()
+        let fechaFin = cliente.getFechaFinal()
+
+        if (vehiculo.verificarEstado() === true) {
+            const nuevaReserva = new Reserva(fechaInicio, fechaFin, cliente)
+            nuevaReserva.setTemporada(temporada)
+            cliente.setReserva(nuevaReserva)
+            let estado = new EnAlquiler()
+            vehiculo.cambiarEstado(estado)
+            vehiculo.agregarReserva(nuevaReserva)
+            vehiculo.setVecesAlquilado(1)
+            cliente.setReserva(nuevaReserva)
+            nuevaReserva.setVehiculo(vehiculo)
+        }
+        // catch que no haya flota o que no haya clientes
+
+    }
+
+
+    public terminarReserva(fecha: Date, reserva: Reserva): void {
+        if (fecha >= reserva.getFechaFin()) {
+            let vehiculo_a = reserva.getVehiculo()
+            let alquiler = new Disponible()
+
+            vehiculo_a.cambiarEstado(alquiler)
+        }
+    }
+
+    /*
     public Gestionar(patente: string, idCliente: string, fechaInicio: Date, fechaFin: Date): boolean {
         const vehiculoEncontrado: boolean = this._flota.buscarVehiculo(patente); // Acá está fallando
         const clienteEncontrado: boolean = this._clientela.buscarCliente(idCliente); // Acá seguro que también
@@ -46,5 +86,5 @@ export default class GestionReserva implements GestorGeneral {
 
         return false;
     }
-
+    */
 }

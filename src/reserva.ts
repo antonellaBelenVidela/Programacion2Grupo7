@@ -1,25 +1,47 @@
 import Cliente from "./cliente";
+import Temporadas from "./temporadas/temporadas";
+import Vehiculo from "./vehiculos/vehiculo";
 
-export default class Reserva{
-    private _fechaInicio:Date;
-    private _fechaFin : Date;
-    private _cliente :Cliente;
+export default class Reserva {
+    private fechaInicio: Date;
+    private fechaFin: Date;
+    private cliente: Cliente;
+    private vehiculo: Vehiculo
+    private temporada: Temporadas;
 
     constructor(fechaInicio: Date, fechaFin: Date, cliente: Cliente) {
-        this._fechaInicio = fechaInicio;
-        this._fechaFin = fechaFin;
-        this._cliente = cliente;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
+        this.cliente = cliente;
+        this.vehiculo = undefined as unknown as Vehiculo
+        this.temporada = undefined as unknown as Temporadas
     }
 
     public getFechaInicio(): Date {
-        return this._fechaInicio;
+        return this.fechaInicio;
     }
 
     public getFechaFin(): Date {
-        return this._fechaFin;
+        return this.fechaFin;
     }
 
-    public getCliente(): Cliente{
-        return this._cliente;
+    public getCliente(): Cliente {
+        return this.cliente;
+    }
+
+    public setVehiculo(vehiculo: Vehiculo) {
+        this.vehiculo = vehiculo
+    }
+
+    public getVehiculo(): Vehiculo {
+        return this.vehiculo
+    }
+
+    public setTemporada(temporada: Temporadas) {
+        this.temporada = temporada
+    }
+
+    public porcentajePorTemporada(vehiculo: Vehiculo): number {
+        return this.temporada.porcentajePorTemporada(vehiculo)
     }
 }

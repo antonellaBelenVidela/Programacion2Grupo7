@@ -1,26 +1,19 @@
-import Vehiculo from "../vehiculos/vehiculo";
+import Reserva from "../reserva";
+import Vehiculo from "../vehiculos/Vehiculo";
 import Kilometraje from "./gestionKilometraje";
-import IGestorGeneral from "./gestorGeneral";
 
-export default class GestionTarifa implements IGestorGeneral {
-    /**
-     * 
-     * @param matricula 
-     * @param idCliente 
-     * @param fechaInicio 
-     * @param fechaFin 
-     * inicializa la estructura de datos del auto
-     */
-    Gestionar(matricula: string, idCliente: string, fechaInicio: Date, fechaFin: Date): boolean {
-        throw new Error("Gestión general de tarifa no implementada aún");
-    }
+export default class GestionTarifa  {
+   
    /**
     * 
     * @param vehiculo 
     * @param kilometraje 
     * @returns devuelve la tarifa final del todo alquiler
     */
-    public gestionar(vehiculo: Vehiculo, kilometraje: Kilometraje): number {
-        return vehiculo.calcularPago(kilometraje) //ok
+    public gestionarTarifa(vehiculo: Vehiculo, kilometraje: Kilometraje,reserva:Reserva): number {
+        let ganacias=vehiculo.calcularPago(kilometraje,reserva)
+        vehiculo.SetGanaciasTotales(ganacias)
+        return ganacias
+        //return vehiculo.calcularPago(kilometraje,reserva) //ok
     }
 }

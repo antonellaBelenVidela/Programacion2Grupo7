@@ -1,13 +1,15 @@
-import { Estado } from "./estado";
-import Vehiculo from "./vehiculos/vehiculo";
+import estadistica from "./estadistica";
+import Vehiculo from "./vehiculos/Vehiculo";
 // import {Estado} from "../estado";
 
 export default class Flota {
 
-    private _flota: Map<string, Vehiculo>;
+    private autos: Map<string, Vehiculo>;
+    private estadistica:estadistica
 
-    constructor() {
-        this._flota = new Map<string, Vehiculo>();
+    constructor(Autos:Map<string,Vehiculo>) {
+        this.autos = Autos;
+        this.estadistica= new estadistica(this)
     }
 
     /**
@@ -18,47 +20,36 @@ export default class Flota {
      */
     public agregarVehiculo(patente: string, vehiculo: Vehiculo): void {
         const patenteNormalizada = patente.trim().toUpperCase();
-        this._flota.set(patenteNormalizada, vehiculo);
+        this.autos.set(patenteNormalizada, vehiculo);
     }
 
     public buscarVehiculo(patente: string): boolean {
         const patenteNormalizada = patente.trim().toUpperCase();
-        return this._flota.has(patenteNormalizada);
+        return this.autos.has(patenteNormalizada);
     }
 
     public obtenerVehiculo(patente: string): Vehiculo | undefined {
-        return this._flota.get(patente);
+        return this.autos.get(patente);
     }
-  /**
-   * 
-   * @param patente 
-   * @param fechaInicio 
-   * @param fechaFin 
-   * @returns devuelve si el vehiculo esta disponible para una reserva o no
-   */
-    public obtenerDisponibilidad(patente: string, fechaInicio?: Date, fechaFin?: Date): boolean {
-        const vehiculo = this.obtenerVehiculo(patente);
-        if (!vehiculo) {
-            console.log(`Vehículo con patente ${patente} no encontrado`);
-            return false;
-        }
-        if (fechaInicio && fechaFin) {
-            return vehiculo.estaDisponible(fechaInicio, fechaFin);
-        } else {
-            // Si no pasamos fechas, consideramos solo el estado
-            return vehiculo.getEstado() === Estado.DISPONIBLE;
-        }
-    }
-
-    public obtenerEstado(patente: string): Estado | undefined  {
-        const vehiculo = this.obtenerVehiculo(patente);
-        return vehiculo?.getEstado();
-    }
-
+  /*
     public mostrarFlota(): void {
         for (const patente of this._flota.keys()) {
             const auto = this._flota.get(patente)
             auto?.mostrarAtributos();   // El '?' significa que primero verifica si es null o undefinded, en caso que lo sea devuelve eso, sino continua con el metodo
         }
-    }
+    } */
+  
+ public getFlota():Map<string,Vehiculo>{
+    return this.autos
+ }
+ /**
+  * Se encarga de hacer la estadisticas de la flota
+  */
+ public RealizarEstadisticas():void{
+    console.log("El auto mas rentado fue:",this.estadistica.autoMasAlquilado())
+    console.log("El auto menos rentado fue:",this.estadistica.autoMenosAlquilado())
+    console.log("El auto que mas rentable fue:",this.estadistica.AutoMasRentable())
+    console.log("El auto que fue menos rentable fue:",this.estadistica.AutoMenosRentable())
+    console.log("la taza de autos en alquiler es:",this.estadistica.OcupacionFlota())
+ }
 }
