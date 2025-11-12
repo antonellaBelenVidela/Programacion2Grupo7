@@ -1,6 +1,6 @@
 import Kilometraje from "../gestiones/gestionKilometraje";
 import Reserva from "../reserva";
-import Vehiculo from "./Vehiculo";
+import Vehiculo from "../vehiculos/vehiculo";
 
 /**
  * Clase que representa un vehículo del tipo Compacto.
@@ -13,7 +13,10 @@ import Vehiculo from "./Vehiculo";
 
 export default class Compacto extends Vehiculo {
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> bf6a33ca5667294fd30ee978d772ef8f83a1fcd3
   /** 
    * Cargo Extra por cada km excedido del límite diario.
    * @type {number}
@@ -24,14 +27,18 @@ export default class Compacto extends Vehiculo {
    * Limite de kms permitidos por día (sin un cargo adicional).
    * @type {number}
    */
-    private limiteKmPorDia: number = 100;
+  private limiteKmPorDia: number = 100;
 
   /**
    * Crea una instancia de la clase Compacto.
    */
   constructor() {
     super();
+<<<<<<< HEAD
     this.TarifaDiaria=30
+=======
+    this.tarifaDiaria = 30;
+>>>>>>> bf6a33ca5667294fd30ee978d772ef8f83a1fcd3
   }
 
   /**
@@ -55,11 +62,9 @@ export default class Compacto extends Vehiculo {
    * console.log(total); // Devuelve el pago total con cargos extra incluidos
    */
 
-  public calcularPago(kilometraje: Kilometraje,reserva:Reserva): number {
+  public calcularPago(kilometraje: Kilometraje, reserva: Reserva): number {
 
-    let kilometrosPorDiaArray = kilometraje.getKilometrosRecorridosPordias();
-
-    let diasRentados = kilometrosPorDiaArray.length;
+    let kilometrosPorDiaArray = kilometraje.getKilometrosRecorridosPordia();
 
     let pagoTotal = 0;
 
@@ -72,8 +77,13 @@ export default class Compacto extends Vehiculo {
         montoExtra = (kmsDiarios - this.limiteKmPorDia) * this.cargoExtraPorKm;
       }
       // ADENTRO DEL FOR VOY ACUMULADO EL TOTAL
+<<<<<<< HEAD
       pagoTotal+= this.TarifaDiaria + reserva.PorcentajePorTemporada(this) + montoExtra
     
+=======
+      pagoTotal += this.getTarifaDiaria() + reserva.porcentajePorTemporada(this) + montoExtra
+
+>>>>>>> bf6a33ca5667294fd30ee978d772ef8f83a1fcd3
     }
     return pagoTotal;
   }

@@ -1,20 +1,21 @@
 import Cliente from "../cliente";
 import Consumidor from "../consumidor";
 import Disponible from "../estados/disponible";
-import ENALQUILER from "../estados/enAlquiler";
+import EnAlquiler from "../estados/enAlquiler";
 import Flota from "../flota";
 import Reserva from "../reserva";
-import temporadas from "../temporadas/temporadas";
-import Vehiculo from "../vehiculos/Vehiculo";
+import Temporadas from "../temporadas/temporadas";
+import Vehiculo from "../vehiculos/vehiculo";
 
 export default class GestionReserva {
-    private _flota: Flota ;
-    private _clientela:Consumidor ;
+    private flota: Flota;
+    private consumidor: Consumidor;
 
-    constructor(flota: Flota, clientes: Consumidor) {
-        this._flota = flota;
-        this._clientela = clientes;
+    constructor(flota: Flota, consumidor: Consumidor) {
+        this.flota = flota;
+        this.consumidor = consumidor;
     }
+<<<<<<< HEAD
   
    /**
     * 
@@ -42,10 +43,35 @@ export default class GestionReserva {
              vehiculo.setVecesAlquilado(1)
              idCliente.setReserva(NuevaReserva)
              NuevaReserva.setVehiculo(vehiculo)
+=======
+
+
+    public realizarReserva(cliente: Cliente, vehiculo: Vehiculo, temporada: Temporadas): void {
+        //aca iria una excepcion
+        let clienteObtenido = this.consumidor.obtenerMapClientes()
+        let flota = this.flota.getFlota()
+        clienteObtenido.has(cliente.getNombre(),)
+        flota.has(vehiculo.getPatente())
+        let fechaInicio = cliente.getFechaInico()
+        let fechaFin = cliente.getFechaFinal()
+
+        if (vehiculo.verificarEstado() === true) {
+            const nuevaReserva = new Reserva(fechaInicio, fechaFin, cliente)
+            nuevaReserva.setTemporada(temporada)
+            cliente.setReserva(nuevaReserva)
+            let estado = new EnAlquiler()
+            vehiculo.cambiarEstado(estado)
+            vehiculo.agregarReserva(nuevaReserva)
+            vehiculo.setVecesAlquilado(1)
+            cliente.setReserva(nuevaReserva)
+            nuevaReserva.setVehiculo(vehiculo)
+>>>>>>> bf6a33ca5667294fd30ee978d772ef8f83a1fcd3
         }
-      
+        // catch que no haya flota o que no haya clientes
+
     }
 
+<<<<<<< HEAD
   /**
    * 
    * @param fecha 
@@ -56,8 +82,15 @@ export default class GestionReserva {
         if(fecha >= Reserva.getFechaFin()){
             let Vehiculo_A= Reserva.GetVehiculo()
             let alquiler=new Disponible()
+=======
 
-            Vehiculo_A.cambiarEstado(alquiler)
+    public terminarReserva(fecha: Date, reserva: Reserva): void {
+        if (fecha >= reserva.getFechaFin()) {
+            let vehiculo_a = reserva.getVehiculo()
+            let alquiler = new Disponible()
+>>>>>>> bf6a33ca5667294fd30ee978d772ef8f83a1fcd3
+
+            vehiculo_a.cambiarEstado(alquiler)
         }
     }
 

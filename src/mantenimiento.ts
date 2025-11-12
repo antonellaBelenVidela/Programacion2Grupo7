@@ -1,5 +1,5 @@
 import Disponible from "./estados/disponible"
-import EnMantenimiento from "./estados/EnMantenimiento"
+import EnMantenimiento from "./estados/enMantenimiento"
 import Vehiculo from "./vehiculos/Vehiculo"
 
 export default class Mantenimiento {

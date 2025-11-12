@@ -1,5 +1,5 @@
 import Reserva from "../reserva";
-import Vehiculo from "../vehiculos/Vehiculo";
+import Vehiculo from "../vehiculos/vehiculo";
 
 
 export default class GestionKilometraje  {
@@ -16,16 +16,20 @@ export default class GestionKilometraje  {
    * 
    */
 
-  public SetKilometrosRecorridosPorDia(kilometros: number[],vehiculo:Vehiculo) {
+  public setKilometrosRecorridosPorDia(kilometros: number[],vehiculo:Vehiculo) {
     let cantDias = kilometros.length
 
+<<<<<<< HEAD
     for (let i = 0; i <cantDias; i++) {
+=======
+    for (let i = 0; i < cantDias; i++) {
+>>>>>>> bf6a33ca5667294fd30ee978d772ef8f83a1fcd3
       this.kilometrosRecorridosPorDias.push(kilometros[i]);
-      vehiculo.SetKmSinMantenimiento(kilometros[i])
+      vehiculo.setKmSinMantenimiento(kilometros[i])
     }
   }
 
-  public getKilometrosRecorridosPordias(): number[] {
+  public getKilometrosRecorridosPordia(): number[] {
     return this.kilometrosRecorridosPorDias;
   }
 
