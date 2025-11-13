@@ -26,7 +26,7 @@ export default class Disponible implements Estado{
    }
 
     public mantenimiento(mantenimiento:Mantenimiento): void {
-        if(this.vehiculo.getKmSinMantenimiento()>12000 || this.vehiculo.geTMesesSinMantenimiento() > 12 || this.vehiculo.GetVecesAlquilado() > 5){
+        if(this.vehiculo.getKmSinMantenimiento()>=12000 || this.vehiculo.geTMesesSinMantenimiento() >= 12 || this.vehiculo.GetVecesAlquilado() >= 5){
             this.vehiculo.cambiarEstado(new EnMantenimiento(this.vehiculo))
             mantenimiento.SetVehiculo(this.vehiculo)
         }

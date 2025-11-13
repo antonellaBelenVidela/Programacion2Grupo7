@@ -48,10 +48,10 @@ function main(){
  Gustavo.SetFechaFin(new Date(2025,8,22))
 
  const Pedro:Cliente= new Cliente()
- Gustavo.setId("4253")
- Gustavo.setNombre("Pedro")
- Gustavo.SetFechaInicio(new Date(2025,9,20))
- Gustavo.SetFechaFin(new Date(2025,9,22))
+ Pedro.setId("4253")
+ Pedro.setNombre("Pedro")
+ Pedro.SetFechaInicio(new Date(2025,9,20))
+ Pedro.SetFechaFin(new Date(2025,9,22))
 
  const Clientes:Consumidor= new Consumidor()
  Clientes.agregarCliente(Gustavo.getId(),Gustavo)
@@ -89,7 +89,7 @@ function main(){
  Mecanico.PasarAMantenimiento(Suv1,new Date(2025,9,23),new Date(2025,9,24))
  console.log(Suv1.getEstado())
  Mecanico.setPasaron24Horas(false)
-
+ Mecanico.setCostoMantenimiento(20)
  Mecanico.FinalizarMantimiento(new Date(2025,9,24))
 
  console.log(Suv1.GetGanaciasTotales())

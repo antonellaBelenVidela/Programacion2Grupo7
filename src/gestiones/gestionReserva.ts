@@ -16,7 +16,13 @@ export default class GestionReserva {
         this.consumidor = consumidor;
     }
 
-
+ /**
+  * 
+  * @param cliente 
+  * @param vehiculo 
+  * @param temporada
+  * se encarga de realizar una reserva 
+  */
     public realizarReserva(cliente: Cliente, vehiculo: Vehiculo, temporada: Temporadas): void {
         //aca iria una excepcion
        try{

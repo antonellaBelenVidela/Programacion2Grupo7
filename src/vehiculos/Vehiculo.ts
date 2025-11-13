@@ -114,7 +114,7 @@ export default abstract class Vehiculo {
  }
 
  public GetGanaciasTotales():number{
-  return this.gananciasTotales
+  return this.gananciasTotales - this.costoMantenimiento
  }
 
  public GetReserva():Reserva{
