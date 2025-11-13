@@ -27,7 +27,7 @@ export default class Gestor {
   * recibe el cliente y el vehiculo que quiere alquilar para crear una reserva 
   */
  public Reserva(cliente:Cliente,vehiculo:Vehiculo,temporada:temporadas){
-    this.GestionarReserva.RealizarReserva(cliente,vehiculo,temporada)
+    this.GestionarReserva.realizarReserva(cliente,vehiculo,temporada)
  }
 /**
  * 
@@ -43,12 +43,12 @@ export default class Gestor {
  * recibe el vehiculo alquilado y calcula su tarifa total
  */
  public Tarifa(vehiculo:Vehiculo,reserva:Reserva,kilometros:number[]){
-   this.GestionarKilometraje.SetKilometrosRecorridosPorDia(kilometros,vehiculo)
+   this.GestionarKilometraje.setKilometrosRecorridosPorDia(kilometros,vehiculo)
    this.GestionarTarifa.gestionarTarifa(vehiculo,this.GestionarKilometraje,reserva)
  }
 
  public TerminarReserva(fecha:Date,Reserva:Reserva):void{
-   this.GestionarReserva.TerminarReserva(fecha,Reserva)
+   this.GestionarReserva.terminarReserva(fecha,Reserva)
  }
  
  public GetKilometraje():kilometraje{

@@ -18,7 +18,7 @@ export default abstract class Vehiculo {
 
   constructor(patente?: string) {
     this.patente = patente ?? "";
-    this.estado = new Disponible;
+    this.estado = new Disponible(this);
     this.kilometrosRecorridos = 0;
     this.resevas = undefined as unknown as Reserva;
     this.tarifaDiaria=0
@@ -73,9 +73,7 @@ export default abstract class Vehiculo {
 
   public abstract calcularPago(kilometraje: Kilometraje,reserva:Reserva): number
 
-  public verificarEstado():boolean{
-     return this.estado.alquilar()
-  }
+ 
 
  public setVecesAlquilado(A:number){
    this.vecesAlquilado+=A
@@ -122,4 +120,6 @@ export default abstract class Vehiculo {
  public GetReserva():Reserva{
   return this.resevas
  }
+
+ 
 }

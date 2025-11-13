@@ -2,6 +2,7 @@ import { version } from "moment";
 import Flota from "./flota";
 import Vehiculo from "./vehiculos/Vehiculo";
 import ENALQUILER from "./estados/enAlquiler";
+import Suv from "./vehiculos/suv";
 
 export default class estadistica {
 
@@ -104,7 +105,8 @@ export default class estadistica {
     }
      let AutosEnAlquiler=0
      let cantidaDeAutos=0
-     let estado= new ENALQUILER()
+     const vehiculo:Vehiculo= new Suv
+     let estado= new ENALQUILER(vehiculo)
      let AutosMap:Map<string,Vehiculo>=this.flota.getFlota()
      AutosMap.forEach((vehiculo: Vehiculo, clave: string) => {
         if(vehiculo.getEstado() === estado ){

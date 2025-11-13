@@ -1,13 +1,14 @@
+import Mantenimiento from "../mantenimiento";
 import Vehiculo from "../vehiculos/vehiculo";
 import EnAlquiler from "./enAlquiler";
-import EnMantenimiento from "./enMantenimiento";
+import EnMantenimiento from "./EnMantenimiento";
 import Estado from "./estado";
 
 export default class Disponible implements Estado{
     private vehiculo:Vehiculo
 
     constructor(vehiculo:Vehiculo){
-        this.vehiculo=vehiculo
+        this.vehiculo=vehiculo 
     }
     
     public alquilar(): void  {
@@ -24,9 +25,10 @@ export default class Disponible implements Estado{
        throw new Error("el auto aun no se encuntra en mantenimiento.")
    }
 
-    public mantenimiento(): void {
+    public mantenimiento(mantenimiento:Mantenimiento): void {
         if(this.vehiculo.getKmSinMantenimiento()>12000 || this.vehiculo.geTMesesSinMantenimiento() > 12 || this.vehiculo.GetVecesAlquilado() > 5){
             this.vehiculo.cambiarEstado(new EnMantenimiento(this.vehiculo))
+            mantenimiento.SetVehiculo(this.vehiculo)
         }
 
     }
