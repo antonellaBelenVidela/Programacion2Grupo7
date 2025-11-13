@@ -18,24 +18,24 @@ function main(){
  const Autos:Flota= new Flota(FlotaDeAutos)
  const Sedan1:Sedan= new Sedan()
  Sedan1.setPatente("4FBC")
- Sedan1.setEstado(new Disponible())
+ Sedan1.setEstado(new Disponible(Sedan1))
  Sedan1.setVecesAlquilado(3)
- Sedan1.SetKmSinMantenimiento(6000)
- Sedan1.SetMesesSinMantenimiento(10)
+ Sedan1.setKmSinMantenimiento(6000)
+ Sedan1.setMesesSinMantenimiento(10)
 
  const Compacto1:Compacto= new Compacto()
  Compacto1.setPatente("5ECB")
- Compacto1.setEstado(new Disponible())
+ Compacto1.setEstado(new Disponible(Compacto1))
  Compacto1.setVecesAlquilado(0)
- Compacto1.SetKmSinMantenimiento(0)
- Compacto1.SetMesesSinMantenimiento(0)
+ Compacto1.setKmSinMantenimiento(0)
+ Compacto1.setMesesSinMantenimiento(0)
 
  const Suv1:Suv= new Suv()
  Suv1.setPatente("AC4E")
- Suv1.setEstado(new Disponible())
+ Suv1.setEstado(new Disponible(Suv1))
  Suv1.setVecesAlquilado(1)
- Suv1.SetKmSinMantenimiento(5000)
- Suv1.SetMesesSinMantenimiento(12)
+ Suv1.setKmSinMantenimiento(5000)
+ Suv1.setMesesSinMantenimiento(12)
   
  Autos.agregarVehiculo(Suv1.getPatente(),Suv1)
  Autos.agregarVehiculo(Sedan1.getPatente(),Sedan1)
@@ -55,6 +55,8 @@ function main(){
  const Temporada:TemporadaBaja= new TemporadaBaja()
 
  GestorGeneral.Reserva(Gustavo,Compacto1,Temporada)
+
+ console.log(Compacto1.getEstado())
 
  const KilometrosRecorridos=[40,60]
 

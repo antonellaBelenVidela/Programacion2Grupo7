@@ -13,10 +13,6 @@ import Vehiculo from "../vehiculos/vehiculo";
 
 export default class Compacto extends Vehiculo {
 
-<<<<<<< HEAD
-
-=======
->>>>>>> bf6a33ca5667294fd30ee978d772ef8f83a1fcd3
   /** 
    * Cargo Extra por cada km excedido del límite diario.
    * @type {number}
@@ -34,11 +30,7 @@ export default class Compacto extends Vehiculo {
    */
   constructor() {
     super();
-<<<<<<< HEAD
-    this.TarifaDiaria=30
-=======
     this.tarifaDiaria = 30;
->>>>>>> bf6a33ca5667294fd30ee978d772ef8f83a1fcd3
   }
 
   /**
@@ -77,13 +69,8 @@ export default class Compacto extends Vehiculo {
         montoExtra = (kmsDiarios - this.limiteKmPorDia) * this.cargoExtraPorKm;
       }
       // ADENTRO DEL FOR VOY ACUMULADO EL TOTAL
-<<<<<<< HEAD
-      pagoTotal+= this.TarifaDiaria + reserva.PorcentajePorTemporada(this) + montoExtra
-    
-=======
       pagoTotal += this.getTarifaDiaria() + reserva.porcentajePorTemporada(this) + montoExtra
 
->>>>>>> bf6a33ca5667294fd30ee978d772ef8f83a1fcd3
     }
     return pagoTotal;
   }

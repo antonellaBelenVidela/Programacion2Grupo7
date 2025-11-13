@@ -16,7 +16,7 @@ export default class estadistica {
   * 
   * @returns devuelve el vehiculo mas alquilado de la flota de autos
   */
- public autoMasAlquilado():Vehiculo{
+ public autoMasAlquilado():string{
     if(!this.flota){
         throw console.error("no hay ningun vehiculo para alquilar");
         
@@ -30,13 +30,13 @@ export default class estadistica {
         VehiculoMasAlquilado=vehiculo
      });
     
-    return VehiculoMasAlquilado
+    return VehiculoMasAlquilado.getPatente()
  }
 /**
  * 
  * @returns devuelve el auto menos alquilado en la flota
  */
- public autoMenosAlquilado():Vehiculo{
+ public autoMenosAlquilado():string{
      if(!this.flota){
         throw console.error("no hay ningun vehiculo para alquilar");
         
@@ -50,14 +50,14 @@ export default class estadistica {
          VehiculoMenosAlquilado=vehiculo
      });
     
-    return VehiculoMenosAlquilado
+    return VehiculoMenosAlquilado.getPatente()
  }
 
 /**
  * 
  * @returns devuelve el auto que mas ganancias hizo
  */
- public AutoMasRentable():Vehiculo{
+ public AutoMasRentable():string{
        if(!this.flota){
         throw console.error("no hay ningun vehiculo para alquilar");
         
@@ -71,13 +71,13 @@ export default class estadistica {
          MayorGanacia=GanaciaDelAuto
          AutoMasRentable=vehiculo
      }); 
-     return AutoMasRentable
+     return AutoMasRentable.getPatente()
  }
 /**
  * 
  * @returns devuevle el auto que menos plata hizo
  */
- public AutoMenosRentable():Vehiculo{
+ public AutoMenosRentable():string{
        if(!this.flota){
         throw console.error("no hay ningun vehiculo para alquilar");
         
@@ -91,7 +91,7 @@ export default class estadistica {
          MenorGanancia=GanaciaDelAuto
          AutoMenosRentable=vehiculo
      }); 
-     return AutoMenosRentable
+     return AutoMenosRentable.getPatente()
  }
 /**
  * 

@@ -1,5 +1,4 @@
 import Disponible from "./estados/disponible"
-import EnMantenimiento from "./estados/enMantenimiento"
 import Vehiculo from "./vehiculos/Vehiculo"
 
 export default class Mantenimiento {
@@ -8,6 +7,7 @@ export default class Mantenimiento {
     private fechaInicioMant:Date
     private FechaFinMant:Date
     private Vehiculo:Vehiculo
+    private PasoMasDe24Horas:boolean
     
     constructor(){
       this.tipoMantenimiento=""
@@ -15,6 +15,7 @@ export default class Mantenimiento {
       this.FechaFinMant=undefined as unknown as Date
       this.fechaInicioMant=undefined as unknown as Date
       this.Vehiculo= undefined as unknown as Vehiculo
+      this.PasoMasDe24Horas=false
     }
 
 
@@ -63,39 +64,41 @@ export default class Mantenimiento {
   * @param vehiculo 
   * @returns verifica si el auto debe pasar a mantenimiento
   */
-  public PasarMantenimiento(vehiculo:Vehiculo):boolean{
-     return vehiculo.getKmSinMantenimiento()>12000 || vehiculo.GeTMesesSinMantenimiento() > 12 || vehiculo.GetVecesAlquilado() > 5
-     
-  }
-/**
+
+ public setPasaron24Horas(boolean:boolean){
+   this.PasoMasDe24Horas=boolean
+ }
+ 
+ public GetPasaron24Horas():boolean{
+  return this.PasoMasDe24Horas
+ }
+ /**
  * 
  * @param vehiculo 
  * @param fechaInicio 
  * @param fechaFin 
  * se encarga de pasar el auto en mantenimiento y cuando va a inicar ese mantenimiento
  */
-  public Mantenimiento(vehiculo:Vehiculo,fechaInicio:Date,fechaFin:Date){
-      if(this.PasarMantenimiento(vehiculo) === true){
-         let Estado= new EnMantenimiento
-        vehiculo.cambiarEstado(Estado)
-         this.SetVehiculo(vehiculo)
-         this.setFechaInico(fechaInicio)
-         this.setFechFin(fechaFin)
+  public PasarAMantenimiento(vehiculo:Vehiculo,fechaInicio:Date,fechaFin:Date){
+       let estado= vehiculo.getEstado()
+       estado.mantenimiento(this)
+        this.setFechaInico(fechaInicio)
+        this.setFechFin(fechaFin)
       } 
-  }
-/**
+  
+ /**
  * 
  * @param fecha 
  * saca el auto del estado de mantenimiento y lo devuelve a un estado disponible si es que ya llego la fecha fin de su mantenimiento
  */
-  public TerminarMantimiento(fecha:Date):void{
+  public FinalizarMantimiento(fecha:Date):void{
     //Excepicion
-    if(fecha >= this.FechaFinMant){
-       let estado = new Disponible()
-        this.Vehiculo.cambiarEstado(estado)
-        this.Vehiculo.SetCostoMantenimiento(this.costoMantenimiento)
-        this.Vehiculo.SetKmSinMantenimiento(0)
-        this.Vehiculo.SetMesesSinMantenimiento(0)
+    if(fecha >= this.FechaFinMant  || this.PasoMasDe24Horas === true ){
+        let estado= this.Vehiculo.getEstado()
+        estado.TerminarMantenimiento()
+        this.Vehiculo.setCostoMantenimiento(this.costoMantenimiento)
      }
   }
+
+  
 }

@@ -19,11 +19,7 @@ export default class GestionKilometraje  {
   public setKilometrosRecorridosPorDia(kilometros: number[],vehiculo:Vehiculo) {
     let cantDias = kilometros.length
 
-<<<<<<< HEAD
-    for (let i = 0; i <cantDias; i++) {
-=======
     for (let i = 0; i < cantDias; i++) {
->>>>>>> bf6a33ca5667294fd30ee978d772ef8f83a1fcd3
       this.kilometrosRecorridosPorDias.push(kilometros[i]);
       vehiculo.setKmSinMantenimiento(kilometros[i])
     }
