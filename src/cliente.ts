@@ -1,5 +1,7 @@
 import Reserva from "./reserva";
-
+/**
+ *  clase que representa al cliente que realizara la reserva de un vehiculo
+ */
 export default class Cliente {
     private id: string; // El identificador único del cliente
     private nombre: string;

@@ -1,6 +1,8 @@
 import Disponible from "./estados/disponible"
 import Vehiculo from "./vehiculos/Vehiculo"
-
+/**
+ * esta clase se encarga de realizar el mantentimiento del auto y luego poder sacarlo del mantenimiento luego que llegue la fecha indica o que haya pasado mas de un dia
+ */
 export default class Mantenimiento {
     private tipoMantenimiento:string
     private costoMantenimiento:number
@@ -59,11 +61,7 @@ export default class Mantenimiento {
   public GetVehiculo ():Vehiculo{
     return this.Vehiculo
   }
- /**
-  * 
-  * @param vehiculo 
-  * @returns verifica si el auto debe pasar a mantenimiento
-  */
+ 
 
  public setPasaron24Horas(boolean:boolean){
    this.PasoMasDe24Horas=boolean
@@ -74,9 +72,9 @@ export default class Mantenimiento {
  }
  /**
  * 
- * @param vehiculo 
- * @param fechaInicio 
- * @param fechaFin 
+ * @param vehiculo el vehiculo que se quiere pasar a mantenimiento
+ * @param fechaInicio la fecha que inicia el mantenimiento
+ * @param fechaFin  la fecha en la que termina el mantenimiento
  * se encarga de pasar el auto en mantenimiento y cuando va a inicar ese mantenimiento
  */
   public PasarAMantenimiento(vehiculo:Vehiculo,fechaInicio:Date,fechaFin:Date){
@@ -88,7 +86,7 @@ export default class Mantenimiento {
   
  /**
  * 
- * @param fecha 
+ * @param fecha la fecha para verificar si el mantenimiento llego a su fin.
  * saca el auto del estado de mantenimiento y lo devuelve a un estado disponible si es que ya llego la fecha fin de su mantenimiento
  */
   public FinalizarMantimiento(fecha:Date):void{

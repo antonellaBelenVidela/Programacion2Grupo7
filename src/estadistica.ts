@@ -3,7 +3,11 @@ import Flota from "./flota";
 import Vehiculo from "./vehiculos/Vehiculo";
 import ENALQUILER from "./estados/enAlquiler";
 import Suv from "./vehiculos/suv";
-
+/**
+ * esta clase se encarga de calcular las diferentes estadisticas de la flota de autos del local
+ * 
+ * tiene como atribuo la clase{@link Flota} para asi recorrerla y poder hacer la estadistica dentre los autos del local
+ */
 export default class estadistica {
 
     private flota:Flota
@@ -16,6 +20,7 @@ export default class estadistica {
  /**
   * 
   * @returns devuelve el vehiculo mas alquilado de la flota de autos
+  * esta funcion se encarga de comparar las veces que fue alquilado cada vehiculo de la flota
   */
  public autoMasAlquilado():string{
     if(!this.flota){
@@ -36,6 +41,7 @@ export default class estadistica {
 /**
  * 
  * @returns devuelve el auto menos alquilado en la flota
+ * esta funcion se encarga de comparar cual fue el vehiculo menos alquilado de la flota
  */
  public autoMenosAlquilado():string{
      if(!this.flota){
@@ -57,6 +63,7 @@ export default class estadistica {
 /**
  * 
  * @returns devuelve el auto que mas ganancias hizo
+ * esta funcion va comparando las ganacias de cada vehiculo en la flota para ver cual fue el que mas ganacias hizo
  */
  public AutoMasRentable():string{
        if(!this.flota){
@@ -77,6 +84,7 @@ export default class estadistica {
 /**
  * 
  * @returns devuevle el auto que menos plata hizo
+ * esta funcion va comparando los vehiculos de la flota para verificar cual fue el que menos ganacias tuvo
  */
  public AutoMenosRentable():string{
        if(!this.flota){
@@ -97,6 +105,7 @@ export default class estadistica {
 /**
  * 
  * @returns devuelve el porcentaje de autos que estan en estado EnAlquiler
+ * esta funcion recorre la flota de autos para ver cuales se encuentran enAlquiler
  */
  public OcupacionFlota():number{
     if(!this.flota){

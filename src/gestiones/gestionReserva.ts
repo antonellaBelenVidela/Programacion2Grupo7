@@ -6,7 +6,9 @@ import Flota from "../flota";
 import Reserva from "../reserva";
 import Temporadas from "../temporadas/temporadas";
 import Vehiculo from "../vehiculos/vehiculo";
-
+/**
+ * esta clase es la que se encarga de realizar la reserva del auto
+ */
 export default class GestionReserva {
     private flota: Flota;
     private consumidor: Consumidor;
@@ -18,9 +20,9 @@ export default class GestionReserva {
 
  /**
   * 
-  * @param cliente 
-  * @param vehiculo 
-  * @param temporada
+  * @param cliente es el cliente que quiere realizar la reserva
+  * @param vehiculo  es el vehiculo que el cliente quiere reservar
+  * @param temporada es la temporada en la que se realiza la reserva
   * se encarga de realizar una reserva 
   */
     public realizarReserva(cliente: Cliente, vehiculo: Vehiculo, temporada: Temporadas): void {
@@ -50,7 +52,12 @@ export default class GestionReserva {
 
     }
 
-
+   /**
+    * 
+    * @param fecha recibe una fecha a comparar
+    * @param reserva recibe una reserva
+    * esta funcion se encarga de verificar si la reserva llego a su fecha tope en base a la fecha que recibe
+    */
     public terminarReserva(fecha: Date, reserva: Reserva): void {
         if (fecha >= reserva.getFechaFin()) {
             let vehiculo_a = reserva.getVehiculo()

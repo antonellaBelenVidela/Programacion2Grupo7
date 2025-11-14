@@ -3,7 +3,9 @@ import Reserva from "../reserva";
 import Kilometraje from "../gestiones/gestionKilometraje";
 import Estado from "../estados/estado";
 import Disponible from "../estados/disponible";
-
+/**
+ * esta clase abstracta es la base donde los demas autos heredan sus atributos
+ */
 export default abstract class Vehiculo {
   private patente: string;
   private estado: Estado;
@@ -58,7 +60,10 @@ export default abstract class Vehiculo {
     return this.kilometrosRecorridos;
   }
 
-
+ /**
+  * 
+  * @param estado el estado al que el vehiculo va a cambiar
+  */
   public cambiarEstado(estado:Estado):void{
     this.estado=estado
   }
@@ -81,7 +86,7 @@ export default abstract class Vehiculo {
 
  public setKmSinMantenimiento(Km:number){
    this.kmSinMantenimiento+=Km
-    if(this.kmSinMantenimiento >= 12000 && Km=== 0){
+    if(Km=== 0){
       this.kmSinMantenimiento=Km
     }
  }

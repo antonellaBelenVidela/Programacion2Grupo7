@@ -1,7 +1,9 @@
 import estadistica from "./estadistica";
 import Vehiculo from "./vehiculos/Vehiculo";
 // import {Estado} from "../estado";
-
+/**
+ * esta clase almacena todos los vehiculos que el local tiene a la dispocion 
+ */
 export default class Flota {
 
     private autos: Map<string, Vehiculo>;
@@ -22,12 +24,20 @@ export default class Flota {
         const patenteNormalizada = patente.trim().toUpperCase();
         this.autos.set(patenteNormalizada, vehiculo);
     }
-
+    /**
+     * 
+     * @param patente patente del vehiculo que se esta buscando
+     * @returns devuelve si el vehiculo se encuentra en la flota o no
+     */
     public buscarVehiculo(patente: string): boolean {
         const patenteNormalizada = patente.trim().toUpperCase();
         return this.autos.has(patenteNormalizada);
     }
-
+     /**
+      * 
+      * @param patente patente del vehiculo que se quiere obtener
+      * @returns devuelve el vehiculo de la patente buscada
+      */
     public obtenerVehiculo(patente: string): Vehiculo | undefined {
         return this.autos.get(patente);
     }

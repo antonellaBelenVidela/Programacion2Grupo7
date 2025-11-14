@@ -95,6 +95,7 @@ function main(){
  console.log(Suv1.GetGanaciasTotales())
  console.log(Suv1.getEstado())
 
+ Autos.RealizarEstadisticas()
 
 }
 

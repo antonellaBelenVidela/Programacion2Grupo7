@@ -1,7 +1,9 @@
 import Reserva from "../reserva";
 import Vehiculo from "../vehiculos/vehiculo";
 
-
+/**
+ * esta clase se encarga de obtener los kilometros que recorrio el auto para luego calcular el exceso de kilometros
+ */
 export default class GestionKilometraje  {
   private kilometrosRecorridosPorDias: number[];
 
@@ -13,7 +15,7 @@ export default class GestionKilometraje  {
   /**
    * 
    * @param kilometros recibe un array con los kilometros reccoridos en cada dia
-   * 
+   * se encarga de cargar los kilometros que hizo un vehiculo durante su reserva
    */
 
   public setKilometrosRecorridosPorDia(kilometros: number[],vehiculo:Vehiculo) {

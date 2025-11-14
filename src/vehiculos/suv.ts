@@ -2,7 +2,11 @@ import { version } from "moment";
 import Kilometraje from "../gestiones/gestionKilometraje";
 import Vehiculo from "./vehiculo";
 import Reserva from "../reserva";
-
+/**
+ * esta clase representa a un vehiculo de tipo suv siendo uno de los vehiculos que tiene el local para poder ser alquilado
+ * 
+ * esta clase hereda de la clase {@link Vehiculo}
+ */
 export default class Suv extends Vehiculo {
   private cargoFijo: number
 

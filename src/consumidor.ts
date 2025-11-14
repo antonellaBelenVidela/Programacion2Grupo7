@@ -1,5 +1,7 @@
 import Cliente from "./cliente";
-
+/**
+ * esta clase existe para poder almacenar a los posibles clientes que desean reservar un vehiculo
+ */
 export default class Consumidor{
     private consumidores: Map<string,Cliente>
 
