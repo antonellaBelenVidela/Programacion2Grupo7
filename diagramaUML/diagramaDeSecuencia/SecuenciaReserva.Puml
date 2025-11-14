@@ -1,0 +1,33 @@
+@startuml title Reserva
+
+actor Cliente
+participant GestionGeneral
+participant GestorReserva
+participant Vehiculo
+boundary Estado
+entity Reserva
+
+Cliente -> GestionGeneral:Reserva(idcliente,vehiculo,temporada):el cliente manda los datos del vehiculo que quiere reservar 
+GestionGeneral -> GestorReserva: RealizaReserva(cliente,vehiculo,temporada):el gestorGeneral se encarga de pasarle los datos al gestorReserva 
+activate GestorReserva
+
+alt Datos Válidos
+    GestorReserva -> Vehiculo:verifica el estado del vehiculo
+    Vehiculo --> Estado: busca su estado
+    Estado --> GestorReserva:verifica el estado que se encuentra el vehiculo en el momento de realizar la reserva
+    
+
+    alt disponible
+        GestorReserva -> Reserva: RealizarReserva(cliente,vehiculo,temporada):crea la nueva reserva
+        Estado --> Vehiculo: le cambia el estado al vehiculo a enAlquiler
+        GestorReserva--> Cliente: le asigna al cliente la reserva
+        gestorReserva --> Vehiculo: le asigna la reserva 
+    else !disponible
+        Estado --> gestorReserva: throw error("el vehiculo no se encuentra disponible para una reserva")
+    end
+
+else Datos Inválidos
+    GestorReserva --> GestionGeneral: throw error("no se pudo crear la reserva.")
+    
+end
+@enduml

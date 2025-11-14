@@ -1,0 +1,163 @@
+@startuml DriveHub
+
+title "Trabajo Prácito - DriveHub - Grupo 7"
+
+ interface Estado{
+    alquilar():void
+    mantenimiento(mantenimiento:Mantenimiento):void
+    TerminarReserva():void
+    TerminarMantenimiento():void
+ }
+
+ class Disponible implements Estado{
+   -Vehiculo
+ }
+ class EnAlquiler implements Estado{
+  -Vehiculo
+ }
+ class EnMantenimiento implements Estado{
+  -Vehiculo
+ }
+
+ interface Temporadas{
+   +PorcentajePorTemporada(vehiculo:Vehiculo):number
+ }
+ class TemporadaAlta implements Temporadas{}
+ class TemporadaMedia implements Temporadas{}
+ class TemporadaBaja implements Temporadas{}
+ 
+ class GestionKilometraje{
+    - kilometrosRecorridosPorDias: number[];
+    +setKilometrosRecorridosPorDias(kilometros:number[],vehiculo:vehiculo)
+ }
+
+ class GestionReserva{
+   -flota:flota
+   -clientela:consumidor
+
+   +RealizarReserva():void
+   +TerminarReserva():void
+ }
+
+ class GestionTarifa{
+    +gestionarTarifa():number
+ }
+
+ class Gestor{
+   -GestionReserva:GestionReserva
+   -GestionKilometraje:GestionKilometraje
+   -GestionTarifa:gestionarTarifa
+
+   +Reservar(cliente:Cliente,vehiculo:Vehiculo,temporada:Temporadas)
+   +kilometraje(vehiculo:Vehiculo,reserva:Reserva)
+   +Tarifa(vehiculo:Vehiculo,reserva:Reserva)
+ }
+
+ abstract class Vehiculo{
+    - patente: string;
+    - estado: Estado;
+    - kilometrosRecorridos: number;
+    # resevas: Reserva;
+    # TarifaDiaria:number
+    - vecesAlquilado:number
+    - KmSinMantenimiento:number
+    - MesesSinMantenimiento:number
+    - costoMantenimiento:number
+    - GananciasTotales:number
+    - PasoMasDe24Horas:boolean
+
+    +settersYGetters
+    +CambiarEstado(Estado:Estado)
+    +abstractCalcularPago():number
+    +VerificarEstado():bool
+ }
+
+ class Compacto Extends Vehiculo{
+   +calcualarPago():number
+ }
+ 
+ class Sedan Extends Vehiculo{
+   +calcualarPago():number
+ }
+
+ class Suv Extends Vehiculo{
+    +calcualarPago():number
+ }
+
+ class cliente{
+    - id: string; 
+    - nombre: string;
+    - apellido: string;
+    - email: string; 
+    - Reserva:Reserva
+    - fechaInicio:Date
+    - fechaFin:Date
+   +settersYGetters
+ }
+
+ class consumidor{
+   -clientes:map<string,Cliente>
+
+   +agregarCliente(id:string,datos:cliente)
+   +buscarCliente(id:string)
+   +obtenerCliente(id:string):cliente|void
+   +obtenerClientes():map<string,Cliente>
+ }
+
+ class Estadistica{
+   -Flota:flota
+  
+  +autoMasAlquilado():Vehiculo
+  +autoMenosAlquilado():Vehiculo
+  +autoMasRentable():Vehiculo
+  +autoMenosRentable():Vehiculo
+  +OcupacionFlota():number
+ }
+
+ class Flota{
+   -Flota:map<string,Vehiculo>
+   -Estadistica:Estadistica
+
+   +agregarVehiculo(patente:string,Vehiculo:Vehiculo):void
+   +buscarVehiculo(patente:string):bool
+   +obtnerVehiculo(Patente:string):Vehiculo| undefined
+   +RealizarEstadisticas():void
+ }
+
+
+ class Mantenimiento{
+    -tipoMantenimiento:string
+    -costoMantenimiento:number
+    -fechaInicioMant:Date
+    -FechaFinMant:Date
+    -Vehiculo:Vehiculo
+
+    +settersYGetters
+    +PasarAMantenimiento(vehiculo:Vehiculo,fechaInico:Date,fechaFin:Date)
+    +TerminarMantenimiento(fecha:Date)
+ }
+
+ class Reserva{
+    -fechaInicio:Date;
+    -fechaFin : Date;
+    -cliente :Cliente;
+    -Vehiculo:Vehiculo
+    -Temporada:temporadas;
+
+    +settersYGetters
+    +PorcentajePorTemporada(vehiculo:Vehiculo):number
+ }
+
+ GestionReserva --* Gestor
+ GestionKilometraje --* Gestor
+ GestionTarifa --* Gestor
+ Mantenimiento <-- Vehiculo
+ Flota *-- Vehiculo
+ Flota *-- Estadistica
+ consumidor *-- cliente
+ cliente *-- Vehiculo
+ Reserva *-- cliente
+ Reserva *-- Vehiculo
+ Reserva *-- Temporadas
+ Vehiculo *-- Estado
+@enduml
