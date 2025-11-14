@@ -1,65 +1,130 @@
-export default abstract class Vehiculo{
-  private _matricula: string;
-  private _estado: string;
-  private _tarifa: number;
-  private _disponibilidad: string;
-  private _kilometrosRecorridos: number;
-  private _cargo: number;
+import Reserva from "../reserva";
 
-  constructor(){
-    this._matricula = "";
-    this._estado = "";
-    this._tarifa = 0;
-    this._disponibilidad = "";
-    this._kilometrosRecorridos = 0;
-    this._cargo = 0;
+import Kilometraje from "../gestiones/gestionKilometraje";
+import Estado from "../estados/estado";
+import Disponible from "../estados/disponible";
+/**
+ * esta clase abstracta es la base donde los demas autos heredan sus atributos
+ */
+export default abstract class Vehiculo {
+  private patente: string;
+  private estado: Estado;
+  private kilometrosRecorridos: number;
+  protected resevas: Reserva;
+  protected tarifaDiaria:number
+  private vecesAlquilado:number
+  private kmSinMantenimiento:number
+  private mesesSinMantenimiento:number
+  private costoMantenimiento:number
+  private gananciasTotales:number
+
+  constructor(patente?: string) {
+    this.patente = patente ?? "";
+    this.estado = new Disponible(this);
+    this.kilometrosRecorridos = 0;
+    this.resevas = undefined as unknown as Reserva;
+    this.tarifaDiaria=0
+    this.vecesAlquilado=0
+    this.kmSinMantenimiento=0
+    this.mesesSinMantenimiento=0
+    this.costoMantenimiento=0
+    this.gananciasTotales=0
   }
 
-  public setMatriculta(matricula: string): void{
-    this._matricula = matricula;
+  public getTarifaDiaria():number{
+    return this.tarifaDiaria
   }
 
-  public getMatricula(): string{
-    return this._matricula;
+  // hace falta? si la patente no va a cambiar!
+  public setPatente(matricula: string): void {
+    this.patente = matricula;
   }
 
-  public setEstado(estado: string): void{
-    this._estado = estado;
+  public getPatente(): string {
+    return this.patente;
   }
 
-  public geEstado(): string{
-    return this._estado;
+  public setEstado(estado: Estado): void {
+    this.estado = estado;
   }
 
-  public setTarifa(tarifa: number): void{
-    this._tarifa = tarifa;
+  public getEstado(): Estado {
+    return this.estado;
   }
 
-  public getTarifa(): number{
-    return this._tarifa;
+  public setKilometrosRecorridos(kilometrosRecorridos: number): void {
+    this.kilometrosRecorridos = kilometrosRecorridos;
   }
 
-  public setDisponibilidad(disponibilidad: string): void{
-    this._disponibilidad = disponibilidad;
+  public getKilometrosRecorridos(): number {
+    return this.kilometrosRecorridos;
   }
 
-  public getDisponibilidad(): string{
-    return this._disponibilidad;
+ /**
+  * 
+  * @param estado el estado al que el vehiculo va a cambiar
+  */
+  public cambiarEstado(estado:Estado):void{
+    this.estado=estado
   }
 
-  public setKilometrosRecorridos(kilometrosRecorridos: number): void{
-    this._kilometrosRecorridos = kilometrosRecorridos;
+  public agregarReserva(reserva: Reserva): void {
+    this.resevas=reserva
   }
 
-  public getKilometrosRecorridos(): number{
-    return this._kilometrosRecorridos;
+  public mostrarInfo(): string {
+    return `El auto con Patente: ${this.patente}, Estado: ${[this.estado]}, Kilometraje: ${this.kilometrosRecorridos} km`;
   }
 
-  public setCargo(cargo: number): void{
-    this._cargo = cargo;
-  }
+  public abstract calcularPago(kilometraje: Kilometraje,reserva:Reserva): number
 
-  public getCargo(): number{
-    return this._cargo;
-  }
+ 
+
+ public setVecesAlquilado(A:number){
+   this.vecesAlquilado+=A
+ }
+
+ public setKmSinMantenimiento(Km:number){
+   this.kmSinMantenimiento+=Km
+    if(Km=== 0){
+      this.kmSinMantenimiento=Km
+    }
+ }
+
+ public setMesesSinMantenimiento(meses:number){
+   this.mesesSinMantenimiento=meses
+ }
+
+  public geTMesesSinMantenimiento():number{
+    return  this.mesesSinMantenimiento
+ }
+
+ public setCostoMantenimiento(costo:number){
+   this.costoMantenimiento=costo
+ }
+
+ public getCostoMantenimiento():number{
+   return this.costoMantenimiento
+ }
+ public getKmSinMantenimiento():number{
+   return this.mesesSinMantenimiento
+ }
+
+ public GetVecesAlquilado(){
+  return this.vecesAlquilado
+ }
+
+ public SetGanaciasTotales(ganacias:number){
+   this.gananciasTotales+=ganacias
+ }
+
+ public GetGanaciasTotales():number{
+  return this.gananciasTotales - this.costoMantenimiento
+ }
+
+ public GetReserva():Reserva{
+  return this.resevas
+ }
+
+ 
 }

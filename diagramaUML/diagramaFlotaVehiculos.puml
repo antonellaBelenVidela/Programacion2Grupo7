@@ -4,40 +4,58 @@ title "Trabajo Prácito - DriveHub - Grupo 7"
 
 'Clases'
 
+abstract class Gestiones{
+  +gestionar()
+
+}
+
 class Cliente{
     - nombre: string
     - apellido: string
     - autoAlquilado: Flota
-    - inicioAlquiler: Date
-    - finAlquiler: Date
+    - Reserva:Reserva
     - tarifaFinal: number
     + settersYgetters()
     + realizarReserva(Gestor.gestionarReserva(gestionar()))
     + calcularTarifaFinal(Gestor.gestionarTarifa(gestionar()))
 }
 
+class Reserva{
+    -cliente:Cliente
+    -Vehiculo:Vehiculo
+    - inicioAlquiler: Date
+    - finAlquiler: Date
+}
+
+
 class Gestor{
     + Flota
-    + gestionarReserva(GestionReserva(gestionar()))
-    + gestionarKilometraje(GestionKilometraje(gestionar()))
-    + gestionarTarifa(GestionTarifa(gestionar()))
+    -gestorReserva:GestionReserva
+    -gestorKilometraje:gestionarKilometraje
+    -gestorTarifa:gestionarTarifa
+    + gestionarReserva():Reserva
+    + gestionarKilometraje(vehiculo:vehiculo)
+    + gestionarTarifa():number
 }
 
 class Flota{
     'La key es la categoría(Suv, Sedan, Compacto)
     'El valor es su disponibilidad(Está disponible o no para el Cliente)'
-    - Flota: Map<string, string>;
+    - Flota: Map<string, Vechiculo>;
     + agregarVehiculoYdisponibilidad()
     + obtenerVehiculoYdisponibilidad()
     + cambiarDisponibilidad()
     + mostrarFlota()
     + gestionarKilometraje(GestionKilometraje(gestionar()))
     + realizarMantenimiento(cambiarDisponibilidad())
+    +VechiculoMasUsado()
+    +Rentabilidad()
+    +VechiculosEnAlquiler()
 }
 
 abstract class Vehiculo{
     - matricula: string
-    - estado: string implements Gestor
+    - estado: Estado
     - tarifa: number
     - disponibilidad: string
     - kilometrosRecorridos: number
@@ -65,25 +83,30 @@ class Mantenimiento{
     - fechaInicioMantenimiento: Date
     - fechaFinMantenimiento: Date
 
+    +PasarMantenimiento()
     + settersYgetters()
 }
 
-abstract class GestionReserva{
+class GestionReserva extends Gestiones{
     + gestionar()
 }
 
-abstract class GestionKilometraje{
+ class GestionKilometraje extends Gestiones{
     + gestionar()
 }
 
-abstract class GestionTarifa{
+ class GestionTarifa extends Gestiones{
     + gestionar()
 }
 
+ enum Temporadas{
+    temporadaBaja
+    temporadaMedia
+    temporadaAlta
+    
+ }
 'Interfaces'
-interface GestionGeneral{
-    + gestionar()
-} 
+
 
 
 'Preguntas:
@@ -94,37 +117,31 @@ interface GestionGeneral{
 
 
 'Relaciones Flota'
-Flota *-- Sedan
-Flota *-- Suv
-Flota *-- Compacto
+Flota *-d- Vehiculo
 
 'Relaciones Herencia'
-Sedan --|> Vehiculo
-Suv --|> Vehiculo
-Compacto --|> Vehiculo
+Sedan -u-|> Vehiculo
+Suv -u-|> Vehiculo
+Compacto -u-|> Vehiculo
 
 'Relacion de Implementacion
-GestionReserva .u.|> GestionGeneral
-GestionKilometraje .u.|> GestionGeneral
-GestionTarifa .u.|> GestionGeneral
 
 'Relaciones con Gestor'
 Gestor --l-> Cliente
 Cliente --r-> Gestor
 
-GestionReserva ---> Gestor
-Gestor -u--> GestionReserva
+Gestor *-u- GestionReserva
 
-GestionKilometraje ---> Gestor
-Gestor -u--> GestionKilometraje
+Gestor *-u- GestionKilometraje
 
-GestionTarifa ---> Gestor
-Gestor -u--> GestionTarifa
+Gestor *-u-GestionTarifa
+
+Reserva *-u-Cliente
 
 Flota -u-> Gestor
 
 'Relaciones de Dependencia'
-Vehiculo .r.> Mantenimiento
+Vehiculo -r-> Mantenimiento
 
 'Notas'
 note right of Gestor 

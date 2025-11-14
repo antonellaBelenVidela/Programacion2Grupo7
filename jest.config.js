@@ -18,7 +18,7 @@ module.exports = {
   testTimeout: 22000,
   verbose: false,
   reporters: [
-    //"default", 
+    "default", 
     ["jest-compact-reporter", { diffs: false, colours: true, showPassingTests: true }],
     ["jest-junit", { outputDirectory: "coverage", usePathForSuiteName: true, reportedFilePath: "absolute" }],
   ],

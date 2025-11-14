@@ -1,7 +1,7 @@
 {
-  "name": "cuvl_lab3",
-  "version": "1.0.0",
-  "description": "cuvl_lab3",
+  "name": "Trabajo Practico Programacion 2 Grupo 7",
+  "version": "1.0",
+  "description": "Trabajo Practico - grupo 7 - clase de Programacion 2 - Sistema de Gestión para una Plataforma de Alquiler de Autos",
   "main": "dist/app.js",
   "scripts": {
     "build": "tsc",
@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@types/jest": "^29.4.0",
+    "@types/moment": "^2.11.29",
     "jest": "^29.7",
     "jest-compact-reporter": "^1.2.9",
     "jest-junit": "^16.0.0",
@@ -27,5 +28,8 @@
     "ts-node-dev": "^2.0.0",
     "typescript": "^4.9"
   },
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.30.1"
+  }
 }

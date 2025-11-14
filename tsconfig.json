@@ -20,7 +20,7 @@
   },
   "include": [
     "src/**/*"
-, "tests/test_ejercicio_1/ejercicio_1.test.ts"  ],
+  ],
   "exclude": [
     "dist",
     "node_modules",
