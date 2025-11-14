@@ -42,6 +42,8 @@ export default class Reserva {
     }
 
     public porcentajePorTemporada(vehiculo: Vehiculo): number {
-        return this.temporada.porcentajePorTemporada(vehiculo)
+        if (!this.temporada) return 0; // seguridad: sin temporada -> 0
+        return this.temporada.porcentajePorTemporada(vehiculo);
     }
+
 }
