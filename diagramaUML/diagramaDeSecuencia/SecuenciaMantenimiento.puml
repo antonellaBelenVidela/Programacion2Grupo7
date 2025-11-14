@@ -1,0 +1,23 @@
+@startuml mantenimiento
+ participant vehiculo
+ participant mantenimiento
+ boundary estado
+ 
+ 
+ 
+ vehiculo --> estado: se verifica que es vehiculo esta disponible
+ activate mantenimiento
+  alt disponible
+  mantenimiento --> vehiculo: pasarMantenimiento(vehiculo,fechaInicio,fechaFin):mantenimiento recibe el vehiculo y la duracion del mantenimiento
+  estado-->vehiculo:cambiarEstado(estado): cambia el estado del vehiculo a enMantenimiento
+  mantenimiento-->vehiculo:ingresa el vehiculo al mantenimiento
+  mantenimiento --> vehiculo:terminarMantenimiento(fecha):comprueba si la fecha ingresada es igual a la final del mantenimiento para devolver el vehiculo
+  estado --> vehiculo: cambiarEstado(estado):cambia el estado del vehiculo a disponible
+  else !disponible
+     mantenimiento -->vehiculo:throw error("no se puede ponder en mantenimiento") 
+ 
+
+  end
+
+ 
+@enduml

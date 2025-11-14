@@ -1,0 +1,48 @@
+@startwbs EDT
+
+title "Estructura Desglose de Trabajo";
+
+* Trabajo Practico - DriveHub - Grupo 7
+
+** Diagramas
+*** Desarrollar Diagrama de Clases [Hecho]
+*** Desarrollar Diagrama de Secuencia
+*** Desarrollar Estructura Desglose de Trabajo [En progreso]
+
+** Realizar Interfaces
+*** Interfaz "GestionGeneral"
+
+** Realizar Clases
+*** Clase "Cliente"
+*** Clase "Gestor"
+*** Clase "Flota"
+*** Clase Abstracta "Vehiculo"
+*** Case "Mantenimiento"
+*** Clase "Compacto"
+*** Clase "Sedan"
+*** Clase "Suv"
+*** Clase Abstracta "GestionReserva"
+*** Clase Abstracta "GestionKilometraje"
+*** Clase Abstracta "GestionTarifa"
+
+** Relacionar Clases
+
+** Tests
+*** Metodos:
+**** Metodo 1
+**** Metodo 2
+**** Metodo n
+*** Clases:
+**** Clase 1
+**** Clase 2
+**** Clase n
+*** Creación distintos tipos de Vehiculos
+*** Lógica de Cálculo de tarifas y recargos en distintos escenarios
+*** Costo total de una reserva. Plantear distintos escenarios
+
+** Documentacion - JSDoc
+*** Mantener README.md actualizado 
+**** Agregar instrucciones para su compilación y funcionamiento.
+*** Notas de versión
+
+@endwbs
