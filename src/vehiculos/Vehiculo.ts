@@ -8,27 +8,27 @@ export default abstract class Vehiculo {
   private estado: Estado;
   private kilometrosRecorridos: number;
   protected resevas: Reserva;
-  protected tarifaDiaria:number
-  private vecesAlquilado:number
-  private kmSinMantenimiento:number
-  private mesesSinMantenimiento:number
-  private costoMantenimiento:number
-  private gananciasTotales:number
+  protected tarifaDiaria: number
+  private vecesAlquilado: number
+  private kmSinMantenimiento: number
+  private mesesSinMantenimiento: number
+  private costoMantenimiento: number
+  private gananciasTotales: number
 
   constructor(patente?: string, estado?: Estado,) {
     this.patente = patente ?? "";
     this.estado = undefined as unknown as Estado;
     this.kilometrosRecorridos = 0;
     this.resevas = undefined as unknown as Reserva;
-    this.tarifaDiaria=0
-    this.vecesAlquilado=0
-    this.kmSinMantenimiento=0
-    this.mesesSinMantenimiento=0
-    this.costoMantenimiento=0
-    this.gananciasTotales=0
+    this.tarifaDiaria = 0
+    this.vecesAlquilado = 0
+    this.kmSinMantenimiento = 0
+    this.mesesSinMantenimiento = 0
+    this.costoMantenimiento = 0
+    this.gananciasTotales = 0
   }
 
-  public getTarifaDiaria():number{
+  public getTarifaDiaria(): number {
     return this.tarifaDiaria
   }
 
@@ -58,63 +58,63 @@ export default abstract class Vehiculo {
   }
 
 
-  public cambiarEstado(estado:Estado){
-    this.estado=estado
+  public cambiarEstado(estado: Estado) {
+    this.estado = estado
   }
 
   public agregarReserva(reserva: Reserva): void {
-    this.resevas=reserva
+    this.resevas = reserva
   }
 
   public mostrarInfo(): string {
     return `El auto con Patente: ${this.patente}, Estado: ${[this.estado]}, Kilometraje: ${this.kilometrosRecorridos} km`;
   }
 
-  public abstract calcularPago(kilometraje: Kilometraje,reserva:Reserva): number
+  public abstract calcularPago(kilometraje: Kilometraje, reserva: Reserva): number
 
-  public verificarEstado():boolean{
-     return this.estado.alquilar()
+  public verificarEstado(): boolean {
+    return this.estado.alquilar()
   }
 
- public setVecesAlquilado(A:number){
-   this.vecesAlquilado+=A
- }
+  public setVecesAlquilado(vecesAlquilado: number) {
+    this.vecesAlquilado += vecesAlquilado
+  }
 
- public setKmSinMantenimiento(Km:number){
-   this.kmSinMantenimiento+=Km
-    if(this.kmSinMantenimiento >= 12000 && Km=== 0){
-      this.kmSinMantenimiento=Km
+  public setKmSinMantenimiento(km: number) {
+    this.kmSinMantenimiento += km
+    if (this.kmSinMantenimiento >= 12000 && km === 0) {
+      this.kmSinMantenimiento = km
     }
- }
+  }
 
- public setMesesSinMantenimiento(meses:number){
-   this.mesesSinMantenimiento=meses
- }
+  public setMesesSinMantenimiento(meses: number) {
+    this.mesesSinMantenimiento = meses
+  }
 
-  public geTMesesSinMantenimiento():number{
-    return  this.mesesSinMantenimiento
- }
+  public geTMesesSinMantenimiento(): number {
+    return this.mesesSinMantenimiento
+  }
 
- public setCostoMantenimiento(costo:number){
-   this.costoMantenimiento=costo
- }
+  public setCostoMantenimiento(costo: number) {
+    this.costoMantenimiento = costo
+  }
 
- public getCostoMantenimiento():number{
-   return this.costoMantenimiento
- }
- public getKmSinMantenimiento():number{
-   return this.mesesSinMantenimiento
- }
+  public getCostoMantenimiento(): number {
+    return this.costoMantenimiento
+  }
+  public getKmSinMantenimiento(): number {
+    return this.mesesSinMantenimiento
+  }
 
- public GetVecesAlquilado(){
-  return this.vecesAlquilado
- }
+  public getVecesAlquilado() {
+    return this.vecesAlquilado
+  }
 
- public SetGanaciasTotales(ganacias:number){
-   this.gananciasTotales+=ganacias
- }
+  public setGanaciasTotales(ganacias: number) {
+    this.gananciasTotales += ganacias
+  }
 
- public GetGanaciasTotales():number{
-  return this.gananciasTotales
- }
+  public getGanaciasTotales(): number {
+    return this.gananciasTotales
+  }
 }
