@@ -1,6 +1,6 @@
 import { version } from "moment";
 import Flota from "./flota";
-import Vehiculo from "./vehiculos/Vehiculo";
+import Vehiculo from "./vehiculos/vehiculo";
 import ENALQUILER from "./estados/enAlquiler";
 
 export default class estadistica {

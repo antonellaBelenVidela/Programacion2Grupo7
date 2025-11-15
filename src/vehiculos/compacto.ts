@@ -1,6 +1,6 @@
 import Kilometraje from "../gestiones/gestionKilometraje";
 import Reserva from "../reserva";
-import Vehiculo from "../vehiculos/vehiculo";
+import Vehiculo from "./vehiculo";
 
 /**
  * Clase que representa un vehículo del tipo Compacto.
