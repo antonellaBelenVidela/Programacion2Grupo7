@@ -1,5 +1,5 @@
 import Disponible from "./estados/disponible"
-import Vehiculo from "./vehiculos/Vehiculo"
+import Vehiculo from "./vehiculos/vehiculo"
 /**
  * esta clase se encarga de realizar el mantentimiento del auto y luego poder sacarlo del mantenimiento luego que llegue la fecha indica o que haya pasado mas de un dia
  */

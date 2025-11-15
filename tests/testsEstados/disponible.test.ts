@@ -2,9 +2,10 @@ import Disponible from "../../src/estados/disponible";
 
 describe("Test Unitario de la clase Disponible", () => {
     let estado: Disponible;
+    const vehiculoMock = {} as any;
 
     beforeEach(() => {
-        estado = new Disponible();
+        estado = new Disponible(vehiculoMock);
     });
 
     test("Cuando llamo a alquilar() me debería devolver TRUE ya que está disponible para ser alquilado.", () => {

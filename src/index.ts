@@ -12,7 +12,7 @@ import temporadas from "./temporadas/temporadas";
 import Compacto from "./vehiculos/compacto";
 import Sedan from "./vehiculos/sedan";
 import Suv from "./vehiculos/suv";
-import Vehiculo from "./vehiculos/Vehiculo";
+import Vehiculo from "./vehiculos/vehiculo";
 
 
 function main(){

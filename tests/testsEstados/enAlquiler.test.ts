@@ -2,9 +2,10 @@ import EnAlquiler from "../../src/estados/enAlquiler";
 
 describe("Test Unitario de la clase EnAlquiler", () => {
     let estado: EnAlquiler;
+    const vehiculoMock = {} as any;
 
     beforeEach(() => {
-        estado = new EnAlquiler();
+        estado = new EnAlquiler(vehiculoMock);
     });
 
     test("Cuando llamo a alquilar() me debería devolver FALSE ya que el auto que quiero alquilar está ya alquilado en ese momento.", () => {

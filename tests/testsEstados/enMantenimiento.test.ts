@@ -3,9 +3,10 @@ import EnMantenimiento from "../../src/estados/enMantenimiento";
 
 describe("Test Unitario de la clase EnMantenimiento", () => {
     let estado: EnMantenimiento;
+       const vehiculoMock = {} as any;
 
     beforeEach(() => {
-        estado = new EnMantenimiento();
+        estado = new EnMantenimiento(vehiculoMock);
     });
 
     test("Cuando llamo a alquilar() me debería devolver FALSE ya que el auto que quiero alquilar está en mantenimiento.", () => {
