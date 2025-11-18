@@ -60,7 +60,7 @@ export default class Cliente {
    }
 
    public getFechaInico():Date{
-    return this.fechaFin
+    return this.fechaInicio
    }
 
    public SetFechaFin(fecha:Date){

@@ -1,20 +1,39 @@
 import EnAlquiler from "../../src/estados/enAlquiler";
+import Disponible from "../../src/estados/disponible";
+import { DeepMockProxy, mockDeep } from "jest-mock-extended";
+import Vehiculo from "../../src/vehiculos/vehiculo";
+import Mantenimiento from "../../src/mantenimiento";
 
-describe("Test Unitario de la clase EnAlquiler", () => {
-    let estado: EnAlquiler;
-    const vehiculoMock = {} as any;
+jest.mock("../../src/vehiculos/Vehiculo")
+jest.mock("../../src/mantenimiento")
+jest.mock("../../src/estados/disponible")
 
+describe("Test Unitario de la clase EnAlquiler",() => {
+    let alquilado:EnAlquiler
+    const mockVehiculo:DeepMockProxy<Vehiculo> =mockDeep<Vehiculo>();
+    const mockMantenimiento:DeepMockProxy<Mantenimiento>= mockDeep<Mantenimiento>();
     beforeEach(() => {
-        estado = new EnAlquiler(vehiculoMock);
+        alquilado = new EnAlquiler(mockVehiculo as any);
     });
 
-    test("Cuando llamo a alquilar() me debería devolver FALSE ya que el auto que quiero alquilar está ya alquilado en ese momento.", () => {
-        const resultado = estado.alquilar();
-        expect(resultado).toBe(false);
-    });
+    test("verifico que tire error al intentar alquilar un auto en alquiler",()=>{
+         expect(()=>alquilado.alquilar()).toThrow(Error)
+    })
 
-        test("Verifico que el texto sea el que se debería imprimir.", () => {
-        const texto = "¡No se puede alquilar el auto! Ya está reservado.";
-        expect(texto).toBe("¡No se puede alquilar el auto! Ya está reservado.");
-    });
+
+   test("verifico que tire erro al intentar ponerlo en mantenimiento.",()=>{
+     expect(()=>alquilado.mantenimiento(mockMantenimiento)).toThrow(Error)
+   })
+
+   test("verifico que tire error al sacarlo del mantenimiento",()=>{
+      expect(()=>alquilado.TerminarMantenimiento()).toThrow(Error)
+   })
+
+   test("verifico que le auto cambie de estado a disponible cuando termina su reserva",()=>{
+          alquilado.TerminarReserva()
+          expect(mockVehiculo.cambiarEstado).toHaveBeenCalledTimes(1)
+          const CambioDeEstado=mockVehiculo.cambiarEstado.mock.calls[0][0]
+          expect(CambioDeEstado).toBeInstanceOf(Disponible)
+          expect(Disponible).toHaveBeenCalledWith(mockVehiculo)
+   })
 });

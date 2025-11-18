@@ -1,7 +1,7 @@
 import Mantenimiento from "../mantenimiento";
 import Vehiculo from "../vehiculos/vehiculo";
 import EnAlquiler from "./enAlquiler";
-import EnMantenimiento from "./enMantenimiento";
+import EnMantenimiento from "./EnMantenimiento";
 import Estado from "./estado";
 /**
  * esta clase es el estado que el vehiculo implementa cuando esta disponible

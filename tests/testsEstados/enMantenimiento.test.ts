@@ -1,21 +1,38 @@
+import Disponible from "../../src/estados/disponible";
+import { DeepMockProxy, mockDeep } from "jest-mock-extended";
+import EnMantenimiento from "../../src/estados/EnMantenimiento";
+import Mantenimiento from "../../src/mantenimiento";
+import Vehiculo from "../../src/vehiculos/vehiculo";
 
-import EnMantenimiento from "../../src/estados/enMantenimiento";
+jest.mock("../../src/vehiculos/Vehiculo")
+jest.mock("../../src/mantenimiento")
+jest.mock("../../src/estados/disponible")
 
 describe("Test Unitario de la clase EnMantenimiento", () => {
     let estado: EnMantenimiento;
-       const vehiculoMock = {} as any;
-
+    const mockVehiculo:DeepMockProxy<Vehiculo> =mockDeep<Vehiculo>();
+    const mockMantenimiento:DeepMockProxy<Mantenimiento>= mockDeep<Mantenimiento>();
+ 
     beforeEach(() => {
-        estado = new EnMantenimiento(vehiculoMock);
+        estado = new EnMantenimiento(mockVehiculo as any);
     });
 
-    test("Cuando llamo a alquilar() me debería devolver FALSE ya que el auto que quiero alquilar está en mantenimiento.", () => {
-        const resultado = estado.alquilar();
-        expect(resultado).toBe(false);
-    });
+    test("debe tirar une error al intentar alquilar el vehiculo",()=>{
+      expect(()=>estado.alquilar()).toThrow(Error)
+    })
 
-        test("Verifico que el texto sea el que se debería imprimir,.", () => {
-        const texto = "¡No se puede alquilar el auto! Está en mantenimiento.";
-        expect(texto).toBe("¡No se puede alquilar el auto! Está en mantenimiento.");
-    });
+    test("debe tirar error al llamar el metodo terminar reserva",()=>{
+        expect(()=>estado.TerminarReserva()).toThrow(Error)
+    })
+
+    test("probar que el estado del vehiculo cambie al disponible cuando se termina la reserva",()=>{
+       estado.TerminarMantenimiento()
+       expect(mockVehiculo.cambiarEstado).toHaveBeenCalledTimes(1)
+       const cambioEstado=mockVehiculo.cambiarEstado.mock.calls[0][0]
+       expect(cambioEstado).toBeInstanceOf(Disponible)
+       expect(Disponible).toHaveBeenCalledWith(mockVehiculo)
+
+    })
+
+
 });

@@ -26,7 +26,7 @@ export default class EnMantenimiento implements Estado{
    * @param mantenimiento 
    * se encarga de realizar el mantenimiento del vehiculo
    */
-    public mantenimiento(mantenimiento:Mantenimiento) {
+    public mantenimiento(mantenimiento:Mantenimiento):void {
        console.log("se esta realizando el mantenimiento")
         //verificar que pasen 24 horas para pasar a disponible
     }

@@ -31,9 +31,10 @@ export default class estadistica {
     let VehiculoMasAlquilado= undefined as unknown as Vehiculo
    let AutosMap:Map<string,Vehiculo>=this.flota.getFlota()
      AutosMap.forEach((vehiculo: Vehiculo, clave: string) => {
-      if(vehiculo.GetVecesAlquilado()>MasVecesAlquilado)
+      if(vehiculo.GetVecesAlquilado()>MasVecesAlquilado){
          MasVecesAlquilado= vehiculo.GetVecesAlquilado()
-        VehiculoMasAlquilado=vehiculo
+         VehiculoMasAlquilado=vehiculo
+         }
      });
     
     return VehiculoMasAlquilado.getPatente()
@@ -52,9 +53,10 @@ export default class estadistica {
     let VehiculoMenosAlquilado= undefined as unknown as Vehiculo
    let AutosMap:Map<string,Vehiculo>=this.flota.getFlota()
      AutosMap.forEach((vehiculo: Vehiculo, clave: string) => {
-      if(MenosVecesAlquilado>vehiculo.GetVecesAlquilado())
+      if(MenosVecesAlquilado>vehiculo.GetVecesAlquilado()){
          MenosVecesAlquilado= vehiculo.GetVecesAlquilado()
          VehiculoMenosAlquilado=vehiculo
+         }
      });
     
     return VehiculoMenosAlquilado.getPatente()
@@ -75,9 +77,10 @@ export default class estadistica {
    let AutosMap:Map<string,Vehiculo>=this.flota.getFlota()
      AutosMap.forEach((vehiculo: Vehiculo, clave: string) => {
        let GanaciaDelAuto= vehiculo.GetGanaciasTotales()-vehiculo.getCostoMantenimiento()
-       if(GanaciaDelAuto >MayorGanacia)
+       if(GanaciaDelAuto >MayorGanacia){
          MayorGanacia=GanaciaDelAuto
          AutoMasRentable=vehiculo
+         }
      }); 
      return AutoMasRentable.getPatente()
  }
@@ -96,9 +99,10 @@ export default class estadistica {
    let AutosMap:Map<string,Vehiculo>=this.flota.getFlota()
      AutosMap.forEach((vehiculo: Vehiculo, clave: string) => {
        let GanaciaDelAuto= vehiculo.GetGanaciasTotales()-vehiculo.getCostoMantenimiento()
-       if(MenorGanancia>GanaciaDelAuto)
+       if(MenorGanancia>GanaciaDelAuto){
          MenorGanancia=GanaciaDelAuto
          AutoMenosRentable=vehiculo
+         }
      }); 
      return AutoMenosRentable.getPatente()
  }
