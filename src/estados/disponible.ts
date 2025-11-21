@@ -1,5 +1,5 @@
-import Mantenimiento from "../mantenimiento";
-import Vehiculo from "../vehiculos/vehiculo";
+import mantenimiento from "../mantenimiento";
+import Vehiculo from "../vehiculos/Vehiculo";
 import EnAlquiler from "./enAlquiler";
 import EnMantenimiento from "./EnMantenimiento";
 import Estado from "./estado";
@@ -38,7 +38,7 @@ export default class Disponible implements Estado{
   * lo que hace esta funcion es verificar si el vehiculo cumple las condiciones para tener que hacerle mantenimiento
   * luego de que verifique las condiciones pasa ese vehiculo a la clase mantenimineto y se le cambia el estado a enMantenimiento.
   */
-    public mantenimiento(mantenimiento:Mantenimiento): void {
+    public mantenimiento(mantenimiento:mantenimiento): void {
         if(this.vehiculo.getKmSinMantenimiento()>=12000 || this.vehiculo.geTMesesSinMantenimiento() >= 12 || this.vehiculo.GetVecesAlquilado() >= 5){
             this.vehiculo.cambiarEstado(new EnMantenimiento(this.vehiculo))
             mantenimiento.SetVehiculo(this.vehiculo)

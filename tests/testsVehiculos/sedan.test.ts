@@ -1,6 +1,6 @@
 import Sedan from "../../src/vehiculos/sedan";
 import Kilometraje from "../../src/gestiones/gestionKilometraje";
-import Vehiculo from "../../src/vehiculos/vehiculo";
+import Vehiculo from "../../src/vehiculos/Vehiculo";
 import Reserva from "../../src/reserva";
 
 class KilometrajeMock {

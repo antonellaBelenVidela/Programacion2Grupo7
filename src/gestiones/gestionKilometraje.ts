@@ -1,5 +1,5 @@
 import Reserva from "../reserva";
-import Vehiculo from "../vehiculos/vehiculo";
+import Vehiculo from "../vehiculos/Vehiculo";
 
 /**
  * esta clase se encarga de obtener los kilometros que recorrio el auto para luego calcular el exceso de kilometros

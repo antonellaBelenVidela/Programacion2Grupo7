@@ -1,6 +1,6 @@
 import Cliente from "./cliente";
 import Temporadas from "./temporadas/temporadas";
-import Vehiculo from "./vehiculos/vehiculo";
+import Vehiculo from "./vehiculos/Vehiculo";
 /**
  * esta clase representa la reserva que se crea cuando un cliente alquila un vehiculo
  */

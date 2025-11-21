@@ -1,7 +1,7 @@
 import Disponible from "../../src/estados/disponible";
 import EnAlquiler from "../../src/estados/enAlquiler";
 import EnMantenimiento from "../../src/estados/EnMantenimiento";
-import Vehiculo from "../../src/vehiculos/vehiculo";
+import Vehiculo from "../../src/vehiculos/Vehiculo";
 import Mantenimiento from "../../src/mantenimiento";
 import {DeepMockProxy,mockDeep} from "jest-mock-extended"
 

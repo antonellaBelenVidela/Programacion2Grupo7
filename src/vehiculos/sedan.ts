@@ -1,6 +1,6 @@
 import Kilometraje from "../gestiones/gestionKilometraje";
 import Reserva from "../reserva";
-import Vehiculo from "./vehiculo";
+import Vehiculo from "./Vehiculo";
 /**
  * esta clase representa a un vehiculo de tipo sedan siendo uno de los tipos de autos que posee el local
  * 

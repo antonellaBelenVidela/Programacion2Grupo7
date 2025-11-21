@@ -1,5 +1,5 @@
 import Mantenimiento from "../mantenimiento";
-import Vehiculo from "../vehiculos/vehiculo";
+import Vehiculo from "../vehiculos/Vehiculo";
 import Disponible from "./disponible";
 import Estado from "./estado";
 /**

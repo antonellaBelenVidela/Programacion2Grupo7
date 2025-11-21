@@ -3,6 +3,7 @@ import Reserva from "../reserva";
 import Kilometraje from "../gestiones/gestionKilometraje";
 import Estado from "../estados/estado";
 import Disponible from "../estados/disponible";
+import Mantenimiento from "../mantenimiento";
 /**
  * esta clase abstracta es la base donde los demas autos heredan sus atributos
  */
@@ -127,4 +128,20 @@ export default abstract class Vehiculo {
  }
 
  
+ public Alquilar():void{
+    this.estado.alquilar()
+ }
+
+  public TerminarReserva():void{
+    this.estado.TerminarReserva()
+  }
+
+  public PonerEnMantenimiento(mantenimiento:Mantenimiento):void{
+    this.estado.mantenimiento(mantenimiento)
+  }
+
+ public TerminarMantenimiento():void{
+   this.estado.TerminarMantenimiento()
+ }
+
 }

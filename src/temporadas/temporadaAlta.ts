@@ -1,4 +1,4 @@
-import Vehiculo from "../vehiculos/vehiculo";
+import Vehiculo from "../vehiculos/Vehiculo";
 import Temporadas from "./temporadas";
 /**
  * esta clase se encarga de setear la temporada que se realiza la reserva

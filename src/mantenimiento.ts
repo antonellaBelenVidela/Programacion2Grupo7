@@ -1,5 +1,5 @@
 import Disponible from "./estados/disponible"
-import Vehiculo from "./vehiculos/vehiculo"
+import Vehiculo from "./vehiculos/Vehiculo"
 /**
  * esta clase se encarga de realizar el mantentimiento del auto y luego poder sacarlo del mantenimiento luego que llegue la fecha indica o que haya pasado mas de un dia
  */
@@ -78,8 +78,7 @@ export default class Mantenimiento {
  * se encarga de pasar el auto en mantenimiento y cuando va a inicar ese mantenimiento
  */
   public PasarAMantenimiento(vehiculo:Vehiculo,fechaInicio:Date,fechaFin:Date){
-       let estado= vehiculo.getEstado()
-       estado.mantenimiento(this)
+       vehiculo.PonerEnMantenimiento(this)
         this.setFechaInico(fechaInicio)
         this.setFechFin(fechaFin)
       } 
@@ -92,8 +91,7 @@ export default class Mantenimiento {
   public FinalizarMantimiento(fecha:Date):void{
     //Excepicion
     if(fecha >= this.FechaFinMant  || this.PasoMasDe24Horas === true ){
-        let estado= this.Vehiculo.getEstado()
-        estado.TerminarMantenimiento()
+       this.Vehiculo.TerminarMantenimiento()
         this.Vehiculo.setCostoMantenimiento(this.costoMantenimiento)
      }
   }

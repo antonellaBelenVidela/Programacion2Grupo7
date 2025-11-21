@@ -1,5 +1,5 @@
 import TemporadaMedia from "../../src/temporadas/temporadaMedia";
-import Vehiculo from "../../src/vehiculos/vehiculo";
+import Vehiculo from "../../src/vehiculos/Vehiculo";
 
 class VehiculoMock {
     constructor(private tarifa: number) { }

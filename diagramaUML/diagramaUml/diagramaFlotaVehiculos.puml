@@ -70,6 +70,10 @@ title "Trabajo Prácito - DriveHub - Grupo 7"
     +CambiarEstado(Estado:Estado)
     +abstractCalcularPago():number
     +VerificarEstado():bool
+    +alquilar():void
+    +TerminarReserva():void
+    +PonerEnMantenimiento(mantenimiento:mantenimiento):void
+    +TerminarMantenimiento():void
  }
 
  class Compacto Extends Vehiculo{

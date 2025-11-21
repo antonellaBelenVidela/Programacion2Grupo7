@@ -1,6 +1,6 @@
 import { version } from "moment";
 import Kilometraje from "../gestiones/gestionKilometraje";
-import Vehiculo from "./vehiculo";
+import Vehiculo from "./Vehiculo";
 import Reserva from "../reserva";
 /**
  * esta clase representa a un vehiculo de tipo suv siendo uno de los vehiculos que tiene el local para poder ser alquilado

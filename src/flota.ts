@@ -1,5 +1,5 @@
 import estadistica from "./estadistica";
-import Vehiculo from "./vehiculos/vehiculo";
+import Vehiculo from "./vehiculos/Vehiculo";
 // import {Estado} from "../estado";
 /**
  * esta clase almacena todos los vehiculos que el local tiene a la dispocion 

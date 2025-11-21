@@ -1,5 +1,5 @@
 import Reserva from "../reserva";
-import Vehiculo from "../vehiculos/vehiculo";
+import Vehiculo from "../vehiculos/Vehiculo";
 import Kilometraje from "./gestionKilometraje";
 /**
  * esta clase se encarga de calcular lo que el cliente tiene que pagar por el alquiler del auto

@@ -1,4 +1,4 @@
-import vehiculo from "../src/vehiculos/vehiculo";
+import vehiculo from "../src/vehiculos/Vehiculo";
 import Estadistica from "../src/estadistica"
 import Flota from "../src/flota";
 import { DeepMockProxy, mock, mockDeep } from "jest-mock-extended";

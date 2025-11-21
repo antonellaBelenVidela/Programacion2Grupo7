@@ -1,4 +1,4 @@
-import Vehiculo from "../vehiculos/vehiculo";
+import Vehiculo from "../vehiculos/Vehiculo";
 /**
  * esta interface es la que implementarar las varias temporadas en la que se realiza la reserva
  */

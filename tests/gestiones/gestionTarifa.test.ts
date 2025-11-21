@@ -1,5 +1,5 @@
 import GestionTarifa from "../../src/gestiones/gestionTarifa";
-import Vehiculo from "../../src/vehiculos/vehiculo";
+import Vehiculo from "../../src/vehiculos/Vehiculo";
 import Kilometraje from "../../src/gestiones/gestionKilometraje";
 import Reserva from "../../src/reserva";
 

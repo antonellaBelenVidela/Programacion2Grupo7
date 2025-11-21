@@ -5,7 +5,7 @@ import EnAlquiler from "../estados/enAlquiler";
 import Flota from "../flota";
 import Reserva from "../reserva";
 import Temporadas from "../temporadas/temporadas";
-import Vehiculo from "../vehiculos/vehiculo";
+import Vehiculo from "../vehiculos/Vehiculo";
 /**
  * esta clase es la que se encarga de realizar la reserva del auto
  */
@@ -34,8 +34,7 @@ export default class GestionReserva {
         flota.has(vehiculo.getPatente())
         let fechaInicio = cliente.getFechaInico()
         let fechaFin = cliente.getFechaFinal()
-         let estado=vehiculo.getEstado()
-         estado.alquilar()
+         vehiculo.Alquilar()
             const nuevaReserva = new Reserva(fechaInicio, fechaFin, cliente)
             nuevaReserva.setTemporada(temporada)
             cliente.setReserva(nuevaReserva)
@@ -61,9 +60,7 @@ export default class GestionReserva {
     public terminarReserva(fecha: Date, reserva: Reserva): void {
         if (fecha >= reserva.getFechaFin()) {
             let vehiculo_a = reserva.getVehiculo()
-            let estado= vehiculo_a.getEstado()
-           
-            estado.TerminarReserva() 
+            vehiculo_a.TerminarReserva()
         }
     }
 

@@ -3,7 +3,7 @@ import GestionReserva from "../../src/gestiones/gestionReserva"
 import Flota from "../../src/flota";
 import Consumidor from "../../src/consumidor";
 import Cliente from "../../src/cliente";
-import Vehiculo from "../../src/vehiculos/vehiculo";
+import Vehiculo from "../../src/vehiculos/Vehiculo";
 import Temporadas from "../../src/temporadas/temporadas";
 import Estado from "../../src/estados/estado";
 
